@@ -35,6 +35,7 @@ class HandleInertiaRequests extends Middleware
     public function share(Request $request)
     {   
         $user = $request->user();
+        dd($user);
         if ($user) {
             $user['role'] = getRole($request->user());
             $user['permissions'] = getPermissionsName(\getRole($request->user()));
