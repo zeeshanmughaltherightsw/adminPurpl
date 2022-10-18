@@ -898,6 +898,7 @@
             "time": "2022-08-28T14:45:39+00:00"
         },
         {
+<<<<<<< HEAD
             "name": "inertiajs/inertia-laravel",
             "version": "v0.5.4",
             "source": {
@@ -976,6 +977,17 @@
             },
             "dist": {
                 "type": "zip",
+=======
+            "name": "laravel/framework",
+            "version": "v9.35.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laravel/framework.git",
+                "reference": "79aed20f54b6ab75f926bf7d0dd7a5043ceb774a"
+            },
+            "dist": {
+                "type": "zip",
+>>>>>>> 838d4323e0ae165ac69947d210028fde94c05303
                 "url": "https://api.github.com/repos/laravel/framework/zipball/79aed20f54b6ab75f926bf7d0dd7a5043ceb774a",
                 "reference": "79aed20f54b6ab75f926bf7d0dd7a5043ceb774a",
                 "shasum": ""
@@ -2906,6 +2918,7 @@
             "time": "2022-09-16T03:22:46+00:00"
         },
         {
+<<<<<<< HEAD
             "name": "spatie/laravel-permission",
             "version": "5.5.5",
             "source": {
@@ -2997,6 +3010,17 @@
             },
             "dist": {
                 "type": "zip",
+=======
+            "name": "symfony/console",
+            "version": "v6.1.6",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/console.git",
+                "reference": "7fa3b9cf17363468795e539231a5c91b02b608fc"
+            },
+            "dist": {
+                "type": "zip",
+>>>>>>> 838d4323e0ae165ac69947d210028fde94c05303
                 "url": "https://api.github.com/repos/symfony/console/zipball/7fa3b9cf17363468795e539231a5c91b02b608fc",
                 "reference": "7fa3b9cf17363468795e539231a5c91b02b608fc",
                 "shasum": ""
@@ -5247,6 +5271,7 @@
                 }
             ],
             "time": "2022-10-07T08:04:03+00:00"
+<<<<<<< HEAD
         },
         {
             "name": "tightenco/ziggy",
@@ -5314,6 +5339,8 @@
                 "source": "https://github.com/tighten/ziggy/tree/v1.5.0"
             },
             "time": "2022-09-23T22:15:05+00:00"
+=======
+>>>>>>> 838d4323e0ae165ac69947d210028fde94c05303
         },
         {
             "name": "tijsverkoyen/css-to-inline-styles",
