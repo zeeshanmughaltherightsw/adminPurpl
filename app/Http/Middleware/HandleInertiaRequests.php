@@ -36,6 +36,7 @@ class HandleInertiaRequests extends Middleware
     {   
         $user = $request->user();
         if ($user) {
+            dd(getRole($request->user()));
             $user['role'] = getRole($request->user());
             $user['permissions'] = getPermissionsName(\getRole($request->user()));
         }
