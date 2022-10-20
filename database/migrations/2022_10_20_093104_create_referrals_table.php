@@ -13,14 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('plans', function (Blueprint $table) {
+        Schema::create('referrals', function (Blueprint $table) {
             $table->id();
-            $table->string('name', 40)->nullable();
-            $table->decimal('price', 28,8)->default('0.00000000');
-            $table->integer('daily_limit', 0)->default('0');
-            $table->tinyInteger('status')->default('0');
-            $table->integer('ref_level', 0)->default('0');
-            $table->integer('validity', 0)->default('0');
+            $table->integer('referrals')->nullable();
+            $table->decimal('percent')->nullable();
+            $table->integer('amount_returns')->nullable();
+            $table->string('commission_type')->nullable();
+            $table->decimal('investing_amount')->nullable();
+            $table->tinyInteger('status')->nullable();
             $table->timestamps();
         });
     }
@@ -32,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('plans');
+        Schema::dropIfExists('referrals');
     }
 };

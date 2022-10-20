@@ -28,6 +28,9 @@ class DatabaseSeeder extends Seeder
             TransactionSeeder::class,
             UserLoginSeeder::class,
             GeneralSettingsSeeder::class,
+            PlanSeeder::class,
+            ReferralSeeder::class,
+
         ]);
 
         // \App\Models\User::factory(200)->create();
