@@ -23,8 +23,6 @@ class UserTableSeeder extends Seeder
             'email' => 'admin@stonearn.com',
         ],[
             'name' => 'Admin',
-            
-           
             'password' => Hash::make('12345678'),
             'user_type' => 'admin',
             'email_verified_at' => Carbon::now()
