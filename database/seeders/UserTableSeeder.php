@@ -52,7 +52,7 @@ class UserTableSeeder extends Seeder
            
             
             'password' => Hash::make('12345678'),
-            'user_type' => 'user',
+            'user_type' => '',
             'email_verified_at' => Carbon::now()
         ]);
 

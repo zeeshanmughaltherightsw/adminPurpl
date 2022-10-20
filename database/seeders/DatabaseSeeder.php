@@ -25,7 +25,12 @@ class DatabaseSeeder extends Seeder
             RolesAndPermissionSeeder::class,
             // PlanSeeder::class,
             UserTableSeeder::class,
+            TransactionSeeder::class,
+            UserLoginSeeder::class,
             GeneralSettingsSeeder::class,
+            PlanSeeder::class,
+            ReferralSeeder::class,
+
         ]);
 
         // \App\Models\User::factory(200)->create();
@@ -33,7 +38,7 @@ class DatabaseSeeder extends Seeder
         //Admin Roles
         $admins = User::where('user_type', 'admin')->first();
         $adminRole = Role::where('name', 'admin')->first();
-        $adminRole->users()->sync($admins->id);
+        $adminRole->users()->sync($admins->pluck('id'));
         //Staff Role
         $staffs = User::where('user_type', 'staff')->get();
         $staffRole = Role::where('name', 'staff')->first();

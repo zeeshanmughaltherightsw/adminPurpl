@@ -58,7 +58,16 @@
                                 </div>
                                 <div class="dropdown-inner">
                                     <ul class="link-list">
-                                        <li><a href="#"><em class="icon ni ni-signout"></em><span>Sign out</span></a></li>
+                                        <li>
+                      <Link
+                        class="btn btn-danger"
+                        :href="route('logout')"
+                        method="post"
+                        as="button"
+                      >
+                        Log Out
+                      </Link>
+                    </li>
                                     </ul>
                                 </div>
                             </div>

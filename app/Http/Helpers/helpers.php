@@ -17,6 +17,7 @@ function getUserId(){
  */
 function getRole($user)
 {
+    // dd($user->roles);
     return $user && $user->roles ? $user->roles[0] : NULL;
 }
 
