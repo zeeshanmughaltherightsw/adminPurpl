@@ -4,7 +4,7 @@
     <breadcrumb title="Manage Users" :subTitle="`Total Users ${users.total}`">
         <template #breadcrumbplugin>
             <li>
-                <SearchInput :searchedKeyword="searchedKeyword" callType='users'/>
+                <SearchInput :searchedKeyword="searchedKeywords" callType='users'/>
             </li>
         </template>
     </breadcrumb>

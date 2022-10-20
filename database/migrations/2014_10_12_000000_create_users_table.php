@@ -26,7 +26,7 @@ return new class extends Migration
             $table->unsignedBigInteger('plan_id')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->boolean('status')->default(true);
+            $table->enum('status', ['active', 'baned'])->default('active');
             $table->rememberToken();
             $table->timestamps();
             $table->foreign('ref_by')->references('id')->on('users');

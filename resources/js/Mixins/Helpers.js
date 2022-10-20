@@ -194,12 +194,13 @@ export default {
         getStatusForTable(status){
             switch(status){
                 case 'active':
-                    return 'badge--success'
+                    return 'text-success'
                 case 'inactive':
-                    return 'badge--danger'
+                    return 'text-danger'
+                case 'baned':
+                    return 'text-danger'
                 default :
-                    return 'badge--warning'
-                    
+                    return 'text-warning'
             }
             
         },

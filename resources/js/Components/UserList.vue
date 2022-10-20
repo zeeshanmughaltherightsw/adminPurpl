@@ -71,7 +71,7 @@
                 <span>10 Feb 2020</span>
             </div> -->
             <div class="nk-tb-col">
-                <span class="tb-status text-success">{{user.status}}</span>
+                <span class="tb-status text-capitalize" :class="getStatusForTable(user.status)">{{user.status}}</span>
             </div>
             <!-- <div class="nk-tb-col nk-tb-col-tools">
                 <ul class="nk-tb-actions gx-2">
@@ -111,8 +111,11 @@
     </div>
 </template>
 <script>
+import Helpers from '@/Mixins/Helpers';
+
 export default {
-    props: ['users']
+    props: ['users'],
+    mixins: [Helpers]
 }
 </script>
 

@@ -26,17 +26,3 @@ import Breadcrumb from '@/Components/Breadcrumb.vue';
         </div><!-- body-wrapper end -->
     </div>
 </template>
-<style>
-.dropdown-menu{
-    position: relative!important;
-    transform: none!important;
-    top: inherit!important;
-}
-.indicator-label{
-    color: white!important;
-}
-.m-toggle__content{
-    max-width: 45px;
-    max-height: 24px;
-}
-</style>

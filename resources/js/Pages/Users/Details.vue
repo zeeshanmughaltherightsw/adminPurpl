@@ -1,15 +1,12 @@
 <template>
     <Head :title="`${user.name} Edit User`"/>
     <Authenticated>
-        <template #breadcrumb>
-            Admin <font-awesome-icon icon="arrow-right"/>Edit Users
-        </template>
         <div class="card">
             <div class="card-header border-0 pt-1 pb-0 mb-0 d-flex justify-content-between" v-if="checkUserPermissions('create_users')">
                 <h3 class="card-title align-items-center">
                     Edit Users
                 </h3>
-                <Button @click="openModal()" class="btn-sm p-0 m-0" :smallBtn="true" ><font-awesome-icon icon="plus"/>Add new</Button>
+                <Button @click="openModal()" class="btn-sm p-0 m-0" :smallBtn="true" ><em class="icon ni ni-plus-round"></em>Add new</Button>
             </div>
             <div class="card-body py-1">
                 <div class="row mb-none-30">

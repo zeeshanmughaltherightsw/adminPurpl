@@ -4,7 +4,7 @@
             class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1" 
             data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-dismiss="click" data-bs-placement="bottom" data-bs-original-title="edit">
             <span class="svg-icon svg-icon-3">
-                <font-awesome-icon icon="edit"/>
+                <em class="icon ni ni-edit"></em>
             </span>
         </Link>
     </div>
@@ -13,7 +13,7 @@
             class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1"
             data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-dismiss="click" data-bs-placement="bottom" data-bs-original-title="edit">
             <span class="svg-icon svg-icon-3">
-                <font-awesome-icon icon="edit"/>
+                <em class="icon ni ni-edit"></em>
             </span>
         </div>
     </div>

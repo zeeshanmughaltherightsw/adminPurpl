@@ -22,6 +22,8 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'account_no',
+        'ref_by'
     ];
 
     /**
@@ -45,11 +47,6 @@ class User extends Authenticatable
 
     protected static function booted(){
         parent::boot();
-
-        static::creating(function(User $user){
-            // $user->uuid = getUserId();
-            $user->name = $user->firstname.' '.$user->lastname;
-        });
 
         static::created(function (User $user) {
             $user->assignRole($user->user_type);

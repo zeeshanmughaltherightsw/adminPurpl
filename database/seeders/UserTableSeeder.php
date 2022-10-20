@@ -23,8 +23,6 @@ class UserTableSeeder extends Seeder
             'email' => 'admin@stonearn.com',
         ],[
             'name' => 'Admin',
-            
-           
             'password' => Hash::make('12345678'),
             'user_type' => 'admin',
             'email_verified_at' => Carbon::now()
@@ -35,9 +33,6 @@ class UserTableSeeder extends Seeder
             'email' => 'staff@stonearn.com',
         ],[
             'name' => 'staff',
-            // 'lastname' => 'Staff',
-            
-           
             'password' => Hash::make('12345678'),
             'user_type' => 'staff',
             'email_verified_at' => Carbon::now()
@@ -48,9 +43,6 @@ class UserTableSeeder extends Seeder
             'email' => 'user@stonearn.com',
         ],[
             'name' => 'User',
-            // 'lastname' => 'User',
-           
-            
             'password' => Hash::make('12345678'),
             'user_type' => '',
             'email_verified_at' => Carbon::now()

@@ -4,7 +4,7 @@
         v-if="checkUserPermissions(permission)"
         data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-original-title="delete">
         <span class="svg-icon svg-icon-3">
-            <font-awesome-icon icon="trash"/>
+            <i class="fas fa-trash" />
         </span>
     </div>
 </template>

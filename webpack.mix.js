@@ -19,6 +19,7 @@ mix.js('resources/js/app.js', 'public/js')
     mix.scripts([
         'resources/theme/js/bundle.js',
         'resources/theme/js/scripts.js',
+        'resources/theme/js/datatable-btns.js',
     ], 'public/js/theme.js');
     
     mix.styles([

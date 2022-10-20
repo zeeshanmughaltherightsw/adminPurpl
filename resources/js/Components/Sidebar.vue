@@ -16,7 +16,7 @@
         <div class="nk-sidebar-menu" data-simplebar>
           <ul class="nk-menu">
             <li class="nk-menu-heading">
-                <h6 class="overline-title text-primary-alt">Use-Case Preview</h6>
+              
             </li><!-- .nk-menu-item -->
             <li class="nk-menu-item">
               <Link :href="route('dashboard')" class="nk-menu-link">
@@ -24,12 +24,12 @@
                   <span class="nk-menu-text">Dashboard</span>
               </Link>
             </li>
-            <!-- <li class="nk-menu-item" v-if="checkUserPermissions('view_plans')">
+            <li class="nk-menu-item" v-if="checkUserPermissions('view_plans')">
                 <Link :href="route('manage-plan.index')" class="nk-menu-link">
                   <span class="nk-menu-icon"><em class="icon ni ni-building"></em></span>
                   <span class="nk-menu-text">Plan</span>
                 </Link>
-            </li> -->
+            </li>
             <li class="nk-menu-item" v-if="checkUserPermissions('view_permissions')">
                 <Link :href="route('administrators.index')" class="nk-menu-link">
                     <span class="nk-menu-icon"><em class="icon ni ni-building"></em></span>      

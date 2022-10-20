@@ -17,7 +17,7 @@ class UsersController extends Controller
     public function index()
     {
         $limit = \config()->get('settings.pagination_limit');
-        $users = User::where(function($query){
+        $users = User::select(['name', 'username', 'phone_no', 'email', 'status'])->where(function($query){
             if(request()->keyword){
                 $query->where('name', 'LIKE', '%' . request()->keyword .'%')
                 ->orWhere('username', 'LIKE', '%' . request()->keyword .'%')
