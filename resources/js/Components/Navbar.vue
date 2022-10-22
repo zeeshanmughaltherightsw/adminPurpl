@@ -32,7 +32,7 @@
                                     </div>
                                     <div class="user-info d-none d-md-block">
                                         <div class="user-status">Administrator</div>
-                                        <div class="user-name dropdown-indicator">Abu Bin Ishityak</div>
+                                        <div class="user-name dropdown-indicator">{{ admins ? admins.name: '' }}</div>
                                     </div>
                                 </div>
                             </a>
@@ -43,8 +43,8 @@
                                             <span>AB</span>
                                         </div>
                                         <div class="user-info">
-                                            <span class="lead-text">Abu Bin Ishtiyak</span>
-                                            <span class="sub-text">info@softnio.com</span>
+                                            <span class="lead-text">{{ admins ? admins.name: '' }}</span>
+                                            <span class="sub-text">{{ admins ? admins.email: '' }}</span>
                                         </div>
                                     </div>
                                 </div>
@@ -84,6 +84,7 @@ import Dropdown from '@/Components/Dropdown.vue';
 import Helpers from '@/Mixins/Helpers';
 import { Link } from '@inertiajs/inertia-vue3'
 export default {
+    props: ['admins'],
     components: {
         Dropdown,
         Link

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\AdministratorController;
+use App\Http\Controllers\DashboardController;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Application;
@@ -23,9 +24,7 @@ Route::get('/', function () {
 Route::namespace('App\Http\Controllers\Admin')->group(function(){
 
     Route::middleware(['auth', 'verified'])->prefix('admin')->group(function(){
-        Route::get('/dashboard', function () {
-            return Inertia::render('Dashboard');
-        })->name('dashboard');
+        Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
         Route::middleware('can:view_settings')->controller(SiteController::class)->group(function(){
             Route::get('/settings', 'getSettings')->name('settings');
             Route::get('/settings/{group}', 'edit')->name('settings.group');
