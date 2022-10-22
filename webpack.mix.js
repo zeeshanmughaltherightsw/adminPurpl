@@ -20,6 +20,7 @@ mix.js('resources/js/app.js', 'public/js')
         'resources/theme/js/bundle.js',
         'resources/theme/js/scripts.js',
         'resources/theme/js/datatable-btns.js',
+        'resources/theme/js/gd-default.js',
     ], 'public/js/theme.js');
     
     mix.styles([

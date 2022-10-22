@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-use Illuminate\Http\Request;
 use Inertia\Inertia;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class DashboardController extends Controller
 {
@@ -15,9 +16,13 @@ class DashboardController extends Controller
      */
     public function index()
     {
+        $users = User::whereUserType('user')->select([
+            DB::raw('count(*) as total_users'), 
+            DB::raw("count(case Status when 'active' then 1 else null end) as total_users_active"), 
+            DB::raw('sum(id) as total_users_balance'),  // replae id with balanec column
+        ])->first();
         return Inertia::render('Dashboard', [
-            'admins' => auth()->user(),
-            'users'  => User::all()->count()
+            'users'  => $users,
         ]);
     }
 
