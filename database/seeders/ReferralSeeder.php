@@ -17,10 +17,11 @@ class ReferralSeeder extends Seeder
     {
         $referrals = [
             [
-                'referrals'            =>   10,
-                'percent'              =>   1,
+                'referrals'            =>   50,
+                'percent'              =>   3,
                 'amount_returns'       =>   14,
                 'commission_type'      =>   'plan_subscribe_commission',
+                'investing_amount'     =>   2500,
                 'status'               =>   0,
 
             ],

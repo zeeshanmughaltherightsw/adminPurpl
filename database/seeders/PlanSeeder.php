@@ -17,9 +17,9 @@ class PlanSeeder extends Seeder
     {
         $plans = [
             [
-                'name'            =>   'Basic',
-                'price'           =>   50,
-                'estimated_profit'=>   5,
+                'name'            =>   'Silver',
+                'price'           =>   500,
+                'estimated_profit'=>   10,
                 'amount_returns'  =>   14,
                 'status'          =>   0,
 

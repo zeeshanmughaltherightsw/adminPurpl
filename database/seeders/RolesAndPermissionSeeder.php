@@ -57,19 +57,19 @@ class RolesAndPermissionSeeder extends Seeder
         Permission::insert($permissions);
 
          //Admin
-        $admin = Role::updateOrCreate(['name' => 'admin']);
+        $admin = Role::updateOrCreate(['name' => 'admin','guard_name'=>'web']);
         $adminPermissions = Permission::get();
         $admin->permissions()->sync($adminPermissions);
  
          //staff
-        $staff = Role::updateOrCreate(['name' => 'staff']);
+        $staff = Role::updateOrCreate(['name' => 'staff','guard_name'=>'web']);
         $staffPermissions = Permission::whereNotIn('group', [
             'administrators',
              'settings'
             ])->get();
         $staff->permissions()->sync($staffPermissions);
 
-        $user = Role::updateOrCreate(['name' => 'user']);
+        $user = Role::updateOrCreate(['name' => 'user','guard_name'=>'web']);
          
     }
 }
