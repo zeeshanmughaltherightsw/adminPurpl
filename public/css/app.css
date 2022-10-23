@@ -12,3 +12,12 @@
  * Version	 :	1.0.0
  * Updated	 :	07.23.2020
 **/
+<<<<<<< HEAD
+=======
+
+@media only screen and (max-width: 450px) {
+    .pagination-container {
+        display: block!important;
+    }
+}
+>>>>>>> 0f9c10929e08cf9c660920f81ebb9af47ff53634

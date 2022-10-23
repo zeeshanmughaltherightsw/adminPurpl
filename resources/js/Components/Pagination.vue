@@ -1,5 +1,5 @@
 <template>
-    <div v-if="meta.data.length > 0" class="d-flex px-4 justify-content-between mt-3 pb-4">
+    <div v-if="meta.data.length > 0" class="d-flex px-4 justify-content-between mt-3 pb-4 pagination-container">
         <div>
             <p class="text-muted">
                 Showing
@@ -11,9 +11,9 @@
                 results
             </p>
         </div>
-        <div class="dataTables_paginate paging_simple_numbers mt-n2">
-            <ul class="pagination">
-                <div v-for="(link, index) in meta.links" :key="index">
+        <nav>
+            <ul class="pagination pagination-sm">
+                <div v-for="(link, index) in meta.links.slice(0,6)" :key="index">
                     <li class="paginate_button page-item" :class="{'active' : link.active }">
                         <Link v-if="link.url !== null"
                             class="page-link" :href="pageUrl(link.url)"
@@ -22,8 +22,23 @@
                         <a v-else class="page-link" v-html="link.label"></a>
                     </li>
                 </div>
+                <div v-if="meta.links.length >= 5" >
+                    <li class="page-item">
+                        <span class="page-link">
+                            <em class="icon ni ni-more-h"></em>
+                        </span>
+                    </li>
+                </div>
+                <div v-if="meta.links.length >= 5">
+                    <li  class="paginate_button page-item" :class="{ 'active' : meta.current_page == meta.last_page}">
+                        <Link v-if="meta.last_page_url"
+                            class="page-link" :href="pageUrl(meta.last_page_url)"
+                            v-html="'Last'">
+                        </Link>
+                    </li>
+                </div>
             </ul>
-        </div>
+        </nav>
     </div>
 </template>
 
@@ -39,6 +54,8 @@
             return {
                 selectedFilterData: this.selectedFilters ? this.selectedFilters : null,
             }
+        },
+        mounted(){
         },
         methods : {
             pageUrl(url) {

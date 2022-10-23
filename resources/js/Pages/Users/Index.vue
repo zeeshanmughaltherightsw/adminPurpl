@@ -11,8 +11,8 @@
     <div class="card">
         <div class="card-body py-3">
             <UserList :users="users" />
+            <pagination :meta="users" :keyword="searchedKeywords" callType="users" />
         </div>
-        <pagination :meta="users" :keyword="searchedKeywords" callType="users" />
     </div>      
 </Authenticated>
 </template>

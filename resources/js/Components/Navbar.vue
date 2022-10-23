@@ -2,7 +2,7 @@
      <div class="nk-header nk-header-fixed is-light">
         <div class="container-fluid">
             <div class="nk-header-wrap">
-                <div class="nk-menu-trigger d-xl-none ml-n1">
+                <div class="nk-menu-trigger d-xl-none ml-n1" @click="showSidebar">
                     <a href="#" class="nk-nav-toggle nk-quick-nav-icon" data-target="sidebarMenu"><em class="icon ni ni-menu"></em></a>
                 </div>
                 <div class="nk-header-brand d-xl-none">
@@ -90,6 +90,10 @@ export default {
         Link
     },
     methods:{
+        showSidebar(){
+            let sidebar = document.querySelector('.nk-sidebar')
+            sidebar.classList.add('nk-sidebar-active')
+        },
         openSidebar(){
             // this.emitter.emit('open-sidebar');
         }
