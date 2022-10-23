@@ -15909,3 +15909,8 @@ body.dark-mode.nk-body.ui-softy, body.dark-mode.nk-body.ui-shady { background: #
  * Updated	 :	07.23.2020
 **/
 
+@media only screen and (max-width: 450px) {
+    .pagination-container {
+        display: block!important;
+    }
+}
