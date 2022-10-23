@@ -131,7 +131,6 @@ export default {
     props: ['users'],
     components: { Breadcrumb },
     mounted(){
-        console.log(window.NioApp)
     },
     mixins: [Helpers]
 }
