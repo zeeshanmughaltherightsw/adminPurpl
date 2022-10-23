@@ -6,9 +6,9 @@
                     <a href="#" class="nk-nav-toggle nk-quick-nav-icon" data-target="sidebarMenu"><em class="icon ni ni-menu"></em></a>
                 </div>
                 <div class="nk-header-brand d-xl-none">
-                    <a href="html/index.html" class="logo-link">
-                        <img class="logo-light logo-img" src="storage/logo.png" srcset="storage/logo.png" alt="logo">
-                    </a>
+                    <Link :href="route('dashboard')" class="logo-link">
+                        <img class="logo-light logo-img" :src="getImage('logo.png')" alt="logo">
+                    </Link>
                 </div><!-- .nk-header-brand -->
                 <div class="nk-header-news d-none d-xl-block">
                     <div class="nk-news-list">

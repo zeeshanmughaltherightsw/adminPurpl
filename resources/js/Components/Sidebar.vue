@@ -6,9 +6,9 @@
           <a href="#" class="nk-nav-compact nk-quick-nav-icon d-none d-xl-inline-flex" data-target="sidebarMenu"><em class="icon ni ni-menu"></em></a>
       </div>
       <div class="nk-sidebar-brand">
-        <a href="{{route('admin.dashboard')}}" class="logo-link nk-sidebar-logo">
+        <Link :href="route('admin.dashboard')" class="logo-link nk-sidebar-logo">
           <ApplicationLogo/>
-        </a>
+        </Link>
       </div>
     </div><!-- .nk-sidebar-element -->
     <div class="nk-sidebar-element nk-sidebar-body">
