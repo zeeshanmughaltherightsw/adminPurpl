@@ -2,7 +2,7 @@
   <div class="nk-sidebar nk-sidebar-fixed is-dark " data-content="sidebarMenu">
     <div class="nk-sidebar-element nk-sidebar-head">
       <div class="nk-menu-trigger">
-          <a href="#" class="nk-nav-toggle nk-quick-nav-icon d-xl-none" data-target="sidebarMenu"><em class="icon ni ni-arrow-left"></em></a>
+          <a href="#" class="nk-nav-toggle nk-quick-nav-icon d-xl-none" data-target="sidebarMenu"><em class="icon ni ni-arrow-left" @click="hideSidebar"></em></a>
           <a href="#" class="nk-nav-compact nk-quick-nav-icon d-none d-xl-inline-flex" data-target="sidebarMenu"><em class="icon ni ni-menu"></em></a>
       </div>
       <div class="nk-sidebar-brand">
@@ -87,15 +87,19 @@ export default {
     ApplicationLogo,
   },
   methods:{
-    getSettings(){
-      axios.get(route('settings'))
-        .then((response) => {
-          this.settings = response.data.data
-      })
-    }
+    hideSidebar(){
+        let sidebar = document.querySelector('.nk-sidebar')
+        sidebar.classList.remove('nk-sidebar-active')
+    },
+    // getSettings(){
+    //   axios.get(route('settings'))
+    //     .then((response) => {
+    //       this.settings = response.data.data
+    //   })
+    // }
   },
   mounted(){
-    this.getSettings()
+    // this.getSettings()
     //  this.emitter.on('open-sidebar', ()=>{
     //     this.open = this.open ? false : true
     //  });
