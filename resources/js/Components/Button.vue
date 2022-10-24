@@ -12,7 +12,7 @@ defineProps({
 </script>
 
 <template>
-    <button :type="type" class="btn btn-primary btn-block text-primary pr-4" :class="{ 'btn-lg' : lg }" style="width: 136px; margin-right:18px;">
+    <button :type="type" class="btn btn-primary btn-block text-white pr-4" :class="{ 'btn-lg' : lg }" style="width: 136px; margin-right:18px;">
         <slot />
     </button>
 </template>
