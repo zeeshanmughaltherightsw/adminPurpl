@@ -2,11 +2,9 @@
 <Head title="Manage Users"/>
 <Authenticated>
     <breadcrumb title="Manage Users" :subTitle="`Total Users ${users.total}`">
-        <template #breadcrumbplugin>
-            <li>
-                <SearchInput :searchedKeyword="searchedKeywords" callType='users'/>
-            </li>
-        </template>
+        <li>
+            <SearchInput :searchedKeyword="searchedKeywords" callType='users'/>
+        </li>
     </breadcrumb>
     <div class="card">
         <div class="card-body py-3">

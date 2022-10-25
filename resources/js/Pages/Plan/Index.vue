@@ -1,7 +1,9 @@
 <template>
     <Head title="Plans"/>
 <Authenticated>
-    <breadcrumb title="Plans" :subTitle="`Total Plans ${plans.total}`"/>
+    <breadcrumb title="Plans" :subTitle="`Total Plans ${plans.total}`">
+        <li><Button type="button" class="btn btn-primary" @click="openModal">Create</Button></li>
+    </breadcrumb>
     <div class="card card-bordered card-preview">
         <div class="card-inner">
             <table class="datatable-init-export nowrap table dataTable no-footer dtr-inline">  
@@ -39,6 +41,7 @@
             </table>
         </div>
     </div>      
+    <EditModal />
 </Authenticated>
 </template>
 
@@ -50,6 +53,8 @@ import { Head } from '@inertiajs/inertia-vue3';
 import SearchInput from '@/Components/SearchInput.vue';
 import Pagination from '@/Components/Pagination.vue'
 import Breadcrumb from '@/Components/Breadcrumb.vue';
+import Button from '@/Components/Button.vue'
+import EditModal from './EditModal'
 export default {
     props: ['plans' , 'searchKeyword'],
     data(){
@@ -63,8 +68,16 @@ export default {
                 Head,
                 SearchInput,
                 Pagination,
-                Breadcrumb
+                Breadcrumb,
+                Button,
+                EditModal,
             },
+    methods: {
+        openModal(){
+            jQuery.noConflict();
+            $('#genericModal').modal('show')
+        }
+    },
     mounted(){
         window.NioApp.DataTable.init()
     },

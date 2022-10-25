@@ -2,9 +2,7 @@
     <Head title="Administrator"/>
   <Authenticated>
     <Breadcrumb title="Administrator">
-    <template #breadcrumbplugin>
         <SearchInput :searchedKeyword="searchedKeyword" callType='administrators'/>
-    </template>
     </Breadcrumb>
         <div class="card">
             <div class="card-body py-1">
