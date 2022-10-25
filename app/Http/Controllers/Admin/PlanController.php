@@ -6,6 +6,8 @@ use App\Models\Plan;
 use Inertia\Inertia;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\PlanRequest;
+use Exception;
 
 class PlanController extends Controller
 {
@@ -44,9 +46,14 @@ class PlanController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PlanRequest $request)
     {
-        //
+        try{
+            Plan::create($request->all());
+            return redirect()->back();
+        }catch(Exception $e){
+            dd($e->getMessage());
+        }
     }
 
     /**
@@ -80,7 +87,12 @@ class PlanController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        try{
+            Plan::findOrFail($id)->update($request->all());
+            return redirect()->back();
+        }catch(Exception $e){
+            dd($e->getMessage());
+        }
     }
 
     /**

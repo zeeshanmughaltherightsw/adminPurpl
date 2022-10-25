@@ -3,7 +3,7 @@ import '../css/app.css';
 import { createApp, h } from 'vue';
 import { createInertiaApp } from '@inertiajs/inertia-vue3';
 import { InertiaProgress } from '@inertiajs/progress';
-
+import mitt from 'mitt';
 const appName = 'Admin';
 
 createInertiaApp({
@@ -13,6 +13,7 @@ createInertiaApp({
         const appVue = createApp({ render: () => h(app, props) })
             .use(plugin)
             .mixin({ methods: { route } });
+            appVue.config.globalProperties.emitter = mitt()
             appVue.mount(el);
         return appVue;
     },

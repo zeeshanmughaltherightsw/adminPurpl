@@ -212,7 +212,7 @@ export default {
         },
 
         hideTooltip() {
-            $('[data-bs-toggle="tooltip"]').tooltip("hide");
+            // $('[data-bs-toggle="tooltip"]').tooltip("hide");
         },
 
         orderStatus(data, order) {
