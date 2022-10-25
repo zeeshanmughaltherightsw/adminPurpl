@@ -17,9 +17,9 @@ class PlanController extends Controller
     public function index()
     {
         $limit = \config()->get('settings.pagination_limit');
-        $plans = Plan::where(function($query){
-            if(request()->keyword){
-                $query->where('name', 'LIKE', '%' . request()->keyword .'%');
+        $plans = Plan::where(function ($query) {
+            if (request()->keyword) {
+                $query->where('name', 'LIKE', '%' . request()->keyword . '%');
             }
         })->paginate($limit);
         return Inertia::render('Plan/Index', [
@@ -46,7 +46,22 @@ class PlanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // dd($request);
+        $request->validate([
+            'name'  =>  'required',
+            'price' =>  'required|numeric|min:0',
+            'profit' =>  'required',
+            'amount_returns' =>  'required',
+
+        ]);
+
+        $plan = new Plan();
+        $plan->name = $request->name;
+        $plan->price = $request->price;
+        $plan->estimated_profit = $request->profit;
+        $plan->amount_returns  = $request->amount_returns;
+        $plan->save();
+        return redirect()->back();
     }
 
     /**
@@ -68,7 +83,7 @@ class PlanController extends Controller
      */
     public function edit($id)
     {
-        //
+    
     }
 
     /**
