@@ -1,5 +1,5 @@
 <template>
-    <div class="modal fade" id="genericModal" aria-modal="true" role="dialog">
+    <div class="modal fade modal-dialog-top" id="genericModal" aria-modal="true" role="dialog">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
