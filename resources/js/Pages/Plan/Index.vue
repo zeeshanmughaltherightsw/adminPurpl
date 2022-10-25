@@ -32,9 +32,10 @@
                             <span class="badge" :class="getStatusForTable(plan.status)">{{plan.status}}</span>
                         </td>
                         <td data-label="Action">
-                            <edit-section iconType="link" 
+                            <edit-section 
                                 permission="edit_plans"
-                                :url="route('manage-plan.edit', plan.id)"/>
+                                @click="openModal(plan)"
+                            />
                         </td>
                     </tr>
                 </tbody>
@@ -59,7 +60,7 @@ export default {
     props: ['plans' , 'searchKeyword'],
     data(){
         return {
-            searchedKeywords: this.searchKeyword
+            searchedKeywords: this.searchKeyword,
         }
     },
     components: {
@@ -73,7 +74,10 @@ export default {
                 EditModal,
             },
     methods: {
-        openModal(){
+        openModal(plan=null){
+            this.emitter.emit('plan-modal', {
+                plan: plan
+            });
             jQuery.noConflict();
             $('#genericModal').modal('show')
         }

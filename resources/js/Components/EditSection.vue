@@ -9,7 +9,7 @@
         </Link>
     </div>
     <div v-else>
-        <div @click="removeTooltip" v-if="checkUserPermissions('edit_product_variants')"
+        <div @click="removeTooltip" v-if="checkUserPermissions(permission)"
             class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1"
             data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-dismiss="click" data-bs-placement="bottom" data-bs-original-title="edit">
             <span class="svg-icon svg-icon-3">
@@ -32,11 +32,11 @@
 
         methods: {
             removeTooltip() {
-                this.hideTooltip()
+                // this.hideTooltip()
             }
         },
         mounted(){
-            this.showTooltip()
+            // this.showTooltip()
         },
         mixins: [Helpers]
     }
