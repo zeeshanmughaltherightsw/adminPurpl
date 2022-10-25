@@ -76,7 +76,6 @@ export default {
     },
     mounted(){
         this.emitter.on('plan-modal', (args)=>{
-            console.log(args)
             this.form = useForm({
                 id: args.plan.id ? args.plan.id : null,
                 name: args.plan.name ? args.plan.name : null,
@@ -89,7 +88,6 @@ export default {
     },
     methods:{
         submit(){
-            console.log(this.form)
             if(this.form.id){
                 this.form.put(route('manage-plan.update', this.form.id), {
                     preserveScroll: true,
