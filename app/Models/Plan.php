@@ -11,6 +11,8 @@ class Plan extends Model
  
     protected $fillable = [
         'name',
+        'min_ref',
+        'max_ref',
         'price',
         'estimated_profit',
         'amount_returns',

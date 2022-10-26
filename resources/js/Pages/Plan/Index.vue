@@ -10,6 +10,7 @@
                 <thead>
                     <tr>
                         <th scope="col">Name</th>
+                        <th scope="col">Referrals</th>
                         <th scope="col">Price</th>
                         <th scope="col">Profit %age</th>
                         <th scope="col">Profit Bonus %age</th>
@@ -22,7 +23,8 @@
                 <tbody>
                     <tr v-for="plan in plans.data" :key="plan.id">
                         <td data-label="Name">{{plan.name}}</td>
-                        <td data-label="Price" class="font-weight-bold">{{ plan.min_price }} to {{ plan.max_price }} </td>
+                        <td data-label="Referrals" class="font-weight-bold">{{ plan.min_ref }} to {{ plan.max_ref }} </td>
+                        <td data-label="Price" class="font-weight-bold">{{ plan.price }}</td>
 
                         <td data-label="Profit %age">{{ plan.min_profit_percent }} % to {{ plan.max_profit_percent }} %</td>
                         <td data-label="Profit Bonus %age">{{ plan.profit_bonus_percent }} %</td>

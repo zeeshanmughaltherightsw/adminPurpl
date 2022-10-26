@@ -87,6 +87,8 @@ class PlanController extends Controller
      */
     public function update(Request $request, $id)
     {
+
+        dd($request->all());
         try{
             Plan::findOrFail($id)->update($request->all());
             return redirect()->back();
