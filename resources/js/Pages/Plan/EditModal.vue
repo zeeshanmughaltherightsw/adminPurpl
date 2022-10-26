@@ -1,6 +1,8 @@
 <template>
     <Modal :title="form.id ? 'Update plan' : 'Create plan'">
         <form @submit.prevent="submit" class="form-validate is-alter">
+            <div class="row">
+                <div class="col-md-6">
             <div class="form-group">
                 <Label class="form-label" for="name">Name</Label>
                 <div class="form-control-wrap">
@@ -8,6 +10,27 @@
                     <Errors :message="form.errors.name" />
                 </div>
             </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <Label class="form-label" for="min_ref">Min Referrals</Label>
+                <div class="form-control-wrap">
+                    <Input type="number" placeholder="Min referral" v-model="form.min_ref" :class="{ 'border-danger' : form.errors.min_ref }" class="form-control" id="min_ref" required/>
+                    <Errors :message="form.errors.min_ref" />
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 mt-1">
+            <div class="form-group">
+                <Label class="form-label" for="max_ref">Max Referrals</Label>
+                <div class="form-control-wrap">
+                    <Input type="number" placeholder="Max referral" v-model="form.max_ref" :class="{ 'border-danger' : form.errors.max_ref }" class="form-control" id="max_ref" required/>
+                    <Errors :message="form.errors.max_ref" />
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 mt-1">
             <div class="form-group">
                 <Label class="form-label" for="price">Price</Label>
                 <div class="form-control-wrap">
@@ -15,6 +38,8 @@
                     <Errors :message="form.errors.price" />
                 </div>
             </div>
+        </div>
+        <div class="col-md-6 mt-1">
             <div class="form-group">
                 <Label class="form-label" for="profit">Profit</Label>
                 <div class="form-control-wrap">
@@ -22,6 +47,8 @@
                     <Errors :message="form.errors.estimated_profit" />
                 </div>
             </div>
+        </div>
+        <div class="col-md-6 mt-1">
             <div class="form-group">
                 <Label class="form-label" for="amount_return">Amount return</Label>
                 <div class="form-control-wrap">
@@ -29,12 +56,17 @@
                     <Errors :message="form.errors.amount_returns" />
                 </div>
             </div>
+            </div>
+
+            <div class="col-md-12 mt-1">
             <div class="form-group">
                 <Label class="form-label" for="amount_return">Status</Label>
                 <div class="form-control-wrap">
                     <VueToggle title="" name="" @toggle="(e) => this.form.status = e" activeColor="#3f54ff" :toggled="form.status"/>
                 </div>
             </div>
+        </div>
+              <div class="col-md-12 d-flex justify-content-center">
             <div class="d-flex justify-content-end py-6 px-9">
                 <Button type="submit" :class="{ 'opacity-25': form.processing }" :disabled="form.processing"
                     ref="submitButton">
@@ -44,6 +76,9 @@
                         <span class="spinner-border spinner-border-sm align-middle ml-2"></span>
                     </span>
                 </Button>
+            </div>
+        </div>
+
             </div>
         </form>
     </Modal>
@@ -70,7 +105,9 @@ export default {
             price: null,
             amount_returns: null,
             estimated_profit: null,
-            status: true
+            min_ref: null,
+            max_ref: null,
+            status: null
         });
         
     },
@@ -79,6 +116,8 @@ export default {
             this.form = useForm({
                 id: args.plan.id ? args.plan.id : null,
                 name: args.plan.name ? args.plan.name : null,
+                min_ref: args.plan.min_ref ? args.plan.min_ref : null,
+                max_ref: args.plan.max_ref ? args.plan.max_ref : null,
                 price: args.plan.price ? args.plan.price : null,
                 amount_returns: args.plan.amount_returns ? args.plan.amount_returns : null,
                 estimated_profit: args.plan.estimated_profit ? args.plan.estimated_profit : null,
