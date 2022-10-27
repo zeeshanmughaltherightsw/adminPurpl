@@ -26,7 +26,6 @@ class PlanRequest extends FormRequest
         return [
             'name' => 'required | unique:plans',
             'price' => 'required | min:0',
-            'estimated_profit' => 'required | min:0',
             'amount_returns' => 'required | min:0',
         ];
     }

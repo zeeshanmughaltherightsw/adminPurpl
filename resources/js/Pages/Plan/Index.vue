@@ -10,12 +10,12 @@
                 <thead>
                     <tr>
                         <th scope="col">Name</th>
+                        <!-- <th scope="col">Plan Type</th> -->
                         <th scope="col">Referrals</th>
+                        <th scope="col">Referral Commission</th>
                         <th scope="col">Price</th>
                         <th scope="col">Profit %age</th>
-                        <th scope="col">Profit Bonus %age</th>
                         <th scope="col">Amount Return</th>
-                        <th scope="col">Validity</th>
                         <th scope="col">Status</th>
                         <th scope="col">Action</th>
                     </tr>
@@ -23,13 +23,13 @@
                 <tbody>
                     <tr v-for="plan in plans.data" :key="plan.id">
                         <td data-label="Name">{{plan.name}}</td>
+                        <!-- <td data-label="PLan Type">{{plan.plan_type}}</td> -->
                         <td data-label="Referrals" class="font-weight-bold">{{ plan.min_ref }} to {{ plan.max_ref }} </td>
+                        <td data-label="Referral commission">{{plan.ref_commission}}</td>
                         <td data-label="Price" class="font-weight-bold">{{ plan.price }}</td>
 
-                        <td data-label="Profit %age">{{ plan.min_profit_percent }} % to {{ plan.max_profit_percent }} %</td>
-                        <td data-label="Profit Bonus %age">{{ plan.profit_bonus_percent }} %</td>
+                        <td data-label="Profit %age">{{ plan.min_profit }} % to {{ plan.max_profit }} %</td>
                         <td data-label="amount return">{{ plan.amount_returns }} Days</td>
-                        <td data-label="Validity">{{ plan.validity}} Day</td>
                         <td data-label="Status">
                             <span class="badge" :class="getStatusForTable(plan.status)">{{plan.status}}</span>
                         </td>
