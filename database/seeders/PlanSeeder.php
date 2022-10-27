@@ -19,8 +19,10 @@ class PlanSeeder extends Seeder
             [
                 'name'            =>   'Basic',
                 'price'           =>   50,
-                'estimated_profit'=>   5,
-                'amount_returns'  =>   14,
+                'min_profit'      =>   4,
+                'max_profit'      =>   8,
+                'ref_commission'  =>   5,
+                'amount_returns'  =>   14,   
                 'status'          =>   0,
 
             ],
