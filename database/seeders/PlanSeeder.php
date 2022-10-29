@@ -17,12 +17,13 @@ class PlanSeeder extends Seeder
     {
         $plans = [
             [
-                'name'            =>   'Basic',
-                'price'           =>   50,
-                'min_profit'      =>   4,
-                'max_profit'      =>   8,
-                'ref_commission'  =>   5,
-                'amount_returns'  =>   14,   
+                'name'            =>   'Agent Silver',
+                'price'           =>   200000,
+                'min_ref'         =>   100,
+                'max_ref'         =>   400,
+                'ref_commission'  =>   6,  
+                'amount_returns'  =>   14,  
+                'plan_type'       =>   'high_agent', 
                 'status'          =>   0,
 
             ],
