@@ -50,9 +50,11 @@ class PlanController extends Controller
     {
         try{
             Plan::create($request->all());
+            flash('Plan created successfully', 'success');
             return redirect()->back();
         }catch(Exception $e){
-            dd($e->getMessage());
+            flash($e->getMessage(), 'danger');
+            return redirect()->back();
         }
     }
 
@@ -87,13 +89,13 @@ class PlanController extends Controller
      */
     public function update(PlanRequest $request, $id)
     {
-
-        dd($request->all());
         try{
             Plan::findOrFail($id)->update($request->all());
+            flash('Plan updated successfully', 'success');
             return redirect()->back();
         }catch(Exception $e){
-            dd($e->getMessage());
+            flash($e->getMessage(), 'danger');
+            return redirect()->back();
         }
     }
 
@@ -106,5 +108,11 @@ class PlanController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function changeStatus(Plan $plan)
+    {
+        $plan->changeStatus()->save();
+        return redirect()->route('manage-plan.index');
     }
 }

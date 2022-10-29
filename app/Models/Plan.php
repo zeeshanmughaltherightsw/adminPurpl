@@ -21,4 +21,10 @@ class Plan extends Model
         'amount_returns',
         'status'
     ];
+
+    public function changeStatus()
+    {   
+        $this->status = !$this->status;
+        return $this;
+    }
 }

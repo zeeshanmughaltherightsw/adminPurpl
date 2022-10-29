@@ -23,10 +23,23 @@ class PlanRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            'name' => 'required | unique:plans',
-            'price' => 'required | min:0',
-            'amount_returns' => 'required | min:0',
-        ];
+        $data = [];
+        switch(request()->method()){
+            case "POST":
+               $data = [
+                    'name' => 'required | unique:plans',
+                    'price' => 'required | min:0',
+                    'amount_returns' => 'required | min:0',
+                ];
+            break;
+            case "PUT":
+                $data = [
+                    'name' => 'required | unique:plans, ' . request()->name,
+                    'price' => 'required | min:0',
+                    'amount_returns' => 'required | min:0',
+                ];
+            break;
+        }
+        return $data;
     }
 }

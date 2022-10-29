@@ -31,14 +31,15 @@ Route::namespace('App\Http\Controllers\Admin')->group(function(){
         });
         
         Route::resource('/manage-plan', PlanController::class)->middleware('can:view_plans');
+        Route::get('/manage-plan/status/{plan}', [App\Http\Controllers\Admin\PlanController::class, 'changeStatus'])->middleware('can:edit_plans')->name('manage-plan.status');
     }); // prefix ends 
 
     // Roles
-    Route::group(['middleware' => ['can:view_roles']], function () {
+    Route::group(['middleware' => ['can:view_roles'], 'auth'], function () {
         Route::resource('roles', RoleController::class);
+        Route::resource('administrators', AdministratorController::class);
+        Route::resource('users', App\Http\Controllers\Admin\UsersController::class)->only(['index', 'update', 'edit'])->middleware('can:view_users');
     });
-    Route::resource('administrators', AdministratorController::class);
-    Route::resource('users', App\Http\Controllers\Admin\UsersController::class)->only(['index', 'update', 'edit'])->middleware('can:view_users');
     
 });
 
