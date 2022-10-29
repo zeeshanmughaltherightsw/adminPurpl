@@ -13,7 +13,7 @@
                         <th scope="col">Price</th>
                         <th scope="col">Plan Type</th>
                         <th scope="col">Amount Return</th>
-                        <th scope="col">Status</th>
+                        <th scope="col"  v-if="checkUserPermissions('edit_plans')">Status</th>
                         <th scope="col">Action</th>
                     </tr>
                 </thead>
@@ -24,7 +24,7 @@
                         <td data-label="Price" class="font-weight-bold">{{ plan.price }}</td>
                         <td data-label="Referrals" class="font-weight-bold">{{ plan.plan_type }} </td>
                         <td data-label="amount return">{{ plan.amount_returns }} Days</td>
-                        <td data-label="Status">
+                        <td data-label="Status" v-if="checkUserPermissions('edit_plans')">
                             <VueToggle title="" name="status" @toggle="changeStatus(plan)" activeColor="#2a866d" :toggled="plan.status ? true : false"/>
                         </td>
                         <td data-label="Action">
