@@ -34,7 +34,7 @@ class PlanRequest extends FormRequest
             break;
             case "PUT":
                 $data = [
-                    'name' => 'required | unique:plans, ' . request()->name,
+                    'name' => 'required | unique:plans,name, ' . request()->id,
                     'price' => 'required | min:0',
                     'amount_returns' => 'required | min:0',
                 ];
