@@ -8,4 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class PlanLevel extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'level',
+        'commission',
+        'plan_id',
+    ];
+
+    public function plan(){
+        return $this->belongsTo(Plan::class);
+    }
 }
