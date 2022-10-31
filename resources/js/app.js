@@ -14,6 +14,7 @@ createInertiaApp({
             .use(plugin)
             .mixin({ methods: { route } });
             appVue.config.globalProperties.emitter = mitt()
+            appVue.config.globalProperties.toast = mitt()
             appVue.mount(el);
         return appVue;
     },

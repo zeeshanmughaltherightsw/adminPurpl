@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Plan;
-use Inertia\Inertia;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\PlanRequest;
+use App\Models\Plan;
 use Exception;
-
-class PlanController extends Controller
+use App\Models\PlanLevel;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Inertia\Inertia;
+class CommissionController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,15 +18,11 @@ class PlanController extends Controller
      */
     public function index()
     {
-        $limit = \config()->get('settings.pagination_limit');
-        $plans = Plan::where(function($query){
-            if(request()->keyword){
-                $query->where('name', 'LIKE', '%' . request()->keyword .'%');
-            }
-        })->paginate($limit);
-        return Inertia::render('Plan/Index', [
-            'plans' => $plans,
-            'searchKeyword' => request()->keyword
+        $level = PlanLevel::with('plan')->get();
+        $plans = Plan::where('status', 1)->get();
+        return Inertia::render('Commission/Index', [
+            'levels'    => $level,
+            'plans'     => $plans
         ]);
     }
 
@@ -46,14 +42,31 @@ class PlanController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(PlanRequest $request)
+    public function store(Request $request)
     {
         try{
-            Plan::create($request->all());
-            flash('Plan created successfully', 'success');
+            $this->validate($request, [
+                'level*' => 'required|integer|min:1',
+                'percent*' => 'required|numeric',
+            ]);
+            
+            PlanLevel::where('plan_id', $request->plan_id)->delete();
+            
+            DB::beginTransaction();
+            for ($i = 0; $i < count($request->level); $i++){
+                PlanLevel::create([
+                    'level' => $i + 1,
+                    'commission' => $request->percent[$i],
+                    'status' => 1,
+                    'plan_id' => $request->plan_id
+                ]);
+            }
+            DB::commit();
+            flash('Referral Commission Setting Updated Successfully' , 'success');
             return redirect()->back();
-        }catch(Exception $e){
-            flash($e->getMessage(), 'danger');
+        }catch (Exception $e){
+            DB::rollBack();
+            flash($e->getMessage() , 'error');
             return redirect()->back();
         }
     }
@@ -87,16 +100,9 @@ class PlanController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(PlanRequest $request, $id)
+    public function update(Request $request, $id)
     {
-        try{
-            Plan::findOrFail($id)->update($request->all());
-            flash('Plan updated successfully', 'success');
-            return redirect()->back();
-        }catch(Exception $e){
-            flash($e->getMessage(), 'danger');
-            return redirect()->back();
-        }
+        //
     }
 
     /**
@@ -108,11 +114,5 @@ class PlanController extends Controller
     public function destroy($id)
     {
         //
-    }
-
-    public function changeStatus(Plan $plan)
-    {
-        $plan->changeStatus()->save();
-        return redirect()->route('manage-plan.index');
     }
 }

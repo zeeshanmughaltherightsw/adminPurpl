@@ -51,6 +51,11 @@ class RolesAndPermissionSeeder extends Seeder
             ['group'=> 'users', 'name' => 'edit_users', 'guard_name' => 'web'],
             ['group'=> 'users', 'name' => 'create_users', 'guard_name' => 'web'],
             ['group'=> 'users', 'name' => 'delete_users', 'guard_name' => 'web'],
+            //Referral commission
+            ['group'=> 'commission', 'name' => 'view_commission', 'guard_name' => 'web'],
+            ['group'=> 'commission', 'name' => 'edit_commission', 'guard_name' => 'web'],
+            ['group'=> 'commission', 'name' => 'create_commission', 'guard_name' => 'web'],
+            ['group'=> 'commission', 'name' => 'delete_commission', 'guard_name' => 'web'],
 
         ];
 

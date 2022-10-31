@@ -10,28 +10,22 @@
                 <thead>
                     <tr>
                         <th scope="col">Name</th>
-                        <th scope="col">Referrals</th>
                         <th scope="col">Price</th>
-                        <th scope="col">Profit %age</th>
-                        <th scope="col">Profit Bonus %age</th>
+                        <th scope="col">Plan Type</th>
                         <th scope="col">Amount Return</th>
-                        <th scope="col">Validity</th>
-                        <th scope="col">Status</th>
+                        <th scope="col"  v-if="checkUserPermissions('edit_plans')">Status</th>
                         <th scope="col">Action</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr v-for="plan in plans.data" :key="plan.id">
                         <td data-label="Name">{{plan.name}}</td>
-                        <td data-label="Referrals" class="font-weight-bold">{{ plan.min_ref }} to {{ plan.max_ref }} </td>
+                        <!-- <td data-label="PLan Type">{{plan.plan_type}}</td> -->
                         <td data-label="Price" class="font-weight-bold">{{ plan.price }}</td>
-
-                        <td data-label="Profit %age">{{ plan.min_profit_percent }} % to {{ plan.max_profit_percent }} %</td>
-                        <td data-label="Profit Bonus %age">{{ plan.profit_bonus_percent }} %</td>
+                        <td data-label="Referrals" class="font-weight-bold">{{ plan.plan_type }} </td>
                         <td data-label="amount return">{{ plan.amount_returns }} Days</td>
-                        <td data-label="Validity">{{ plan.validity}} Day</td>
-                        <td data-label="Status">
-                            <span class="badge" :class="getStatusForTable(plan.status)">{{plan.status}}</span>
+                        <td data-label="Status" v-if="checkUserPermissions('edit_plans')">
+                            <VueToggle title="" name="status" @toggle="changeStatus(plan)" activeColor="#2a866d" :toggled="plan.status ? true : false"/>
                         </td>
                         <td data-label="Action">
                             <edit-section 
@@ -58,6 +52,7 @@ import Pagination from '@/Components/Pagination.vue'
 import Breadcrumb from '@/Components/Breadcrumb.vue';
 import Button from '@/Components/Button.vue'
 import EditModal from './EditModal'
+import VueToggle from "vue-toggle-component";
 export default {
     props: ['plans' , 'searchKeyword'],
     data(){
@@ -66,15 +61,16 @@ export default {
         }
     },
     components: {
-                Authenticated,
-                EditSection,
-                Head,
-                SearchInput,
-                Pagination,
-                Breadcrumb,
-                Button,
-                EditModal,
-            },
+        Authenticated,
+        EditSection,
+        Head,
+        SearchInput,
+        Pagination,
+        Breadcrumb,
+        Button,
+        EditModal,
+        VueToggle
+    },
     methods: {
         openModal(plan=null){
             this.emitter.emit('plan-modal', {
@@ -82,6 +78,14 @@ export default {
             });
             jQuery.noConflict();
             $('#genericModal').modal('show')
+        },
+        changeStatus(plan){
+            this.$inertia.get(route('manage-plan.status', plan.id), {}, {
+                preserveScroll: false,
+                onSuccess: () => {
+                    NioApp.Toast('Plan Status changed!', 'success');
+                }
+            });
         }
     },
     mounted(){

@@ -53,21 +53,21 @@
                                         <li><a href="html/user-profile-regular.html"><em class="icon ni ni-user-alt"></em><span>View Profile</span></a></li>
                                         <li><a href="html/user-profile-setting.html"><em class="icon ni ni-setting-alt"></em><span>Account Setting</span></a></li>
                                         <li><a href="html/user-profile-activity.html"><em class="icon ni ni-activity-alt"></em><span>Login Activity</span></a></li>
-                                        <li><a class="dark-switch" href="#"><em class="icon ni ni-moon"></em><span>Dark Mode</span></a></li>
+                                        <li><a class="dark-switch" :href="void(0)" @click="changeTheme"><em class="icon ni ni-moon"></em><span>Dark Mode</span></a></li>
                                     </ul>
                                 </div>
                                 <div class="dropdown-inner">
                                     <ul class="link-list">
                                         <li>
-                      <Link
-                        class="btn btn-danger"
-                        :href="route('logout')"
-                        method="post"
-                        as="button"
-                      >
-                        Log Out
-                      </Link>
-                    </li>
+                                            <Link
+                                                class="btn btn-danger"
+                                                :href="route('logout')"
+                                                method="post"
+                                                as="button"
+                                            >
+                                                Log Out
+                                            </Link>
+                                        </li>
                                     </ul>
                                 </div>
                             </div>
@@ -94,8 +94,8 @@ export default {
             let sidebar = document.querySelector('.nk-sidebar')
             sidebar.classList.add('nk-sidebar-active')
         },
-        openSidebar(){
-            // this.emitter.emit('open-sidebar');
+        changeTheme(){
+            NioApp.ModeSwitch()
         }
     },
     mixins: [Helpers]

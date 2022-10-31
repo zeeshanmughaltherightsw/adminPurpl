@@ -15,11 +15,16 @@ return new class extends Migration
     {
         Schema::create('plans', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->nullable();
+            $table->string('name')->unique();
             $table->decimal('price')->nullable();
-            $table->decimal('estimated_profit')->nullable();
+            $table->enum('plan_type', ['investor', 'referral','high_agent']);
+            $table->decimal('min_profit')->nullable();
+            $table->decimal('max_profit')->nullable();
+            $table->integer('min_ref')->nullable();
+            $table->integer('max_ref')->nullable();
+            $table->decimal('ref_commission')->nullable();
             $table->integer('amount_returns')->nullable();
-            $table->tinyInteger('status')->nullable();
+            $table->boolean('status')->default(true);
             $table->timestamps();
         });
     }

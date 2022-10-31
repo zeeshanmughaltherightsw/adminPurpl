@@ -133,13 +133,13 @@
         msi = '',
         ticon = ttype === 'info' ? 'ni ni-info-fill' : ttype === 'success' ? 'ni ni-check-circle-fill' : ttype === 'error' ? 'ni ni-cross-circle-fill' : ttype === 'warning' ? 'ni ni-alert-fill' : '',
         def = {
-      position: 'bottom-right',
-      ui: '',
-      icon: 'auto',
-      clear: false
-    },
+          position: 'top-right',
+          ui: '',
+          icon: 'auto',
+          clear: false
+        },
         attr = opt ? extend(def, opt) : def;
-    attr.position = attr.position ? 'toast-' + attr.position : 'toast-bottom-right';
+    attr.position = attr.position ? 'toast-' + attr.position : 'toast-top-right';
     attr.icon = attr.icon === 'auto' ? ticon : attr.icon ? attr.icon : '';
     attr.ui = attr.ui ? ' ' + attr.ui : '';
     msi = attr.icon !== '' ? '<span class="toastr-icon"><em class="icon ' + attr.icon + '"></em></span>' : '', msg = msg !== '' ? msi + '<div class="toastr-text">' + msg + '</div>' : '';
