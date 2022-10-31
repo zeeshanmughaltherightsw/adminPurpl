@@ -20,31 +20,37 @@
             </li><!-- .nk-menu-item -->
             <li class="nk-menu-item">
               <Link :href="route('dashboard')" class="nk-menu-link">
-                  <span class="nk-menu-icon"><em class="icon ni ni-building"></em></span>
+                  <span class="nk-menu-icon"><em class="icon ni ni-dashboard-fill"></em></span>
                   <span class="nk-menu-text">Dashboard</span>
               </Link>
             </li>
             <li class="nk-menu-item" v-if="checkUserPermissions('view_plans')">
                 <Link :href="route('manage-plan.index')" class="nk-menu-link">
-                  <span class="nk-menu-icon"><em class="icon ni ni-building"></em></span>
+                  <span class="nk-menu-icon"><em class="icon ni ni-repeat-v"></em></span>
                   <span class="nk-menu-text">Plan</span>
                 </Link>
-            </li>
+              </li>
+              <li class="nk-menu-item" v-if="checkUserPermissions('view_commission')">
+                  <Link :href="route('commission.index')" class="nk-menu-link">
+                    <span class="nk-menu-icon"><em class="icon ni ni-wallet-fill"></em></span>
+                    <span class="nk-menu-text">Commissions</span>
+                  </Link>
+              </li>
             <li class="nk-menu-item" v-if="checkUserPermissions('view_permissions')">
                 <Link :href="route('administrators.index')" class="nk-menu-link">
-                    <span class="nk-menu-icon"><em class="icon ni ni-building"></em></span>      
+                    <span class="nk-menu-icon"><em class="icon ni ni-user-list-fill"></em></span>      
                     <span class="nk-menu-text">Roles Manager</span>
                 </Link>
             </li>
             <li class="nk-menu-item" v-if="checkUserPermissions('view_roles')">
                 <Link :href="route('roles.index')" class="nk-menu-link">
-                  <span class="nk-menu-icon"><em class="icon ni ni-building"></em></span>
+                  <span class="nk-menu-icon"><em class="icon ni ni-lock-fill"></em></span>
                   <span class="nk-menu-text">Permission</span>
                 </Link>
             </li>
             <li class="nk-menu-item" v-if="checkUserPermissions('view_users')">
                 <Link :href="route('users.index')" class="nk-menu-link">
-                  <span class="nk-menu-icon"><em class="icon ni ni-building"></em></span>
+                  <span class="nk-menu-icon"><em class="icon ni ni-users-fill"></em></span>
                   <span class="nk-menu-text">Manage Users</span>
                 </Link>
             </li>
