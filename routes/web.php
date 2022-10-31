@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\AdministratorController;
+use App\Http\Controllers\Admin\CommissionController;
 use App\Http\Controllers\DashboardController;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Route;
@@ -32,6 +33,7 @@ Route::namespace('App\Http\Controllers\Admin')->group(function(){
         
         Route::resource('/manage-plan', PlanController::class)->middleware('can:view_plans');
         Route::get('/manage-plan/status/{plan}', [App\Http\Controllers\Admin\PlanController::class, 'changeStatus'])->middleware('can:edit_plans')->name('manage-plan.status');
+        Route::resource('/commission', CommissionController::class);
     }); // prefix ends 
 
     // Roles

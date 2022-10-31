@@ -29,6 +29,7 @@ class DatabaseSeeder extends Seeder
             GeneralSettingsSeeder::class,
             PlanSeeder::class,
             ReferralSeeder::class,
+            PlanLevelSeeder::class,
 
         ]);
 
