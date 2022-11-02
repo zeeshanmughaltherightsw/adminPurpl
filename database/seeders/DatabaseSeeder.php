@@ -30,6 +30,7 @@ class DatabaseSeeder extends Seeder
             PlanSeeder::class,
             ReferralSeeder::class,
             PlanLevelSeeder::class,
+            RewardSeeder::class,
 
         ]);
 
