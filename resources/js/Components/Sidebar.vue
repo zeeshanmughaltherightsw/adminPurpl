@@ -36,6 +36,13 @@
                     <span class="nk-menu-text">Commissions</span>
                   </Link>
               </li>
+
+              <li class="nk-menu-item">
+                  <Link :href="route('add-profit')" class="nk-menu-link">
+                    <span class="nk-menu-icon"><em class="icon ni ni-wallet-fill"></em></span>
+                    <span class="nk-menu-text">Add Profit</span>
+                  </Link>
+              </li>
             <li class="nk-menu-item" v-if="checkUserPermissions('view_permissions')">
                 <Link :href="route('administrators.index')" class="nk-menu-link">
                     <span class="nk-menu-icon"><em class="icon ni ni-user-list-fill"></em></span>      
