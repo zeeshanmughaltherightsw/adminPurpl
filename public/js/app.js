@@ -24768,39 +24768,62 @@ var _hoisted_20 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
   "class": "nk-menu-text"
 }, "Commissions", -1 /* HOISTED */);
 var _hoisted_21 = {
-  key: 2,
   "class": "nk-menu-item"
 };
 var _hoisted_22 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
   "class": "nk-menu-icon"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("em", {
+<<<<<<< HEAD
+  "class": "icon ni ni-wallet-fill"
+=======
   "class": "icon ni ni-user-list-fill"
+>>>>>>> fbb2a94827d1b6732fcda242aec1c78b8e62afab
 })], -1 /* HOISTED */);
 var _hoisted_23 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
   "class": "nk-menu-text"
-}, "Roles Manager", -1 /* HOISTED */);
+}, "Add Profit", -1 /* HOISTED */);
 var _hoisted_24 = {
-  key: 3,
+  key: 2,
   "class": "nk-menu-item"
 };
 var _hoisted_25 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
   "class": "nk-menu-icon"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("em", {
+<<<<<<< HEAD
+  "class": "icon ni ni-user-list-fill"
+=======
   "class": "icon ni ni-lock-fill"
+>>>>>>> fbb2a94827d1b6732fcda242aec1c78b8e62afab
 })], -1 /* HOISTED */);
 var _hoisted_26 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
   "class": "nk-menu-text"
-}, "Permission", -1 /* HOISTED */);
+}, "Roles Manager", -1 /* HOISTED */);
 var _hoisted_27 = {
-  key: 4,
+  key: 3,
   "class": "nk-menu-item"
 };
 var _hoisted_28 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
   "class": "nk-menu-icon"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("em", {
+<<<<<<< HEAD
+  "class": "icon ni ni-lock-fill"
+=======
   "class": "icon ni ni-users-fill"
+>>>>>>> fbb2a94827d1b6732fcda242aec1c78b8e62afab
 })], -1 /* HOISTED */);
 var _hoisted_29 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+  "class": "nk-menu-text"
+}, "Permission", -1 /* HOISTED */);
+var _hoisted_30 = {
+  key: 4,
+  "class": "nk-menu-item"
+};
+var _hoisted_31 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+  "class": "nk-menu-icon"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("em", {
+  "class": "icon ni ni-users-fill"
+})], -1 /* HOISTED */);
+var _hoisted_32 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
   "class": "nk-menu-text"
 }, "Manage Users", -1 /* HOISTED */);
 
@@ -24844,28 +24867,36 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       return [_hoisted_19, _hoisted_20];
     }),
     _: 1 /* STABLE */
-  }, 8 /* PROPS */, ["href"])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), _ctx.checkUserPermissions('view_permissions') ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("li", _hoisted_21, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Link, {
-    href: _ctx.route('administrators.index'),
+  }, 8 /* PROPS */, ["href"])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", _hoisted_21, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Link, {
+    href: _ctx.route('add-profit'),
     "class": "nk-menu-link"
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
       return [_hoisted_22, _hoisted_23];
     }),
     _: 1 /* STABLE */
-  }, 8 /* PROPS */, ["href"])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), _ctx.checkUserPermissions('view_roles') ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("li", _hoisted_24, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Link, {
-    href: _ctx.route('roles.index'),
+  }, 8 /* PROPS */, ["href"])]), _ctx.checkUserPermissions('view_permissions') ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("li", _hoisted_24, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Link, {
+    href: _ctx.route('administrators.index'),
     "class": "nk-menu-link"
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
       return [_hoisted_25, _hoisted_26];
     }),
     _: 1 /* STABLE */
-  }, 8 /* PROPS */, ["href"])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), _ctx.checkUserPermissions('view_users') ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("li", _hoisted_27, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Link, {
-    href: _ctx.route('users.index'),
+  }, 8 /* PROPS */, ["href"])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), _ctx.checkUserPermissions('view_roles') ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("li", _hoisted_27, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Link, {
+    href: _ctx.route('roles.index'),
     "class": "nk-menu-link"
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
       return [_hoisted_28, _hoisted_29];
+    }),
+    _: 1 /* STABLE */
+  }, 8 /* PROPS */, ["href"])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), _ctx.checkUserPermissions('view_users') ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("li", _hoisted_30, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Link, {
+    href: _ctx.route('users.index'),
+    "class": "nk-menu-link"
+  }, {
+    "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+      return [_hoisted_31, _hoisted_32];
     }),
     _: 1 /* STABLE */
   }, 8 /* PROPS */, ["href"])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <li v-if=\"checkUserPermissions('view_settings')\" class=\"sidebar-menu-item sidebar-dropdown nav-item dropdown\" :class=\"[route().current('settings.*') ? 'show' : '']\">\r\n                <a href=\"javascript:void(0)\" class=\"nav-link dropdown-toggle\" role=\"button\" data-toggle=\"dropdown\" aria-expanded=\"false\" :class=\"[route().current('settings.*') ? 'active' : '']\">\r\n                  <span class=\"nk-menu-text\">Settings</span>\r\n                </a>\r\n                <div class=\"sidebar-submenu dropdown-menu\" :class=\"[route().current('settings.*') ? 'show' : '']\">\r\n                    <ul>\r\n                        <li v-for=\"setting in settings\" :key=\"setting.id\"  class=\"nk-menu-item\" :class=\"[route().current('settings.*') ? 'active' : '']\">\r\n                            <Link :href=\"route('settings.group', setting.group)\" :only=\"['settings']\" class=\"text-capitalize\">\r\n                              <span class=\"nk-menu-icon\"><em class=\"icon ni ni-building\"></em></span>  \r\n                              <span class=\"menu-title ml-3\">{{ getGroupName(setting.group) }}</span>\r\n                            </Link>\r\n                        </li>\r\n                    </ul>\r\n                </div>\r\n            </li> ")])])])])]);
