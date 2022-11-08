@@ -1,13 +1,10 @@
 <?php
 
-use App\Http\Controllers\Admin\AdministratorController;
-use App\Http\Controllers\Admin\CommissionController;
-use App\Http\Controllers\DashboardController;
-use App\Models\User;
-use GuzzleHttp\Psr7\Request;
-use Inertia\Inertia;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Foundation\Application;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\Admin\CommissionController;
+use App\Http\Controllers\Admin\AdministratorController;
+use App\Models\User;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,7 +34,14 @@ Route::namespace('App\Http\Controllers\Admin')->group(function(){
         Route::get('/manage-plan/status/{plan}', [App\Http\Controllers\Admin\PlanController::class, 'changeStatus'])->middleware('can:edit_plans')->name('manage-plan.status');
         Route::resource('/commission', CommissionController::class);
         Route::get('/add-profit', function () {
-            
+            $users = User::withSum(
+                ['referrals' => function ($query){
+                    $query->where('investment', '>=', 5000);
+                }], 'investment')
+            ->whereHas('referrals', function($query){
+                $query->where('investment', '>=', 5000);
+            })->whereStatus('active')->where('user_type', 'user')->get();
+            dd($users);
         })->name('add-profit');
     }); // prefix ends 
     

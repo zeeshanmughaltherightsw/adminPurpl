@@ -25,7 +25,8 @@ class User extends Authenticatable implements HasMedia
         'email',
         'password',
         'account_no',
-        'ref_by'
+        'ref_by',
+        'investment'
     ];
 
     /**
@@ -77,6 +78,6 @@ class User extends Authenticatable implements HasMedia
 
     public function transactions()
     {
-        return $this->hasMany(Transaction::class);
+        return $this->hasMany(Transaction::class, 'user_id');
     }
 }

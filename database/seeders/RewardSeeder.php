@@ -2,9 +2,10 @@
 
 namespace Database\Seeders;
 
+use App\Models\User;
 use App\Models\Reward;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class RewardSeeder extends Seeder
 {
@@ -15,32 +16,25 @@ class RewardSeeder extends Seeder
      */
     public function run()
     {
-        $rewards = [
-            [
-                'user_id'         =>   3,
-                'plan_id'         =>   4,
-                'reward_amount'   =>   5,
-
-            ],
-
-            [
-                'user_id'         =>   2,
-                'plan_id'         =>   4,
-                'reward_amount'   =>   4,
-
-            ],
-
-            [
-                'user_id'         =>   3,
-                'plan_id'         =>   4,
-                'reward_amount'   =>   2,
-
-            ],
-
-        ];
-
-        foreach ($rewards as $reward) {
-            Reward::create($reward);
+        $users = User::withSum(
+            ['referrals' => function ($query){
+                $query->where('investment', '>=', 5000);
+            }], 'investment')
+        ->whereHas('referrals', function($query){
+            $query->where('investment', '>=', 5000);
+        })->whereStatus('active')->where('user_type', 'user')->get();
+        foreach($users as $user){
+            $reward = (intval($user->referrals_sum_investment / 5000)) * 5000 * 0.02;
+            $user->reward += $reward;
+            $user->save();
+            $user->transactions()->create([
+                'amount' => $reward,
+                'trx' => getTrx(),
+                'trx_type' => '+',
+                'details' => "Received reward from referrals",
+                'remark' => 'reward'
+            ]);
         }
+
     }
 }

@@ -29,7 +29,7 @@
                                 Status<span class="badge badge-pill bg--success">{{ user.status }}</span></li>
 
                             <li class="list-group-item d-flex justify-content-between align-items-center">
-                                Balance<span class="font-weight-bold">{{ user.investment }} USD</span>
+                                Investment<span class="font-weight-bold">{{ user.investment }} USD</span>
                             </li>
                             <li class="list-group-item d-flex justify-content-between align-items-center"
                                 v-if="user.referredBy">
@@ -59,22 +59,22 @@
                             </div>
                             <div class="card-text">
                                 <div class="row">
-                                    <div class="col-3"> <span class="h4 fw-500">1.67%</span> 
+                                    <div class="col-3 border py-3"> <span class="h4 fw-500">1.67%</span> 
                                         <span class="sub-text">Total Deposit</span> 
                                     </div>
-                                    <div class="col-3"> 
+                                    <div class="col-3 border py-3"> 
                                         <span class="h4 fw-500">30</span> 
                                         <span class="sub-text">Total Withdraw</span> 
                                     </div>
-                                    <div class="col-3"> 
+                                    <div class="col-3 border py-3"> 
                                         <Link :href="route('users.transactions', user.id)">
                                             <span class="h4 fw-500">{{user.transactions_count}}</span> 
                                             <span class="sub-text">Total Transactions</span>
                                         </Link> 
                                     </div>
-                                    <div class="col-3"> 
-                                        <span class="h4 fw-500">30</span> 
-                                        <span class="sub-text">Total Withdraw</span> 
+                                    <div class="col-3 border py-3"> 
+                                        <span class="h4 fw-500">{{ formatCurrency(user.profit) }} USD</span> 
+                                        <span class="sub-text">Total Profit</span> 
                                     </div>
                                 </div>
                             </div>
@@ -121,7 +121,6 @@
                                             class="mt-1 block w-full form-control form-control-lg"
                                             v-model="form.phone_no"
                                             required
-                                            autofocus
                                             autocomplete="phone_no"
                                         />
                                         <Error class="mt-2" :message="form.errors.phone_no" />
@@ -142,7 +141,6 @@
                                             class="mt-1 block w-full form-control form-control-lg"
                                             v-model="form.email"
                                             required
-                                            autofocus
                                             autocomplete="email"
                                         />
                                         <Error class="mt-2" :message="form.errors.email" />
@@ -163,7 +161,6 @@
                                             class="mt-1 block w-full form-control form-control-lg"
                                             v-model="form.address"
                                             required
-                                            autofocus
                                             autocomplete="address"
                                         />
                                         <Error class="mt-2" :message="form.errors.address" />

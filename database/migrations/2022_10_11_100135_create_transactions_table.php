@@ -25,6 +25,8 @@ return new class extends Migration
             $table->string('remark', 40)->nullable();
             $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
+
+            $table->foreign('user_id')->on('users')->references('id');
         });
     }
 

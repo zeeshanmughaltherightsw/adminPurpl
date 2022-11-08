@@ -1,12 +1,12 @@
 <template>
   
 <Authenticated>
-    <breadcrumb title="Transactions" :subTitle="`Total transaction ${transactions.total}`"/>
+    <breadcrumb title="Transactions"/>
    
     <div class="card card-bordered card-stretch">
         <div class="card-inner-group">
             <div class="card-inner p-0">
-                <table class="table table-orders" v-if="transactions.data.length > 1">
+                <table class="table table-orders" v-if="transactions.data.length > 0">
                     <thead class="tb-odr-head">
                         <tr class="tb-odr-item">
                             <th class="tb-odr-info">

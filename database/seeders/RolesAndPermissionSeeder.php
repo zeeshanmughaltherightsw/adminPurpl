@@ -64,7 +64,7 @@ class RolesAndPermissionSeeder extends Seeder
          //Admin
         $admin = Role::updateOrCreate(['name' => 'admin', 'guard_name' => 'web']);
         $adminPermissions = Permission::get();
-        $admin->permissions()->sync($adminPermissions);
+        $admin->permissions()->sync($adminPermissions->pluck('id'));
  
          //staff
         $staff = Role::updateOrCreate(['name' => 'staff', 'guard_name' => 'web']);
@@ -72,7 +72,7 @@ class RolesAndPermissionSeeder extends Seeder
             'administrators',
              'settings'
             ])->get();
-        $staff->permissions()->sync($staffPermissions);
+        $staff->permissions()->sync($staffPermissions->pluck('id'));
 
         $user = Role::updateOrCreate(['name' => 'user', 'guard_name' => 'web']);
          
