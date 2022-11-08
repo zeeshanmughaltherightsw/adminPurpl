@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Admin\CommissionController;
 use App\Http\Controllers\Admin\AdministratorController;
+use App\Models\Reward;
 use App\Models\User;
 
 /*
@@ -40,8 +41,19 @@ Route::namespace('App\Http\Controllers\Admin')->group(function(){
                 }], 'investment')
             ->whereHas('referrals', function($query){
                 $query->where('investment', '>=', 5000);
-            })->whereStatus('active')->where('user_type', 'user')->get();
-            dd($users);
+            })->whereStatus('active')->whereNotNull('plan_id')->where('user_type', 'user')->get();
+            foreach($users as $user){
+                $reward = Reward::where('total_investment', '<=', $user->referrals_sum_investment)->orderBy('id', 'desc')->first()->amount;
+                $user->reward += $reward;
+                $user->save();
+                $user->transactions()->create([
+                    'amount' => $reward,
+                    'trx' => getTrx(),
+                    'trx_type' => '+',
+                    'details' => "Received reward from referrals",
+                    'remark' => 'reward'
+                ]);
+            }
         })->name('add-profit');
     }); // prefix ends 
     

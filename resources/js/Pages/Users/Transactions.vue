@@ -34,7 +34,7 @@
                             </td>
                             <td>
                                 <span class="badge badge-dot" :class="{ 'badge-info' : transaction.trx_type == '-', 'badge-success' : transaction.trx_type !== '-' }">
-                                    {{ transaction.trx_type == '-' ? 'Substract' : 'Added' }}
+                                    {{ transaction.trx_type == '-' ? 'Debitted' : 'Credited' }}
                                 </span>
                             </td>
                         </tr><!-- .tb-odr-item -->

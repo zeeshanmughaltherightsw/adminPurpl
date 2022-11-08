@@ -4,6 +4,7 @@ namespace App\Console\Commands;
 
 use Exception;
 use App\Models\User;
+use App\Models\Reward;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
@@ -39,14 +40,16 @@ class AddRewardToUsers extends Command
                 }], 'investment')
             ->whereHas('referrals', function($query){
                 $query->where('investment', '>=', 5000);
-            })->whereStatus('active')->where('user_type', 'user')->get();
+            })->whereStatus('active')->whereNotNull('plan_id')->where('user_type', 'user')->get();
             foreach($users as $user){
-                $reward = (intval($user->referrals_sum_investment / 5000)) * 5000 * 0.02;
-                $user->reward += $reward;
+                $reward = Reward::where('total_investment', '<=', $user->referrals_sum_investment)->orderBy('id', 'desc')->first();
+                if($reward){
+                    $user->reward += $reward->amount;
+                    $user->reward_title = $reward->name;
+                }
                 $user->save();
-
                 $user->transactions()->create([
-                    'amount' => $reward,
+                    'amount' => $reward->amount,
                     'trx' => getTrx(),
                     'trx_type' => '+',
                     'details' => "Received reward from referrals",

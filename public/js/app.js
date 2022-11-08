@@ -27630,7 +27630,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             'badge-info': transaction.trx_type == '-',
             'badge-success': transaction.trx_type !== '-'
           }])
-        }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(transaction.trx_type == '-' ? 'Substract' : 'Added'), 3 /* TEXT, CLASS */)])]);
+        }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(transaction.trx_type == '-' ? 'Debitted' : 'Credited'), 3 /* TEXT, CLASS */)])]);
       }), 128 /* KEYED_FRAGMENT */)), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" .tb-odr-item ")])])) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("p", _hoisted_14, " No Record found "))]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" .card-inner ")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" .card-inner-group ")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_pagination, {
         meta: $props.transactions,
         callType: "transactions"

@@ -26,7 +26,6 @@ class DatabaseSeeder extends Seeder
             RolesAndPermissionSeeder::class,
             GeneralSettingsSeeder::class,
             PlanSeeder::class,
-            // ReferralSeeder::class,
             PlanLevelSeeder::class,
         ]);
 
