@@ -47,6 +47,7 @@ Route::namespace('App\Http\Controllers\Admin')->group(function(){
         Route::resource('administrators', AdministratorController::class);
         Route::resource('users', App\Http\Controllers\Admin\UsersController::class)->only(['index', 'update', 'edit'])->middleware('can:view_users');
         Route::get('users/transactions/{id}', [App\Http\Controllers\Admin\UsersController::class, 'transactions'])->middleware('can:view_users')->name('users.transactions');
+        Route::get('users/status/{id}/{status}', [App\Http\Controllers\Admin\UsersController::class, 'changeStatus'])->middleware('can:edit_users')->name('users.status');
     });
     
 });

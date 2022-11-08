@@ -100,7 +100,7 @@
                                     <li class="divider"></li>
                                     <!-- <li><a href="#"><em class="icon ni ni-shield-star"></em><span>Reset Pass</span></a></li> -->
                                     <!-- <li><a href="#"><em class="icon ni ni-shield-off"></em><span>Reset 2FA</span></a></li> -->
-                                    <li><a href="#"><em class="icon ni ni-na"></em><span>Suspend User</span></a></li>
+                                    <li><Link :href="route('users.status', [user.id, 'baned'])"><em class="icon ni ni-na"></em><span>Suspend User</span></Link></li>
                                 </ul>
                             </div>
                         </div>

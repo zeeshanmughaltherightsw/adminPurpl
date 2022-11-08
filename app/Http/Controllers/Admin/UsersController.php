@@ -123,4 +123,9 @@ class UsersController extends Controller
             'transactions' => $transactions
         ]);
     }
+
+    public function changeStatus($id, $status)
+    {
+        User::find($id)->update('status', $status);
+    }
 }
