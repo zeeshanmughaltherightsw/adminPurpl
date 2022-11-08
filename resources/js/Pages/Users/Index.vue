@@ -22,8 +22,8 @@ import EditSection from '@/Components/EditSection.vue';
 import { Head } from '@inertiajs/inertia-vue3';
 import SearchInput from '@/Components/SearchInput.vue';
 import Pagination from '@/Components/Pagination.vue'
-import Button from '@/Components/Button.vue';
 import Breadcrumb from '@/Components/Breadcrumb.vue';
+import Button from '@/Components/Button.vue';
 import UserList from '@/Components/UserList.vue';
 export default {
     props: ['users' , 'searchKeyword'],

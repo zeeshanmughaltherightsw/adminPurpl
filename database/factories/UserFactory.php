@@ -33,6 +33,11 @@ class UserFactory extends Factory
             'plan_id'  => 4,
             'password' => Hash::make('12345678'), // password
             'remember_token' => Str::random(10),
+            'phone_no' => fake()->phoneNumber(),
+            'mv' => fake()->boolean(),
+            'ev' => fake()->boolean(),
+            'two_fa' => fake()->boolean(),
+            'address' => fake()->address()
         ];
     }
 
