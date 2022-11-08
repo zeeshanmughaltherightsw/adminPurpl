@@ -73,9 +73,9 @@
             <div class="nk-tb-col">
                 <span class="tb-status text-capitalize" :class="getStatusForTable(user.status)">{{user.status}}</span>
             </div>
-            <!-- <div class="nk-tb-col nk-tb-col-tools">
+            <div class="nk-tb-col nk-tb-col-tools">
                 <ul class="nk-tb-actions gx-2">
-                    <li class="nk-tb-action-hidden">
+                    <!-- <li class="nk-tb-action-hidden">
                         <a href="#" class="btn btn-sm btn-icon btn-trigger" data-toggle="tooltip" data-placement="top" title="Wallet">
                             <em class="icon ni ni-wallet-fill"></em>
                         </a>
@@ -89,32 +89,34 @@
                         <a href="#" class="btn btn-sm btn-icon btn-trigger" data-toggle="tooltip" data-placement="top" title="Suspend">
                             <em class="icon ni ni-user-cross-fill"></em>
                         </a>
-                    </li>
+                    </li> -->
                     <li>
                         <div class="drodown">
                             <a href="#" class="btn btn-sm btn-icon btn-trigger dropdown-toggle" data-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
                             <div class="dropdown-menu dropdown-menu-right">
                                 <ul class="link-list-opt no-bdr">
-                                    <li><a href="#"><em class="icon ni ni-eye"></em><span>View Details</span></a></li>
-                                    <li><a href="#"><em class="icon ni ni-repeat"></em><span>Orders</span></a></li>
+                                    <li><Link :href="route('users.edit', user.id)"><em class="icon ni ni-eye"></em><span>View Details</span></Link></li>
+                                    <!-- <li><a href="#"><em class="icon ni ni-repeat"></em><span>Orders</span></a></li> -->
                                     <li class="divider"></li>
-                                    <li><a href="#"><em class="icon ni ni-shield-star"></em><span>Reset Pass</span></a></li>
-                                    <li><a href="#"><em class="icon ni ni-shield-off"></em><span>Reset 2FA</span></a></li>
-                                    <li><a href="#"><em class="icon ni ni-na"></em><span>Suspend User</span></a></li>
+                                    <!-- <li><a href="#"><em class="icon ni ni-shield-star"></em><span>Reset Pass</span></a></li> -->
+                                    <!-- <li><a href="#"><em class="icon ni ni-shield-off"></em><span>Reset 2FA</span></a></li> -->
+                                    <li><Link :href="route('users.status', [user.id, 'baned'])"><em class="icon ni ni-na"></em><span>Suspend User</span></Link></li>
                                 </ul>
                             </div>
                         </div>
                     </li>
                 </ul>
-            </div> -->
+            </div>
         </div>
     </div>
 </template>
 <script>
 import Helpers from '@/Mixins/Helpers';
+import { Link } from '@inertiajs/inertia-vue3'
 
 export default {
     props: ['users'],
+    components: {Link},
     mixins: [Helpers]
 }
 </script>

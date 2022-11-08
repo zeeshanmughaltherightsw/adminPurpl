@@ -6,6 +6,7 @@ use App\Models\User;
 use Inertia\Inertia;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Transaction;
 
 class UsersController extends Controller
 {
@@ -17,7 +18,7 @@ class UsersController extends Controller
     public function index()
     {
         $limit = \config()->get('settings.pagination_limit');
-        $users = User::select(['name', 'username', 'phone_no', 'email', 'status'])->where(function($query){
+        $users = User::select(['name', 'username', 'phone_no', 'email', 'status', 'id'])->where(function($query){
             if(request()->keyword){
                 $query->where('name', 'LIKE', '%' . request()->keyword .'%')
                 ->orWhere('username', 'LIKE', '%' . request()->keyword .'%')
@@ -74,7 +75,8 @@ class UsersController extends Controller
      */
     public function edit($id)
     {
-        $user = User::with('media')->findOrFail($id);
+        $user = User::with(['media','plan', 'referredBy' => function($q){ $q->select(['id', 'name']); }])->withCount(['referrals', 'transactions'])->findOrFail($id);
+        // return $user;
         return Inertia::render('Users/Details', [
             'user' => $user,
         ]);
@@ -87,9 +89,17 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, User $user)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'phone_no' => 'required',
+            'email' => 'required',
+        ]);
+
+        $user->update($request->all());
+
+        return redirect()->back();
     }
 
     /**
@@ -101,5 +111,21 @@ class UsersController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function transactions($id)
+    {
+        $limit = \config()->get('settings.pagination_limit');
+        $transactions = Transaction::whereHas('user', function($query) use($id){
+            $query->where('id', $id);
+        })->paginate($limit);
+        return Inertia::render('Users/Transactions', [
+            'transactions' => $transactions
+        ]);
+    }
+
+    public function changeStatus($id, $status)
+    {
+        User::find($id)->update('status', $status);
     }
 }

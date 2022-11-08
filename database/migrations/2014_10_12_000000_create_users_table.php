@@ -26,7 +26,14 @@ return new class extends Migration
             $table->unsignedBigInteger('plan_id')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->decimal('investment')->nullable();
+            $table->decimal('profit')->nullable();
+            $table->decimal('commission')->nullable();
+            $table->decimal('reward')->nullable();
             $table->enum('status', ['active', 'baned'])->default('active');
+            $table->boolean('ev')->default(false)->comment('Email verfication');
+            $table->boolean('mv')->default(false)->comment('Mobile verfication');
+            $table->boolean('two_fa')->default(false)->comment('2 factor verfication');
             $table->rememberToken();
             $table->timestamps();
             $table->foreign('ref_by')->references('id')->on('users');

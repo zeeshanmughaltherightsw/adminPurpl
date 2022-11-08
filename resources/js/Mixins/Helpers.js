@@ -7,9 +7,9 @@ export default {
             return moment(dateString).format("Do MMM YYYY");
         },
         // // formate date & time
-        // formatDateTime(dateString) {
-        //     return moment(dateString).format("Do MMM YYYY h:mm:ss A");
-        // },
+        formatDateTime(dateString) {
+            return moment(dateString).format("Do MMM YYYY h:mm A");
+        },
         // // formate date & time Unix
         // formatDateTimeUnix(dateString) {
         //     return moment.unix(dateString).format("Do MMM YYYY h:mm:ss A");

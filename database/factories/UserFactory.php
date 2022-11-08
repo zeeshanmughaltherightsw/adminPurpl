@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Facades\Hash;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\User>
@@ -24,13 +25,19 @@ class UserFactory extends Factory
             'name' => fake()->firstname(). ' '. fake()->lastName(),
             'username' => fake()->userName(),
             'phone_no' => fake()->phoneNumber(),
-            'ref_by' => Arr::random(User::all()->pluck('id')->toArray()),
+            'ref_by' => Arr::random(User::where('user_type','user')->get()->pluck('id')->toArray()),
             'email' => fake()->safeEmail(),
             'email_verified_at' => now(),
             'status' => Arr::random(['active', 'baned']),
-            'user_type' => Arr::random(['user', 'staff']),
-            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+            'user_type' => 'user',
+            'plan_id'  => 4,
+            'password' => Hash::make('12345678'), // password
             'remember_token' => Str::random(10),
+            'phone_no' => fake()->phoneNumber(),
+            'mv' => fake()->boolean(),
+            'ev' => fake()->boolean(),
+            'two_fa' => fake()->boolean(),
+            'address' => fake()->address()
         ];
     }
 

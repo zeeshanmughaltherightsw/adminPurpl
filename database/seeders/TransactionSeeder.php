@@ -18,10 +18,25 @@ class TransactionSeeder extends Seeder
         $transactions = [
             [
                 'user_id'         =>   1,
-                'amount'          =>   5,
-                'old_balance'     =>   10,
-                'new_balance'     =>   3,
-                'details'         =>   "Dummy",
+                'amount'          =>   20,
+                'charge'          =>   10,
+                'post_balance'    =>   5,
+                'trx_type'        =>   'trx test',
+                'trx'            =>   'Lorem Ipsum',    
+                'details'           =>   'Lorem Ipsum',
+                'remark'          =>   'Lorem Lorem Ipsum sd adfdsax',
+
+            ],
+
+            [
+                'user_id'         =>   1,
+                'amount'          =>   20,
+                'charge'          =>   10,
+                'post_balance'    =>   5,
+                'trx_type'        =>   'trx test',
+                'trx'            =>   'Lorem Ipsum',    
+                'details'           =>   'Lorem Ipsum',
+                'remark'          =>   'Lorem Lorem Ipsum sd adfdsax',
 
             ],
 

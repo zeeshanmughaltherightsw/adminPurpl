@@ -21,7 +21,7 @@
                     <tr v-for="plan in plans.data" :key="plan.id">
                         <td data-label="Name">{{plan.name}}</td>
                         <!-- <td data-label="PLan Type">{{plan.plan_type}}</td> -->
-                        <td data-label="Price" class="font-weight-bold">{{ plan.price }}</td>
+                        <td data-label="Price" class="font-weight-bold">{{ plan.min_price }} to {{ plan.max_price }}</td>
                         <td data-label="Referrals" class="font-weight-bold">{{ plan.plan_type }} </td>
                         <td data-label="amount return">{{ plan.amount_returns }} Days</td>
                         <td data-label="Status" v-if="checkUserPermissions('edit_plans')">
