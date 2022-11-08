@@ -28,14 +28,12 @@ class PlanRequest extends FormRequest
             case "POST":
                $data = [
                     'name' => 'required | unique:plans',
-                    'price' => 'required | min:0',
                     'amount_returns' => 'required | min:0',
                 ];
             break;
             case "PUT":
                 $data = [
                     'name' => 'required | unique:plans,name, ' . request()->id,
-                    'price' => 'required | min:0',
                     'amount_returns' => 'required | min:0',
                 ];
             break;
