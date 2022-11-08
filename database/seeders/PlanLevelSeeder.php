@@ -134,8 +134,8 @@ class PlanLevelSeeder extends Seeder
 
         ];
 
-        foreach ($planlevels as $planlevel) {
-            PlanLevel::create($planlevel);
-        }
+        // foreach ($planlevels as $planlevel) {
+            PlanLevel::insert($planlevels);
+        // }
     }
 }

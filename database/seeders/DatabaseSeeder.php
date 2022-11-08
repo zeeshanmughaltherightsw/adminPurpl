@@ -5,6 +5,7 @@ namespace Database\Seeders;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Carbon\Carbon;
 use App\Models\Plan;
+use App\Models\Reward;
 use App\Models\User;
 use Illuminate\Support\Arr;
 use Illuminate\Database\Seeder;
@@ -23,18 +24,17 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             RolesAndPermissionSeeder::class,
-            UserTableSeeder::class,
-            TransactionSeeder::class,
-            UserLoginSeeder::class,
             GeneralSettingsSeeder::class,
             PlanSeeder::class,
-            ReferralSeeder::class,
             PlanLevelSeeder::class,
-            RewardSeeder::class,
-
         ]);
 
         \App\Models\User::factory(200)->create();
+        $this->call([
+            UserTableSeeder::class,
+            UserLoginSeeder::class,
+            RewardSeeder::class,
+        ]);
 
         //Admin Roles
         $admins = User::where('user_type', 'admin')->first();
@@ -48,10 +48,6 @@ class DatabaseSeeder extends Seeder
         $users = User::where('user_type', 'user')->get();
         $userRole = Role::where('name', 'user')->first();
         $userRole->users()->sync($users->pluck('id'));
-        
-        // $plans = Plan::all()->pluck('id')->toArray();
-        // foreach($users as $user){
-        //     $user->plan()->attach(Arr::random($plans));   
-        // }     
+
     }
 }

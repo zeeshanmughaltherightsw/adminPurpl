@@ -15,11 +15,9 @@ return new class extends Migration
     {
         Schema::create('rewards', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('plan_id');
-            $table->decimal('reward_amount');
-            $table->foreign('user_id')->on('users')->references('id');
-            $table->foreign('plan_id')->on('plans')->references('id');
+            $table->string('name');
+            $table->decimal('total_investment', 18,8)->default(0);
+            $table->decimal('amount', 18,8)->default(0);
             $table->timestamps();
         });
     }

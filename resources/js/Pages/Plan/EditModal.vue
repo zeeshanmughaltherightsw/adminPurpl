@@ -16,7 +16,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6 my-2" v-if="form.plan_type">
+                <div class="col-md-12 my-2" v-if="form.plan_type">
                     <div class="form-group">
                         <Label class="form-label" for="name">Name</Label>
                         <div class="form-control-wrap">
@@ -29,14 +29,14 @@
                 </div>
                 <div v-if="hideName && form.plan_type" class="col-md-6 my-2">
                     <div class="form-group">
-                        <Label class="form-label" for="price">Price</Label>
+                        <Label class="form-label" for="price">Min price</Label>
                         <div class="form-control-wrap">
                             <div class="input-group">
                                 <Input type="number" 
                                     placeholder="Price"
                                     class="form-control"
-                                    :class="{ 'border-danger': form.errors.price }" 
-                                    v-model="form.price"
+                                    :class="{ 'border-danger': form.errors.min_price }" 
+                                    v-model="form.min_price"
                                     step="0.1" 
                                     id="price"
                                     required />
@@ -45,32 +45,54 @@
                                 </div>    
                             </div>
                         </div>
-                        <Errors :message="form.errors.price" />
+                        <Errors :message="form.errors.min_price" />
+                    </div>
+                </div>
+                <div v-if="hideName && form.plan_type" class="col-md-6 my-2">
+                    
+                    <div class="form-group">
+                        <Label class="form-label" for="price">Max Price</Label>
+                        <div class="form-control-wrap">
+                            <div class="input-group">
+                                <Input type="number" 
+                                    placeholder="Price"
+                                    class="form-control"
+                                    :class="{ 'border-danger': form.errors.max_price }" 
+                                    v-model="form.max_price"
+                                    step="0.1" 
+                                    id="price"
+                                    required />
+                                <div class="input-group-append">            
+                                    <span class="input-group-text">USD</span>        
+                                </div>    
+                            </div>
+                        </div>
+                        <Errors :message="form.errors.max_price" />
                     </div>
                 </div>
                 <div v-if="hideName && form.plan_type" class="col-md-6 my-2">
                     <div class="form-group">
-                        <Label class="form-label" for="min_profit">Min Profit</Label>
+                        <Label class="form-label" for="profit">Profit</Label>
                         <div class="form-control-wrap">
                             <div class="input-group">
                                 <Input type="number" 
                                     placeholder="Min profit"
                                     class="form-control"
-                                    :class="{ 'border-danger': form.errors.min_profit }" 
-                                    v-model="form.min_profit"
+                                    :class="{ 'border-danger': form.errors.profit }" 
+                                    v-model="form.profit"
                                     step="0.1" 
-                                    id="min_profit"
+                                    id="profit"
                                     required />
                                 <div class="input-group-append">            
                                     <span class="input-group-text">%</span>        
                                 </div>    
                             </div>
                         </div>
-                        <Errors :message="form.errors.min_profit" />
+                        <Errors :message="form.errors.profit" />
                     </div>
                 </div>
                 <div v-if="hideName && form.plan_type" class="col-md-6 my-2">
-                    <div class="form-group">
+                    <!-- <div class="form-group">
                         <Label class="form-label" for="max_profit">Max Profit</Label>
                         <div class="form-control-wrap">
                             <div class="input-group">
@@ -88,7 +110,7 @@
                             </div>
                         </div>
                         <Errors :message="form.errors.max_profit" />
-                    </div>
+                    </div> -->
                 </div>
                 <div v-if="showName && form.plan_type" class="col-md-6 my-2">
                     <div class="form-group">
@@ -106,7 +128,7 @@
                     <div class="form-group">
                         <Label class="form-label" for="max_ref">Max Referrals</Label>
                         <div class="form-control-wrap">
-                            <Input :disabled="inputDisabled" type="number" placeholder="Max referral" v-model="form.max_ref"
+                            <Input type="number" placeholder="Max referral" v-model="form.max_ref"
                                 :class="{ 'border-danger': form.errors.max_ref }" class="form-control" id="max_ref"
                                 required />
                             <Errors :message="form.errors.max_ref" />
@@ -117,7 +139,7 @@
                     <div class="form-group">
                         <Label class="form-label" for="ref_commission">Referral Commission</Label>
                         <div class="form-control-wrap">
-                            <Input :disabled="inputDisabled" type="number" placeholder="Referral Commission" v-model="form.ref_commission"
+                            <Input type="number" placeholder="Referral Commission" step="0.1" v-model="form.ref_commission"
                                 :class="{ 'border-danger': form.errors.ref_commission }" class="form-control" id="ref_commission"
                                 required />
                             <Errors :message="form.errors.ref_commission" />
@@ -126,23 +148,23 @@
                 </div>
                 <div v-if="form.plan_type" class="col-md-6  my-2">
                     <div class="form-group">
-                        <Label class="form-label" for="amount_return">Amount return</Label>
+                        <Label class="form-label" for="amount_return">Expire</Label>
                         <div class="form-control-wrap">    
                             <div class="input-group">     
                                 <input 
-                                    type="number" placeholder="Amount return" 
+                                    type="number" placeholder="Expire" 
                                     class="form-control"
-                                    :class="{ 'border-danger': form.errors.amount_returns }" 
-                                    v-model="form.amount_returns"
+                                    :class="{ 'border-danger': form.errors.expire }" 
+                                    v-model="form.expire"
                                     minlength="0"
                                     id="amount_return" required 
                                     >        
                                 <div class="input-group-append">            
-                                    <span class="input-group-text">Days</span>        
+                                    <span class="input-group-text">%</span>        
                                 </div>    
                             </div>
                         </div>
-                        <Errors :message="form.errors.amount_returns" />
+                        <Errors :message="form.errors.expire" />
                     </div>
                 </div>
                 
@@ -184,10 +206,10 @@ export default {
     beforeMount() {
         this.form = useForm({
             name: null,
-            price: null,
-            amount_returns: null,
-            min_profit: null,
-            max_profit: null,
+            min_price: null,
+            max_price: null,
+            expire: null,
+            profit: null,
             plan_type: null,
             min_ref: null,
             max_ref: null,
@@ -204,10 +226,10 @@ export default {
                 min_ref: args.plan.min_ref ? args.plan.min_ref : null,
                 max_ref: args.plan.max_ref ? args.plan.max_ref : null,
                 ref_commission: args.plan.ref_commission ? args.plan.ref_commission : null,
-                price: args.plan.price ? args.plan.price : null,
-                amount_returns: args.plan.amount_returns ? args.plan.amount_returns : null,
-                min_profit: args.plan.min_profit ? args.plan.min_profit : null,
-                max_profit: args.plan.max_profit ? args.plan.max_profit : null,
+                min_price: args.plan.min_price ? args.plan.min_price : null,
+                max_price: args.plan.max_price ? args.plan.max_price : null,
+                expire: args.plan.expire ? args.plan.expire : null,
+                profit: args.plan.min_profit ? args.plan.min_profit : null,
                 plan_type: args.plan.plan_type ? args.plan.plan_type : null,
             });
         })

@@ -11,6 +11,19 @@ function getUserId(){
     }
     return "AAM".sprintf('%05u', 1);
 }
+
+
+function getTrx($length = 12)
+{
+    $characters = 'ABCDEFGHJKMNOPQRSTUVWXYZ123456789';
+    $charactersLength = strlen($characters);
+    $randomString = '';
+    for ($i = 0; $i < $length; $i++) {
+        $randomString .= $characters[rand(0, $charactersLength - 1)];
+    }
+    return $randomString;
+}
+
 /**
  * Get logged in user role
  * @return object

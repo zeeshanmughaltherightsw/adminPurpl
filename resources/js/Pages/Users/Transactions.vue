@@ -1,12 +1,12 @@
 <template>
   
 <Authenticated>
-    <breadcrumb title="Transactions" :subTitle="`Total transaction ${transactions.total}`"/>
+    <breadcrumb title="Transactions"/>
    
     <div class="card card-bordered card-stretch">
         <div class="card-inner-group">
             <div class="card-inner p-0">
-                <table class="table table-orders" v-if="transactions.data.length > 1">
+                <table class="table table-orders" v-if="transactions.data.length > 0">
                     <thead class="tb-odr-head">
                         <tr class="tb-odr-item">
                             <th class="tb-odr-info">
@@ -34,7 +34,7 @@
                             </td>
                             <td>
                                 <span class="badge badge-dot" :class="{ 'badge-info' : transaction.trx_type == '-', 'badge-success' : transaction.trx_type !== '-' }">
-                                    {{ transaction.trx_type == '-' ? 'Substract' : 'Added' }}
+                                    {{ transaction.trx_type == '-' ? 'Debitted' : 'Credited' }}
                                 </span>
                             </td>
                         </tr><!-- .tb-odr-item -->

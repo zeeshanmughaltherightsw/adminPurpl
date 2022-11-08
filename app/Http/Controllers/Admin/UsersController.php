@@ -75,8 +75,8 @@ class UsersController extends Controller
      */
     public function edit($id)
     {
-        $user = User::with(['media','plan', 'referredBy' => function($q){ $q->select(['id', 'name']); }])->withCount(['referrals', 'transactions'])->findOrFail($id);
-        // return $user;
+        $user = User::with(['media','plan', 'transactions', 'referrals', 'referredBy' => function($q){ $q->select(['id', 'name']); }])
+        ->withCount(['referrals', 'transactions'])->findOrFail($id);
         return Inertia::render('Users/Details', [
             'user' => $user,
         ]);

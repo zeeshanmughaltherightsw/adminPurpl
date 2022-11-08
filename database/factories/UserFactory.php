@@ -6,8 +6,9 @@ use App\Models\Plan;
 use App\Models\User;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
-use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\User>
@@ -22,22 +23,23 @@ class UserFactory extends Factory
     public function definition()
     {
         return [
-            'name' => fake()->firstname(). ' '. fake()->lastName(),
+            'name' => fake()->firstname() . ' ' . fake()->lastName(),
             'username' => fake()->userName(),
             'phone_no' => fake()->phoneNumber(),
-            'ref_by' => Arr::random(User::where('user_type','user')->get()->pluck('id')->toArray()),
+            'ref_by' => mt_rand(4, 203),
             'email' => fake()->safeEmail(),
             'email_verified_at' => now(),
             'status' => Arr::random(['active', 'baned']),
             'user_type' => 'user',
-            'plan_id'  => 4,
+            'plan_id'  => mt_rand(1,9),
             'password' => Hash::make('12345678'), // password
             'remember_token' => Str::random(10),
             'phone_no' => fake()->phoneNumber(),
             'mv' => fake()->boolean(),
             'ev' => fake()->boolean(),
             'two_fa' => fake()->boolean(),
-            'address' => fake()->address()
+            'address' => fake()->address(),
+            'investment' => mt_rand(1, 1000000)
         ];
     }
 

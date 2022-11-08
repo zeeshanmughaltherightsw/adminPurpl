@@ -19,11 +19,11 @@ return new class extends Migration
             $table->decimal('min_price')->nullable();
             $table->decimal('max_price')->nullable();
             $table->enum('plan_type', ['investor', 'referral','high_agent']);
-            $table->decimal('profit')->nullable();
+            $table->decimal('profit')->default(0);
             $table->integer('min_ref')->nullable();
             $table->integer('max_ref')->nullable();
             $table->decimal('ref_commission')->nullable();
-            $table->integer('amount_returns')->nullable();
+            $table->decimal('expire')->default(200);
             $table->boolean('status')->default(true);
             $table->timestamps();
         });

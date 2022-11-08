@@ -25,7 +25,8 @@ class User extends Authenticatable implements HasMedia
         'email',
         'password',
         'account_no',
-        'ref_by'
+        'ref_by',
+        'investment'
     ];
 
     /**
@@ -49,6 +50,17 @@ class User extends Authenticatable implements HasMedia
 
     protected static function booted(){
         parent::boot();
+
+        static::retrieved(function(User $user){
+            $plan = $user->plan; 
+            if($plan){
+                $totalEarning = $user->profit + $user->commission + $user->reward;
+                if($totalEarning >= $user->plan_expiry * $user->investment){
+                    $user->plan_id = null;
+                    $user->save();
+                }
+            }
+        });
 
         static::created(function (User $user) {
             $user->assignRole($user->user_type);
@@ -77,6 +89,6 @@ class User extends Authenticatable implements HasMedia
 
     public function transactions()
     {
-        return $this->hasMany(Transaction::class);
+        return $this->hasMany(Transaction::class, 'user_id');
     }
 }

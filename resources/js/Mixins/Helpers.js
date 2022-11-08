@@ -1,3 +1,4 @@
+import { isInteger } from 'lodash';
 import moment from 'moment';
 
 export default {
@@ -9,6 +10,9 @@ export default {
         // // formate date & time
         formatDateTime(dateString) {
             return moment(dateString).format("Do MMM YYYY h:mm A");
+        },
+        formatCurrency(currency = 0){
+            return parseInt(currency).toFixed(2)
         },
         // // formate date & time Unix
         // formatDateTimeUnix(dateString) {
