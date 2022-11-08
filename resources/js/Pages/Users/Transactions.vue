@@ -1,7 +1,7 @@
 <template>
   
 <Authenticated>
-    <breadcrumb title="" :subTitle="`Total Users ${transactions.total}`"/>
+    <breadcrumb title="Transactions" :subTitle="`Total transaction ${transactions.total}`"/>
    
     <div class="card card-bordered card-stretch">
         <div class="card-inner-group">
