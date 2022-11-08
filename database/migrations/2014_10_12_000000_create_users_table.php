@@ -26,7 +26,10 @@ return new class extends Migration
             $table->unsignedBigInteger('plan_id')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->decimal('balance')->nullable();
+            $table->decimal('investment')->nullable();
+            $table->decimal('profit')->nullable();
+            $table->decimal('commission')->nullable();
+            $table->decimal('reward')->nullable();
             $table->enum('status', ['active', 'baned'])->default('active');
             $table->rememberToken();
             $table->timestamps();

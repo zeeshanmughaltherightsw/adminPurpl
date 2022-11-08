@@ -16,10 +16,13 @@ return new class extends Migration
         Schema::create('transactions', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id')->nullable();
-            $table->double('amount')->nullable();
-            $table->integer('old_balance')->nullable();
-            $table->integer('new_balance')->nullable();
+            $table->decimal('amount', 28,8)->default('0.00000000');
+            $table->decimal('charge', 28,8)->default('0.00000000');
+            $table->decimal('post_balance', 28,8)->default('0.00000000');
+            $table->string('trx_type', 40)->nullable();
+            $table->string('trx', 40)->nullable();
             $table->string('details')->nullable();
+            $table->string('remark', 40)->nullable();
             $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
         });
