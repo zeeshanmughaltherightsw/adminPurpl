@@ -24,6 +24,7 @@ class PlanController extends Controller
                 $query->where('name', 'LIKE', '%' . request()->keyword .'%');
             }
         })->paginate($limit);
+        return $plans;
         return Inertia::render('Plan/Index', [
             'plans' => $plans,
             'searchKeyword' => request()->keyword
