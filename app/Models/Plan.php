@@ -15,11 +15,11 @@ class Plan extends Model
         'min_ref',
         'max_ref',
         'ref_commission',
-        'price',
-        'min_profit',
-        'max_profit',
+        'min_price',
+        'max_price',
+        'profit',
         'plan_type',
-        'amount_returns',
+        'expire',
         'status'
     ];
 
