@@ -25,7 +25,7 @@ class Plan extends Model
 
     public function changeStatus()
     {   
-        $this->status = !$this->status;
+        $this->status = $this->status ? 0 : 1;
         return $this;
     }
 
