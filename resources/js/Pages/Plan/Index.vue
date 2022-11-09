@@ -25,7 +25,13 @@
                         <td data-label="Referrals" class="font-weight-bold">{{ plan.plan_type }} </td>
                         <td data-label="amount return">{{ plan.expire * 100}} %</td>
                         <td data-label="Status" v-if="checkUserPermissions('edit_plans')">
-                            <VueToggle :title="plan.status ? 'true' : 'false'" :name="plan.status ? 'true' : 'false' " @toggle="changeStatus(plan)" activeColor="#2a866d" :toggled="plan.status ? true : false"/>
+                            <VueToggle 
+                                :title="plan.status == 1 ? 'Active' : 'Inactive'" 
+                                :name="plan.status == 1 ? 'Active' : 'Inactive'"
+                                @toggle="changeStatus(plan)" 
+                                activeColor="#2a866d" 
+                                :toggled="plan.status == 1 ? true : false"
+                            />
                         </td>
                         <td data-label="Action">
                             <edit-section 
