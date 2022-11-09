@@ -220,7 +220,6 @@ export default {
     },
     mounted() {
         this.emitter.on('plan-modal', (args) => {
-            console.log(args.plan.plan_type)
             this.form = useForm({
                 id: args.plan.id ? args.plan.id : null,
                 name: args.plan.name ? args.plan.name : null,

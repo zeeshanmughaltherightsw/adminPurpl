@@ -36,13 +36,6 @@
                     <span class="nk-menu-text">Commissions</span>
                   </Link>
               </li>
-
-              <li class="nk-menu-item">
-                  <Link :href="route('add-profit')" class="nk-menu-link">
-                    <span class="nk-menu-icon"><em class="icon ni ni-wallet-fill"></em></span>
-                    <span class="nk-menu-text">Add Profit</span>
-                  </Link>
-              </li>
             <li class="nk-menu-item" v-if="checkUserPermissions('view_permissions')">
                 <Link :href="route('administrators.index')" class="nk-menu-link">
                     <span class="nk-menu-icon"><em class="icon ni ni-user-list-fill"></em></span>      
@@ -61,21 +54,6 @@
                   <span class="nk-menu-text">Manage Users</span>
                 </Link>
             </li>
-            <!-- <li v-if="checkUserPermissions('view_settings')" class="sidebar-menu-item sidebar-dropdown nav-item dropdown" :class="[route().current('settings.*') ? 'show' : '']">
-                <a href="javascript:void(0)" class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-expanded="false" :class="[route().current('settings.*') ? 'active' : '']">
-                  <span class="nk-menu-text">Settings</span>
-                </a>
-                <div class="sidebar-submenu dropdown-menu" :class="[route().current('settings.*') ? 'show' : '']">
-                    <ul>
-                        <li v-for="setting in settings" :key="setting.id"  class="nk-menu-item" :class="[route().current('settings.*') ? 'active' : '']">
-                            <Link :href="route('settings.group', setting.group)" :only="['settings']" class="text-capitalize">
-                              <span class="nk-menu-icon"><em class="icon ni ni-building"></em></span>  
-                              <span class="menu-title ml-3">{{ getGroupName(setting.group) }}</span>
-                            </Link>
-                        </li>
-                    </ul>
-                </div>
-            </li> -->
           </ul>
         </div>
       </div>
