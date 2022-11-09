@@ -23466,6 +23466,7 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     var _this = this;
     this.emitter.on('plan-modal', function (args) {
+      console.log(args.plan.plan_type);
       _this.form = (0,_inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_5__.useForm)({
         id: args.plan.id ? args.plan.id : null,
         name: args.plan.name ? args.plan.name : null,
@@ -23481,15 +23482,6 @@ __webpack_require__.r(__webpack_exports__);
     });
   },
   methods: {
-    cascade: function cascade(e) {
-      if (e.target.value == 'investor') {
-        this.hideName = true;
-        this.showName = false;
-      } else {
-        this.hideName = false;
-        this.showName = true;
-      }
-    },
     submit: function submit() {
       var _this2 = this;
       if (this.form.id) {
@@ -23508,6 +23500,19 @@ __webpack_require__.r(__webpack_exports__);
             $('#genericModal').modal('hide');
           }
         });
+      }
+    }
+  },
+  watch: {
+    'form.plan_type': {
+      handler: function handler(val) {
+        if (val == 'investor') {
+          this.hideName = true;
+          this.showName = false;
+        } else {
+          this.hideName = false;
+          this.showName = true;
+        }
       }
     }
   }
@@ -26284,7 +26289,7 @@ var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementV
   value: "referral"
 }, "For Referral", -1 /* HOISTED */);
 var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", {
-  value: "agent"
+  value: "high_agent"
 }, "For Highly Agent", -1 /* HOISTED */);
 var _hoisted_9 = [_hoisted_5, _hoisted_6, _hoisted_7, _hoisted_8];
 var _hoisted_10 = {
@@ -26449,7 +26454,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           return $data.form.plan_type = $event;
         }),
         onChange: _cache[1] || (_cache[1] = function () {
-          return $options.cascade && $options.cascade.apply($options, arguments);
+          return _ctx.cascade && _ctx.cascade.apply(_ctx, arguments);
         }),
         "class": "form-control"
       }, _hoisted_9, 544 /* HYDRATE_EVENTS, NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, $data.form.plan_type]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Errors, {
