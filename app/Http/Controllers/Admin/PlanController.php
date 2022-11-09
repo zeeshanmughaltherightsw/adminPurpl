@@ -112,7 +112,8 @@ class PlanController extends Controller
 
     public function changeStatus(Plan $plan)
     {
-        $plan->changeStatus()->save();
+        $plan->status = $plan->status ? 0 : 1;
+        $plan->save();
         return redirect()->route('manage-plan.index');
     }
 }
