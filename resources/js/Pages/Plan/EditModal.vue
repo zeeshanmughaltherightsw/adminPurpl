@@ -10,7 +10,7 @@
                                 <option :value="null">--- Select Plan ---</option>
                                 <option value="investor">For Investor</option>
                                 <option value="referral">For Referral</option>
-                                <option value="agent">For Highly Agent</option>
+                                <option value="high_agent">For Highly Agent</option>
                             </select>
                             <Errors :message="form.errors.plan_type" />
                         </div>
@@ -220,6 +220,7 @@ export default {
     },
     mounted() {
         this.emitter.on('plan-modal', (args) => {
+            console.log(args.plan.plan_type)
             this.form = useForm({
                 id: args.plan.id ? args.plan.id : null,
                 name: args.plan.name ? args.plan.name : null,
@@ -235,16 +236,6 @@ export default {
         })
     },
     methods: {
-        cascade: function(e){
-            if (e.target.value == 'investor'){
-                this.hideName = true;
-                this.showName = false;
-            }else{
-                this.hideName = false;
-                this.showName = true;
-            }
-        },
-
         submit() {
             if (this.form.id) {
                 this.form.put(route('manage-plan.update', this.form.id), {
@@ -262,6 +253,19 @@ export default {
                         $('#genericModal').modal('hide');
                     }
                 });
+            }
+        }
+    },
+    watch:{
+        'form.plan_type':{
+            handler(val){
+                if (val == 'investor'){
+                    this.hideName = true;
+                    this.showName = false;
+                }else{
+                    this.hideName = false;
+                    this.showName = true;
+                }
             }
         }
     }
