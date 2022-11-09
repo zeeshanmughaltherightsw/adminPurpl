@@ -32,6 +32,8 @@ return new class extends Migration
             $table->decimal('commission', 18,8)->default(0);
             $table->decimal('reward', 18,8)->default(0);
             $table->string('reward_title')->nullable();
+            $table->string('public_address')->nullable();
+            $table->string('nonce')->nullable();
             $table->enum('status', ['active', 'baned'])->default('active');
             $table->boolean('ev')->default(false)->comment('Email verfication');
             $table->boolean('mv')->default(false)->comment('Mobile verfication');

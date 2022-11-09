@@ -3,6 +3,7 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Support\Str;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\Permission\Traits\HasRoles;
@@ -62,6 +63,9 @@ class User extends Authenticatable implements HasMedia
             }
         });
 
+        static::creating(function (User $user) {
+            $user->nonce = mt_rand(1,1000000) * 1000000;
+        });
         static::created(function (User $user) {
             $user->assignRole($user->user_type);
         });
