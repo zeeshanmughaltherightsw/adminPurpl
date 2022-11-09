@@ -68,11 +68,11 @@ class RewardSeeder extends Seeder
             }], 'investment')
         ->whereHas('referrals', function($query){
             $query->where('investment', '>=', 5000);
-        })->whereStatus('active')->whereNotNull('plan_id')->where('user_type', 'user')->get();
+        })->whereStatus('active')->where('plan_id', 5)->where('user_type', 'user')->get();
         foreach($users as $user){
             $reward = Reward::where('total_investment', '<=', $user->referrals_sum_investment)->orderBy('id', 'desc')->first();
             if($reward){
-                $user->reward += $reward->amount;
+                $user->reward = $reward->amount;
                 $user->reward_title = $reward->name;
             }
             $user->save();

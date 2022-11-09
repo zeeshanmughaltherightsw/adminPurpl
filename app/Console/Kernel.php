@@ -15,7 +15,7 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->command('add:profit')->weekdays()->timezone('Asia/Karachi');
+        $schedule->command('add:profit')->weekly()->timezone('Asia/Karachi');
         $schedule->command('add:reward')->daily()->timezone('Asia/Karachi');
     }
 
