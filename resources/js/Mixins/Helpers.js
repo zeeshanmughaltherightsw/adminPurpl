@@ -118,18 +118,6 @@ export default {
         getGroupName(group) {
             return group ? group.replaceAll('_', ' ') : null;
         },
-
-        // get sync categories
-        syncedCategories(cat_id, business_categories) {
-            var value = false;
-            value =  business_categories.find(function (category) {
-                if (category.id === cat_id) {
-                    return true;
-                }
-            })
-            return value;
-        },
-
         // get side bar permissions
         sideBarPermissions (value) {
             var permission = false;
@@ -175,13 +163,6 @@ export default {
         getSelectedBusinessValue() {
             return localStorage.getItem("selectedBusiness")
         },
-
-        ellipsis(text, size = 30) {
-            if (text.length <= size) {
-                return text;
-            }
-            return text.substr(0, size) + '\u2026'
-        },
         setTypeFormat(value){
             return value.replaceAll("_"," ");
         },
@@ -218,148 +199,5 @@ export default {
         hideTooltip() {
             // $('[data-bs-toggle="tooltip"]').tooltip("hide");
         },
-
-        orderStatus(data, order) {
-            let statusArr = []
-            data.forEach((value, index) => {
-                switch (order.order_status.status) {
-                    case 'pending':
-                        if(value.status == "pending") {
-                            statusArr.push(value)
-                        }
-                        if(value.status == "accepted") {
-                            statusArr.push(value)
-                        }
-                        if(value.status == "rejected") {
-                            statusArr.push(value)
-                        }
-                        break;
-                    case 'accepted':
-                        if(value.status == "accepted") {
-                            statusArr.push(value)
-                        }
-                        if(value.status == "completed") {
-                            statusArr.push(value)
-                        }
-                        if(value.status == "refunded" && order.payment_intent_id ) {
-                            statusArr.push(value)
-                        }
-                        if(order.order_type == 'pick_up' && value.status == "ready_for_collection") {
-                            statusArr.push(value)
-                        }
-                        if(order.order_type == 'delivery' && value.status == "ready_for_delivery") {
-                            statusArr.push(value)
-                        }
-                        break;
-                    case 'completed':
-                        if(value.status == "completed") {
-                            statusArr.push(value)
-                        }
-                        if(value.status == "refunded") {
-                            statusArr.push(value)
-                        }
-                        break;
-                    case 'Processing':
-                        if(value.status == "Processing") {
-                            statusArr.push(value)
-                        }
-                        break;
-                    case 'ready_for_collection':
-                        if(value.status == "ready_for_collection") {
-                            statusArr.push(value)
-                        }
-                        if(value.status == "completed") {
-                            statusArr.push(value)
-                        }
-                        if(value.status == "refunded") {
-                            statusArr.push(value)
-                        }
-                        break;
-                    case 'ready_for_delivery':
-                        if(value.status == "ready_for_delivery") {
-                            statusArr.push(value)
-                        }
-                        if(value.status == "completed") {
-                            statusArr.push(value)
-                        }
-                        if(value.status == "refunded") {
-                            statusArr.push(value)
-                        }
-                        if(order.order_type == 'delivery' && value.status == "delivery_failed") {
-                            statusArr.push(value)
-                        }
-                        break;
-                    case 'out_for_delivery':
-                        if(value.status == "out_for_delivery") {
-                            statusArr.push(value)
-                        }
-                        if(value.status == "completed") {
-                            statusArr.push(value)
-                        }
-                        if(value.status == "refunded") {
-                            statusArr.push(value)
-                        }
-                        if(order.order_type == 'delivery' && value.status == "delivery_failed") {
-                            statusArr.push(value)
-                        }
-                        break;
-                    case 'delivery_failed':
-                        if(value.status == "delivery_failed") {
-                            statusArr.push(value)
-                        }
-                        if(value.status == "ready_for_delivery") {
-                            statusArr.push(value)
-                        }
-                        if(value.status == "refunded") {
-                            statusArr.push(value)
-                        }
-                        if(value.status == "rejected") {
-                            statusArr.push(value)
-                        }
-                        break;
-                    case 'partially_refunded':
-                        if(value.status == "partially_refunded") {
-                            statusArr.push(value)
-                        }
-                        break;
-                    case 'refund_failed':
-                        if(value.status == "refund_failed") {
-                            statusArr.push(value)
-                        }
-                        break;
-                    default:
-                        break;
-                }
-            });
-            return statusArr
-        },
-
-        orderStatusFilter(data, order_type) {
-            let statusArr = []
-            data.forEach((value, index) => {
-                if(value.id == 1 || value.id == 2) {
-                    statusArr.push(value)
-                }
-                if(order_type == 'pick_up') {
-                    if(value.id == 3) {
-                        statusArr.push(value)
-                    }
-                }
-                if(order_type == 'delivery') {
-                    if(value.id == 4 || value.id == 5) {
-                        statusArr.push(value)
-                    }
-                }
-            });
-            return statusArr
-        },
-
-        orderTotal(orders, decimalLength, decimalSeparator) {
-            var total = 0
-            orders.data.forEach((value, index) => {
-                total += value.total
-            })
-            return total.toFixed(decimalLength.value)
-        }
     }
 }

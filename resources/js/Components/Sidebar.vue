@@ -16,8 +16,9 @@
         <div class="nk-sidebar-menu" data-simplebar>
           <ul class="nk-menu">
             <li class="nk-menu-heading">
-              
+              Main
             </li><!-- .nk-menu-item -->
+            
             <li class="nk-menu-item">
               <Link :href="route('dashboard')" class="nk-menu-link">
                   <span class="nk-menu-icon"><em class="icon ni ni-dashboard-fill"></em></span>
@@ -54,6 +55,22 @@
                   <span class="nk-menu-text">Manage Users</span>
                 </Link>
             </li>
+            <li class="nk-menu-heading">
+              Settings
+            </li><!-- .nk-menu-item -->
+            <li class="nk-menu-item has-sub">
+              <a href="#" class="nk-menu-link nk-menu-toggle">
+                  <span class="nk-menu-icon"><em class="icon ni ni-setting-alt"></em></span>
+                  <span class="nk-menu-text">Settings</span>
+              </a>
+              <ul class="nk-menu-sub">
+                  <li class="nk-menu-item">
+                      <Link :href="route('settings.group', 'payment')" class="nk-menu-link">
+                        <span class="nk-menu-icon"><em class="icon ni ni-dot"></em></span>
+                        <span class="nk-menu-text">Payment Settings</span></Link>
+                  </li>
+              </ul><!-- .nk-menu-sub -->
+            </li><!-- .nk-menu-item -->
           </ul>
         </div>
       </div>

@@ -943,7 +943,7 @@
     // NioApp.coms.docReady.push(NioApp.ColorTXT);
     // NioApp.coms.docReady.push(NioApp.Copied);
     // NioApp.coms.docReady.push(NioApp.Ani.init);
-    // NioApp.coms.docReady.push(NioApp.TGL.init);
+    NioApp.coms.docReady.push(NioApp.TGL.init);
     NioApp.coms.docReady.push(NioApp.BS.init);
     // NioApp.coms.docReady.push(NioApp.Validate.init);
     // NioApp.coms.docReady.push(NioApp.Picker.init);

@@ -6,7 +6,6 @@ use Carbon\Carbon;
 use App\Models\GeneralSetting;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class GeneralSettingsSeeder extends Seeder
 {
@@ -243,13 +242,32 @@ class GeneralSettingsSeeder extends Seeder
                     'is_required' => null,
                     'created_at' => Carbon::now()
                 ],
+                [
+                    'group' => 'payment',
+                    'type' => 'text',
+                    'name' => 'Payment Address',
+                    'key' => 'payment_address',
+                    'value' => '0x4E6ec31F1B774EE690Ff5fDC2Ec7F4AD371a8cAb',
+                    'is_required' => 1,
+                    'created_at' => Carbon::now()
+                ],
+                // [
+                //     'group' => 'payment',
+                //     'type' => 'checkbox',
+                //     'name' => 'Status',
+                //     'key' => 'status',
+                //     'value' => 'active',
+                //     'is_required' => 1,
+                //     'created_at' => Carbon::now()
+                // ],
                 
         ]);
 
         // email settings and Push Notifications
         $groups = [
             'email_notification',
-            'push_notification'
+            'push_notification',
+            'payment'
         ];
         $types = [
             'General',
@@ -326,7 +344,6 @@ class GeneralSettingsSeeder extends Seeder
                         if($type == 'General'){
                             // general data stored
                             if($group == 'email_notification'){
-                                 
                                 foreach ($generalForEmail as $setting) {
                                     $setting = array_merge($setting,['type' => $type, 'group' => $group]);
                                     GeneralSetting::create($setting);
