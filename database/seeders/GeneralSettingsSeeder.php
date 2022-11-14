@@ -251,6 +251,15 @@ class GeneralSettingsSeeder extends Seeder
                     'is_required' => 1,
                     'created_at' => Carbon::now()
                 ],
+                [
+                    'group' => 'payment',
+                    'type' => 'text',
+                    'name' => 'Minimum ammount',
+                    'key' => 'min_amount',
+                    'value' => '20',
+                    'is_required' => 1,
+                    'created_at' => Carbon::now()
+                ],
                 // [
                 //     'group' => 'payment',
                 //     'type' => 'checkbox',
