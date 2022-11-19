@@ -47,8 +47,12 @@ class UserTableSeeder extends Seeder
             'user_type' => 'user',
             'email_verified_at' => Carbon::now(),
             'plan_id' => '1',
-            'investment' => 5000,
+            'investment' => 0,
+            'ref_by' => 1
         ]);
 
+        $user = User::find(1);
+        $user->ref_by = 2;
+        $user->save();
     }
 }

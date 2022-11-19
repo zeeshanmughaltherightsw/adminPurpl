@@ -15,11 +15,17 @@ class Transaction extends Model
         'trx_type',
         'trx_type',
         'user_id',
-        'reward'
+        'reward',
+        'ref_id',
     ];
 
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function commissionRecord()
+    {
+        return $this->hasMany(CommissionRecord::class);
     }
 }

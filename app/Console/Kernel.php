@@ -2,6 +2,7 @@
 
 namespace App\Console;
 
+use App\Jobs\AddCommissionToUser;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -17,6 +18,7 @@ class Kernel extends ConsoleKernel
     {
         $schedule->command('add:profit')->weekly()->timezone('Asia/Karachi');
         $schedule->command('add:reward')->daily()->timezone('Asia/Karachi');
+        $schedule->job(new AddCommissionToUser())->everyMinute()->timezone('Asia/Karachi');
     }
 
     /**

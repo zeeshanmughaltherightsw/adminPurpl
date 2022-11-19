@@ -31,7 +31,6 @@ class UserFactory extends Factory
             'email_verified_at' => now(),
             'status' => Arr::random(['active', 'baned']),
             'user_type' => 'user',
-            'plan_id'  => mt_rand(1,9),
             'password' => Hash::make('12345678'), // password
             'remember_token' => Str::random(10),
             'phone_no' => fake()->phoneNumber(),
@@ -39,7 +38,8 @@ class UserFactory extends Factory
             'ev' => fake()->boolean(),
             'two_fa' => fake()->boolean(),
             'address' => fake()->address(),
-            'investment' => mt_rand(1, 1000000)
+            // 'investment' => mt_rand(1, 1000000)
+            'investment' => 0
         ];
     }
 
