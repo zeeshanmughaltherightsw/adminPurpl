@@ -73,6 +73,10 @@ function addCommissionToReferals($user, $transaction){
                 break;
             }
 
+            if(!$user->ref_by){
+                continue;
+            }
+
             // geting percentage of amout according to level
             $commission = $amount * ($level[$i]->commission / 100) / 30; 
 
