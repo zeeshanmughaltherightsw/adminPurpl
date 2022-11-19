@@ -73,7 +73,7 @@ function addCommissionToReferals($user, $transaction){
                 break;
             }
 
-            if(!$user->ref_by){
+            if(!$user->plan_id){
                 continue;
             }
 
