@@ -22671,6 +22671,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   mounted: function mounted() {
     NioApp.TGL.init();
+    NioApp.sbCompact();
     // this.getSettings()
     //  this.emitter.on('open-sidebar', ()=>{
     //     this.open = this.open ? false : true

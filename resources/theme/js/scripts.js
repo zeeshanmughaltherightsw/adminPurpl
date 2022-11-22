@@ -943,13 +943,13 @@
     // NioApp.coms.docReady.push(NioApp.ColorTXT);
     // NioApp.coms.docReady.push(NioApp.Copied);
     // NioApp.coms.docReady.push(NioApp.Ani.init);
-    NioApp.coms.docReady.push(NioApp.TGL.init);
+    // NioApp.coms.docReady.push(NioApp.TGL.init);
     NioApp.coms.docReady.push(NioApp.BS.init);
     // NioApp.coms.docReady.push(NioApp.Validate.init);
     // NioApp.coms.docReady.push(NioApp.Picker.init);
     // NioApp.coms.docReady.push(NioApp.Addons.Init);
     // NioApp.coms.docReady.push(NioApp.Wizard);
-    NioApp.coms.docReady.push(NioApp.sbCompact);
+    // NioApp.coms.docReady.push(NioApp.sbCompact);
     // NioApp.coms.winLoad.push(NioApp.ModeSwitch);
   };
 
