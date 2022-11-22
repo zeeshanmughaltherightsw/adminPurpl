@@ -26,11 +26,17 @@
               </Link>
             </li>
             <li class="nk-menu-item" v-if="checkUserPermissions('view_plans')">
-                <Link :href="route('manage-plan.index')" class="nk-menu-link">
-                  <span class="nk-menu-icon"><em class="icon ni ni-repeat-v"></em></span>
-                  <span class="nk-menu-text">Plan</span>
-                </Link>
-              </li>
+              <Link :href="route('manage-plan.index')" class="nk-menu-link">
+                <span class="nk-menu-icon"><em class="icon ni ni-repeat-v"></em></span>
+                <span class="nk-menu-text">Plan</span>
+              </Link>
+            </li>
+            <li class="nk-menu-item" v-if="checkUserPermissions('view_reward')">
+              <Link :href="route('reward.index')" class="nk-menu-link">
+                <span class="nk-menu-icon"><em class="icon ni ni-repeat-v"></em></span>
+                <span class="nk-menu-text">Rewards</span>
+              </Link>
+            </li>
               <li class="nk-menu-item" v-if="checkUserPermissions('view_commission')">
                   <Link :href="route('commission.index')" class="nk-menu-link">
                     <span class="nk-menu-icon"><em class="icon ni ni-wallet-fill"></em></span>

@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Reward extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'name',
+        'amount',
+        'total_investment',
+        'status',
+    ];
 }
