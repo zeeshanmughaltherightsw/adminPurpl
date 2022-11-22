@@ -19,7 +19,7 @@ class Kernel extends ConsoleKernel
         // $schedule->command('inspire')->everyMinute();
         $schedule->command('add:profit')->weekly()->timezone('Asia/Karachi');
         $schedule->command('add:reward')->daily()->timezone('Asia/Karachi');
-        $schedule->job(new AddCommissionToUser())->daily()->timezone('Asia/Karachi');
+        $schedule->job(new AddCommissionToUser())->weekdays()->timezone('Asia/Karachi');
     }
 
     /**
