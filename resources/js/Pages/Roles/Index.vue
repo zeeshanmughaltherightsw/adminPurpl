@@ -1,4 +1,5 @@
 <template>
+    <Head title="Roles Manager" />
   <Authenticated>
     <div class="post d-flex flex-column-fluid" id="kt_post">
         <!--begin::Container-->
