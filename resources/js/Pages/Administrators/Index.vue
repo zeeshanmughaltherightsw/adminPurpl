@@ -42,7 +42,7 @@
                                     </td>
                                     <td data-label="Status">
                                         <span class="badge fs-7 fw-bold text-capitalize" 
-                                        :class="{ 'badge-light-success': administrator.status == 'active', 'badge-light-danger': administrator.status === 'inactive' }">{{ administrator.status }}</span>
+                                        :class="{ 'badge-success': administrator.status == 'active', 'badge-danger': administrator.status === 'inactive' }">{{ administrator.status }}</span>
                                     </td>
                                     <td data-label="Created at">
                                         <span class="text-muted fw-bold text-muted d-block fs-7">{{ formatDate(administrator.created_at)}}</span>
