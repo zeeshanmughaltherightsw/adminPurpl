@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('name');
             $table->decimal('total_investment', 18,8)->default(0);
             $table->decimal('amount', 18,8)->default(0);
+            $table->boolean('status', 18,8)->nullable()->default(true);
             $table->timestamps();
         });
     }

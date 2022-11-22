@@ -2,8 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\Admin\CommissionController;
-use App\Http\Controllers\Admin\AdministratorController;
 use App\Models\Reward;
 use App\Models\User;
 
@@ -32,8 +30,11 @@ Route::namespace('App\Http\Controllers\Admin')->group(function(){
         });
         
         Route::resource('/manage-plan', PlanController::class)->middleware('can:view_plans');
-        Route::get('/manage-plan/status/{plan}', [App\Http\Controllers\Admin\PlanController::class, 'changeStatus'])->middleware('can:edit_plans')->name('manage-plan.status');
+        Route::get('/manage-plan/status/{plan}', [PlanController::class, 'changeStatus'])->middleware('can:edit_plans')->name('reward.status');
+        Route::resource('/reward', RewardController::class)->middleware('can:view_reward');
+        Route::get('/reward/status/{reward}', [RewardController::class, 'changeStatus'])->middleware('can:edit_reward')->name('reward.status');
         Route::resource('/commission', CommissionController::class);
+        
         Route::get('/add-profit', function () {
             $users = User::withSum(
                 ['referrals' => function ($query){
