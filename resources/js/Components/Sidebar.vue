@@ -107,6 +107,7 @@ export default {
     // }
   },
   mounted(){
+    NioApp.TGL.init()
     // this.getSettings()
     //  this.emitter.on('open-sidebar', ()=>{
     //     this.open = this.open ? false : true
