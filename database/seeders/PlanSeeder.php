@@ -52,7 +52,7 @@ class PlanSeeder extends Seeder
             ],
 
             [
-                'name'            =>   'Referral Basic',
+                'name'            =>   'Consultant',
                 'min_price'       =>   1000,
                 'max_price'       =>   2000,
                 'min_ref'         =>   1,
@@ -65,7 +65,7 @@ class PlanSeeder extends Seeder
 
             ],
             [
-                'name'            =>   'Referral Starter',
+                'name'            =>   'Executive',
                 'min_price'       =>   1000,
                 'max_price'       =>   2000,
                 'min_ref'         =>   5,
