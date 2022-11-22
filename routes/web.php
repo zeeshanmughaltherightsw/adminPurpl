@@ -23,7 +23,7 @@ Route::get('/', function () {
 })->middleware('guest');
 
 Route::namespace('App\Http\Controllers\Admin')->group(function(){
-    Route::middleware(['auth', 'verified'])->prefix('admin')->group(function(){
+    Route::middleware(['auth', 'verified'])->group(function(){
         Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
         Route::middleware('can:view_settings')->controller(SiteController::class)->group(function(){
             Route::get('/settings', 'getSettings')->name('settings');
