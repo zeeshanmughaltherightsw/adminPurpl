@@ -1,5 +1,5 @@
 <template>
-  <head title="Roles and permissiosn" />
+  <Head :title="`${role.name} - permissiosn`" />
   <AuthenticatedLayout>
     <Breadcrumb title="Roles and Permissions" />
     <div>
