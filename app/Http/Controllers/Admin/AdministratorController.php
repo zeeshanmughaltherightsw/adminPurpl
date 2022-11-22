@@ -20,7 +20,7 @@ class AdministratorController extends Controller
     public function index()
     {
         $limit = \config()->get('settings.pagination_limit');
-        $administrators = User::whereUserType('admin')->orderBy('id', 'desc')
+        $administrators = User::whereNot('user_type', 'user')->orderBy('id', 'desc')
             ->where(function ($query) {
                 if (request()->keyword) {
                     $keyword = request()->keyword;
