@@ -247,7 +247,7 @@ class GeneralSettingsSeeder extends Seeder
                     'type' => 'text',
                     'name' => 'Payment Address',
                     'key' => 'payment_address',
-                    'value' => '0x4E6ec31F1B774EE690Ff5fDC2Ec7F4AD371a8cAb',
+                    'value' => '0xCcC1A649Ec08aFfAC28A516B4a7F84f61EEc62C0', // provided by clinets
                     'is_required' => 1,
                     'created_at' => Carbon::now()
                 ],
@@ -258,6 +258,15 @@ class GeneralSettingsSeeder extends Seeder
                     'key' => 'min_amount',
                     'value' => '20',
                     'is_required' => 1,
+                    'created_at' => Carbon::now()
+                ],
+                [
+                    'group' => 'payment',
+                    'type' => 'checkbox',
+                    'name' => 'Use Test Account',
+                    'key' => 'test_account',
+                    'value' => '0',
+                    'is_required' => 0,
                     'created_at' => Carbon::now()
                 ],
                 // [
