@@ -6,7 +6,7 @@
         <div class="card-inner">
             <form @submit.prevent="submit">
                 <div class="row">
-                    <div v-for="(setting, index) in settings" :key="setting.id" class="col-md-6 col-sm-12">
+                    <div v-for="(setting, index) in settings" :key="setting.id" class="col-md-6 col-sm-12 mt-3">
                         <vue-toggle
                             v-if="form.settings[index].type == 'checkbox' && checkUserPermissions('edit_settings')"
                             :title="form.settings[index].name" 
@@ -86,7 +86,7 @@ export default {
             })
         },
         toggle(e, index){
-            this.form.settings[index].value = e ? 'active' : 'inactive';
+            this.form.settings[index].value = e ? '1' : '0';
         },
     },
    
