@@ -27,14 +27,16 @@ class DatabaseSeeder extends Seeder
             GeneralSettingsSeeder::class,
             PlanSeeder::class,
             PlanLevelSeeder::class,
-        ]);
-
-        \App\Models\User::factory(200)->create();
-        $this->call([
-            UserTableSeeder::class,
-            UserLoginSeeder::class,
             RewardSeeder::class,
         ]);
+
+        if(env('APP_ENV') == 'local'){
+            \App\Models\User::factory(200)->create();
+            $this->call([
+                UserTableSeeder::class,
+                UserLoginSeeder::class,
+            ]);
+        }
 
         //Admin Roles
         $admins = User::where('user_type', 'admin')->first();
