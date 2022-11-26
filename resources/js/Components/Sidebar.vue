@@ -65,10 +65,10 @@
             </li>
 
             <li class="nk-menu-item" 
-            :class="{ 'active current-page': route().current('gateway.*', 'deposit') }">
+            :class="{ 'active current-page': route().current('gateway.*', 'withdrawal') }">
                 <Link :href="route('gateway.index', 'deposit')" class="nk-menu-link" preserve-scroll>
                   <span class="nk-menu-icon"><em class="icon ni ni-users-fill"></em></span>
-                  <span class="nk-menu-text">Payment method</span>
+                  <span class="nk-menu-text">Withdrawal methods</span>
                 </Link>
             </li>
 
