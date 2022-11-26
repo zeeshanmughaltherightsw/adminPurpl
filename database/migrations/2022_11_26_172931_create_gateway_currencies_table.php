@@ -24,7 +24,7 @@ return new class extends Migration
             $table->integer('percentage_charge')->default(0);
             $table->decimal('fixed_charge', 18,8)->default(0);
             $table->decimal('rate', 18,8)->default(0);
-            $table->json('gateway_parameter')->default('[]');
+            $table->json('gateway_parameter')->nullable()->default('[]');
             $table->timestamps();
         });
     }
