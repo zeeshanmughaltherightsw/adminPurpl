@@ -19,44 +19,44 @@
               Main
             </li><!-- .nk-menu-item -->
             
-            <li class="nk-menu-item">
-              <Link :href="route('dashboard')" class="nk-menu-link">
+            <li class="nk-menu-item" :class="{ 'active current-page' : route().current('dashboard') }">
+              <Link :href="route('dashboard')" class="nk-menu-link" preserve-scroll>
                   <span class="nk-menu-icon"><em class="icon ni ni-dashboard-fill"></em></span>
                   <span class="nk-menu-text">Dashboard</span>
               </Link>
             </li>
-            <li class="nk-menu-item" v-if="checkUserPermissions('view_plans')">
-              <Link :href="route('manage-plan.index')" class="nk-menu-link">
+            <li class="nk-menu-item" v-if="checkUserPermissions('view_plans')" :class="{ 'active current-page': route().current('manage-plan.*') }">
+              <Link :href="route('manage-plan.index')" class="nk-menu-link" preserve-scroll>
                 <span class="nk-menu-icon"><em class="icon ni ni-repeat-v"></em></span>
                 <span class="nk-menu-text">Plan</span>
               </Link>
             </li>
-            <li class="nk-menu-item" v-if="checkUserPermissions('view_reward')">
-              <Link :href="route('reward.index')" class="nk-menu-link">
+            <li class="nk-menu-item" v-if="checkUserPermissions('view_reward')" :class="{ 'active current-page': route().current('reward.*') }">
+              <Link :href="route('reward.index')" class="nk-menu-link" preserve-scroll>
                 <span class="nk-menu-icon"><em class="icon ni ni-repeat-v"></em></span>
                 <span class="nk-menu-text">Rewards</span>
               </Link>
             </li>
-              <li class="nk-menu-item" v-if="checkUserPermissions('view_commission')">
-                  <Link :href="route('commission.index')" class="nk-menu-link">
+              <li class="nk-menu-item" v-if="checkUserPermissions('view_commission')" :class="{ 'active current-page': route().current('commission.*') }">
+                  <Link :href="route('commission.index')" class="nk-menu-link" preserve-scroll>
                     <span class="nk-menu-icon"><em class="icon ni ni-wallet-fill"></em></span>
                     <span class="nk-menu-text">Commissions</span>
                   </Link>
               </li>
-            <li class="nk-menu-item" v-if="checkUserPermissions('view_permissions')">
-                <Link :href="route('administrators.index')" class="nk-menu-link">
+            <li class="nk-menu-item" v-if="checkUserPermissions('view_permissions')" :class="{ 'active current-page': route().current('administrators.*') }">
+                <Link :href="route('administrators.index')" class="nk-menu-link" preserve-scroll>
                     <span class="nk-menu-icon"><em class="icon ni ni-user-list-fill"></em></span>      
                     <span class="nk-menu-text">Roles Manager</span>
                 </Link>
             </li>
-            <li class="nk-menu-item" v-if="checkUserPermissions('view_roles')">
-                <Link :href="route('roles.index')" class="nk-menu-link">
+            <li class="nk-menu-item" v-if="checkUserPermissions('view_roles')" :class="{ 'active current-page': route().current('roles.*') }">
+                <Link :href="route('roles.index')" class="nk-menu-link" preserve-scroll>
                   <span class="nk-menu-icon"><em class="icon ni ni-lock-fill"></em></span>
                   <span class="nk-menu-text">Permission</span>
                 </Link>
             </li>
-            <li class="nk-menu-item" v-if="checkUserPermissions('view_users')">
-                <Link :href="route('users.index')" class="nk-menu-link">
+            <li class="nk-menu-item" v-if="checkUserPermissions('view_users')"  :class="{ 'active current-page': route().current('users.*') }">
+                <Link :href="route('users.index')" class="nk-menu-link" preserve-scroll>
                   <span class="nk-menu-icon"><em class="icon ni ni-users-fill"></em></span>
                   <span class="nk-menu-text">Manage Users</span>
                 </Link>
@@ -64,16 +64,26 @@
             <li class="nk-menu-heading">
               Settings
             </li><!-- .nk-menu-item -->
-            <li class="nk-menu-item has-sub">
+            <li class="nk-menu-item has-sub"  :class="{ 'active': route().current('settings.*') }">
               <a href="#" class="nk-menu-link nk-menu-toggle">
                   <span class="nk-menu-icon"><em class="icon ni ni-setting-alt"></em></span>
                   <span class="nk-menu-text">Settings</span>
               </a>
               <ul class="nk-menu-sub">
-                  <li class="nk-menu-item">
-                      <Link :href="route('settings.group', 'payment')" class="nk-menu-link">
+                  <li class="nk-menu-item" :class="{ 'active current-page': route().current('settings.group', 'payment') }">
+                      <Link :href="route('settings.group', 'payment')" class="nk-menu-link" preserve-scroll>
                         <span class="nk-menu-icon"><em class="icon ni ni-dot"></em></span>
                         <span class="nk-menu-text">Payment Settings</span></Link>
+                  </li>
+                  <li class="nk-menu-item" :class="{ 'active current-page': route().current('settings.group', 'withdraw') }">
+                      <Link :href="route('settings.group', 'withdraw')" class="nk-menu-link" preserve-scroll>
+                        <span class="nk-menu-icon"><em class="icon ni ni-dot"></em></span>
+                        <span class="nk-menu-text">Withdraw</span></Link>
+                  </li>
+                  <li class="nk-menu-item" :class="{ 'active current-page': route().current('settings.group', 'transfer') }">
+                      <Link :href="route('settings.group', 'transfer')" class="nk-menu-link" preserve-scroll>
+                        <span class="nk-menu-icon"><em class="icon ni ni-dot"></em></span>
+                        <span class="nk-menu-text">Transfer</span></Link>
                   </li>
               </ul><!-- .nk-menu-sub -->
             </li><!-- .nk-menu-item -->
