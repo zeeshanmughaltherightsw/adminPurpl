@@ -447,9 +447,9 @@
   }; // Dropzone Init @v1.0
 
 
-  NioApp.Dropzone.init = function () {
+  NioApp.Dropzone.init = function (url) {
     NioApp.Dropzone('.upload-zone', {
-      url: "/images"
+      url: url
     });
   }; // Wizard @v1.0
 
@@ -693,8 +693,6 @@
             _orientation = _orientation ? _orientation : 'horizontal',
             _tooltip = $self.data('tooltip'),
             _tooltip = _tooltip ? _tooltip : false;
-
-        console.log(_tooltip);
         var target = document.getElementById(self_id);
         var def = {
           start: _start,
@@ -953,6 +951,6 @@
     // NioApp.coms.winLoad.push(NioApp.ModeSwitch);
   };
 
-  NioApp.init();
+  // NioApp.init();
   return NioApp;
 }(NioApp, jQuery);

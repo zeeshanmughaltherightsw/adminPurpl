@@ -121,7 +121,7 @@
                         </div>
                         <form @submit.prevent="submitLevel">
                             <div class="form-group">
-                                <label class="text-success"> Level & Commission :
+                                <label class="text-info"> Level & Commission :
                                     <small>(Old Levels will Remove After Generate)</small>
                                 </label>
                                 <div class="row">

@@ -13,17 +13,18 @@ return new class extends Migration
             $table->bigIncrements('id');
             $table->morphs('model');
             $table->uuid('uuid')->nullable()->unique();
-            $table->string('collection_name');
             $table->string('name');
             $table->string('file_name');
             $table->string('mime_type')->nullable();
-            $table->string('disk');
+            $table->string('type')->nullable();
+            $table->boolean('is_external')->nullable();
+            $table->string('disk')->default('public');
             $table->string('conversions_disk')->nullable();
-            $table->unsignedBigInteger('size');
-            $table->json('manipulations');
-            $table->json('custom_properties');
-            $table->json('generated_conversions');
-            $table->json('responsive_images');
+            $table->string('size');
+            $table->json('manipulations')->nullable();
+            $table->json('custom_properties')->nullable();
+            $table->json('generated_conversions')->nullable();
+            $table->json('responsive_images')->nullable();
             $table->unsignedInteger('order_column')->nullable()->index();
 
             $table->nullableTimestamps();

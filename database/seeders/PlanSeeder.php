@@ -34,7 +34,7 @@ class PlanSeeder extends Seeder
                 'max_price'       =>   999,
                 'profit'          =>   0.75,
                 'expire'          =>   2,  
-                'profit'          =>   0.5,
+                'profit'          =>   0.75,
                 'plan_type'       =>   'investor', 
                 'status'          =>   1,
 

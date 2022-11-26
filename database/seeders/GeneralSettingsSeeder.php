@@ -153,33 +153,6 @@ class GeneralSettingsSeeder extends Seeder
                     'created_at' => Carbon::now()
                 ],
                 [
-                    'group' => 'transfer',
-                    'type' => 'number',
-                    'name' => 'Balance transfer fixed charge',
-                    'key' => 'balance_transfer_fixed_charge',
-                    'value' => '2',
-                    'is_required' => null,
-                    'created_at' => Carbon::now()
-                ],
-                [
-                    'group' => 'transfer',
-                    'type' => 'number',
-                    'name' => 'Balance transfer fixed percentage',
-                    'key' => 'balance_transfer_fixed_percentage',
-                    'value' => '30',
-                    'is_required' => null,
-                    'created_at' => Carbon::now()
-                ],
-                [
-                    'group' => 'transfer',
-                    'type' => 'number',
-                    'name' => 'Balance transfer',
-                    'key' => 'balance_transfer',
-                    'value' => '1',
-                    'is_required' => null,
-                    'created_at' => Carbon::now()
-                ],
-                [
                     'group' => 'plan',
                     'type' => 'select',
                     'name' => 'Default plan',
@@ -269,15 +242,60 @@ class GeneralSettingsSeeder extends Seeder
                     'is_required' => 0,
                     'created_at' => Carbon::now()
                 ],
-                // [
-                //     'group' => 'payment',
-                //     'type' => 'checkbox',
-                //     'name' => 'Status',
-                //     'key' => 'status',
-                //     'value' => 'active',
-                //     'is_required' => 1,
-                //     'created_at' => Carbon::now()
-                // ],
+                [
+                    'group' => 'withdraw',
+                    'type' => 'text',
+                    'name' => 'Minimum ammount',
+                    'key' => 'min_amount',
+                    'value' => '50',
+                    'is_required' => 1,
+                    'created_at' => Carbon::now()
+                ],
+                [
+                    'group' => 'withdraw',
+                    'type' => 'text',
+                    'name' => 'Fee',
+                    'key' => 'fee',
+                    'value' => '5',
+                    'is_required' => 1,
+                    'created_at' => Carbon::now()
+                ],
+                [
+                    'group' => 'withdraw',
+                    'type' => 'checkbox',
+                    'name' => 'withdrawable',
+                    'key' => 'withdrawable',
+                    'value' => '1',
+                    'is_required' => 1,
+                    'created_at' => Carbon::now()
+                ],
+                [
+                    'group' => 'transfer',
+                    'type' => 'text',
+                    'name' => 'Minimum ammount',
+                    'key' => 'min_amount',
+                    'value' => '20',
+                    'is_required' => 1,
+                    'created_at' => Carbon::now()
+                ],
+                [
+                    'group' => 'transfer',
+                    'type' => 'text',
+                    'name' => 'Fee',
+                    'key' => 'fee',
+                    'value' => '5',
+                    'is_required' => 1,
+                    'created_at' => Carbon::now()
+                ],
+                [
+                    'group' => 'transfer',
+                    'type' => 'checkbox',
+                    'name' => 'Tranferable',
+                    'key' => 'transferable',
+                    'value' => '1',
+                    'is_required' => 0,
+                    'created_at' => Carbon::now()
+                ],
                 
         ]);
 

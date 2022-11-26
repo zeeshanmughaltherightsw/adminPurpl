@@ -29,6 +29,7 @@ class DatabaseSeeder extends Seeder
             PlanLevelSeeder::class,
             RewardSeeder::class,
             UserTableSeeder::class,
+            GatewayTableSeeder::class,
         ]);
         
         if(env('APP_ENV') == 'local'){
