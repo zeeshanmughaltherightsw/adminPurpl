@@ -62,6 +62,17 @@ class RolesAndPermissionSeeder extends Seeder
             ['group'=> 'reward', 'name' => 'create_reward', 'guard_name' => 'web'],
             ['group'=> 'reward', 'name' => 'delete_reward', 'guard_name' => 'web'],
 
+            //Gateway
+            ['group'=> 'gateway', 'name' => 'view_gateway', 'guard_name' => 'web'],
+            ['group'=> 'gateway', 'name' => 'edit_gateway', 'guard_name' => 'web'],
+            ['group'=> 'gateway', 'name' => 'create_gateway', 'guard_name' => 'web'],
+            ['group'=> 'gateway', 'name' => 'delete_gateway', 'guard_name' => 'web'],
+            //Withdrawal
+            ['group'=> 'withdrawal', 'name' => 'view_withdrawal', 'guard_name' => 'web'],
+            ['group'=> 'withdrawal', 'name' => 'edit_withdrawal', 'guard_name' => 'web'],
+            ['group'=> 'withdrawal', 'name' => 'create_withdrawal', 'guard_name' => 'web'],
+            ['group'=> 'withdrawal', 'name' => 'delete_withdrawal', 'guard_name' => 'web'],
+
         ];
 
         Permission::insert($permissions);

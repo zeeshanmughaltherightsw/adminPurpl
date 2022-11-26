@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\GatewayController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
 use App\Models\Reward;
@@ -22,6 +23,7 @@ Route::get('/', function () {
 
 Route::namespace('App\Http\Controllers\Admin')->group(function(){
     Route::middleware(['auth', 'verified'])->group(function(){
+
         Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
         Route::middleware('can:view_settings')->controller(SiteController::class)->group(function(){
             Route::get('/settings', 'getSettings')->name('settings');
@@ -33,30 +35,9 @@ Route::namespace('App\Http\Controllers\Admin')->group(function(){
         Route::get('/manage-plan/status/{plan}', [PlanController::class, 'changeStatus'])->middleware('can:edit_plans')->name('reward.status');
         Route::resource('/reward', RewardController::class)->middleware('can:view_reward');
         Route::get('/reward/status/{reward}', [RewardController::class, 'changeStatus'])->middleware('can:edit_reward')->name('reward.status');
-        Route::resource('/commission', CommissionController::class);
-        
-        Route::get('/add-profit', function () {
-            $users = User::withSum(
-                ['referrals' => function ($query){
-                    $query->where('investment', '>=', 5000);
-                }], 'investment')
-            ->whereHas('referrals', function($query){
-                $query->where('investment', '>=', 5000);
-            })->whereStatus('active')->whereNotNull('plan_id')->where('user_type', 'user')->get();
-            foreach($users as $user){
-                $reward = Reward::where('total_investment', '<=', $user->referrals_sum_investment)->orderBy('id', 'desc')->first()->amount;
-                $user->reward += $reward;
-                $user->save();
-                $user->transactions()->create([
-                    'amount' => $reward,
-                    'trx' => getTrx(),
-                    'trx_type' => '+',
-                    'details' => "Received reward from referrals",
-                    'remark' => 'reward'
-                ]);
-            }
-        })->name('add-profit');
-    }); // prefix ends 
+        Route::resource('/commission', CommissionController::class)->middleware('can:view_commission');
+        Route::resource('{type}/gateway', GatewayController::class)->middleware('can:view_gateway');
+
     
     // Roles
     Route::group(['middleware' => ['can:view_roles'], 'auth'], function () {
@@ -68,7 +49,7 @@ Route::namespace('App\Http\Controllers\Admin')->group(function(){
     });
     
 });
-
+});
 
 
 require __DIR__.'/auth.php';

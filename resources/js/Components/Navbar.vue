@@ -43,8 +43,8 @@
                                             <span>AB</span>
                                         </div>
                                         <div class="user-info">
-                                            <span class="lead-text">{{ admins ? admins.name: '' }}</span>
-                                            <span class="sub-text">{{ admins ? admins.email: '' }}</span>
+                                            <span class="lead-text">{{ $page.props.auth.user.name }}</span>
+                                            <span class="sub-text">{{ $page.props.auth.user.email }}</span>
                                         </div>
                                     </div>
                                 </div>
@@ -53,7 +53,7 @@
                                         <li><a href="html/user-profile-regular.html"><em class="icon ni ni-user-alt"></em><span>View Profile</span></a></li>
                                         <li><a href="html/user-profile-setting.html"><em class="icon ni ni-setting-alt"></em><span>Account Setting</span></a></li>
                                         <li><a href="html/user-profile-activity.html"><em class="icon ni ni-activity-alt"></em><span>Login Activity</span></a></li>
-                                        <li><a class="dark-switch" :href="void(0)" @click="changeTheme"><em class="icon ni ni-moon"></em><span>Dark Mode</span></a></li>
+                                        <li><a class="dark-switch" :href="void(0)"><em class="icon ni ni-moon"></em><span>Dark Mode</span></a></li>
                                     </ul>
                                 </div>
                                 <div class="dropdown-inner">
@@ -90,13 +90,16 @@ export default {
         Link
     },
     methods:{
-        showSidebar(){
-            let sidebar = document.querySelector('.nk-sidebar')
-            sidebar.classList.add('nk-sidebar-active')
-        },
-        changeTheme(){
-            NioApp.ModeSwitch()
-        }
+        // showSidebar(){
+        //     let sidebar = document.querySelector('.nk-sidebar')
+        //     sidebar.classList.add('nk-sidebar-active')
+        // },
+        // changeTheme(){
+        //     NioApp.ModeSwitch()
+        // }
+    },
+    mounted(){
+        NioApp.ModeSwitch();
     },
     mixins: [Helpers]
 }

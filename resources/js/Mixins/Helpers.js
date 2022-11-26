@@ -91,7 +91,7 @@ export default {
                 case 'active':
                     value = true
                     break;
-                case '1':
+                case 1:
                     value = true
                     break;
                 default:
