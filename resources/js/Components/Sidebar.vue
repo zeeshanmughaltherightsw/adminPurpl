@@ -64,11 +64,19 @@
                 </Link>
             </li>
 
-            <li class="nk-menu-item" 
+            <li class="nk-menu-item" v-if="checkUserPermissions('view_withdrawal')"
             :class="{ 'active current-page': route().current('gateway.*', 'withdrawal') }">
                 <Link :href="route('gateway.index', 'withdrawal')" class="nk-menu-link" preserve-scroll>
                   <span class="nk-menu-icon"><em class="icon ni ni-users-fill"></em></span>
                   <span class="nk-menu-text">Withdrawal methods  </span>
+                </Link>
+            </li>
+
+            <li class="nk-menu-item" v-if="checkUserPermissions('view_withdrawal')"
+            :class="{ 'active current-page': route().current('withdrawals.index') }">
+                <Link :href="route('withdrawals.index')" class="nk-menu-link" preserve-scroll>
+                  <span class="nk-menu-icon"><em class="icon ni ni-users-fill"></em></span>
+                  <span class="nk-menu-text">Withdrawals</span>
                 </Link>
             </li>
 

@@ -77,6 +77,7 @@ class GatewayController extends Controller
 
             $gatewatCurrency = $method->single_currency()->save(new GatewayCurrency([
                 'name' => $request->name,
+                'code' => $method_code,
                 'currency' => $request->currency,
                 'symbol' => '',
                 'min_amount' => $request->min_limit,
