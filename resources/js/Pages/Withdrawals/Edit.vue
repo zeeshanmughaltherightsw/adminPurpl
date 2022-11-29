@@ -97,7 +97,6 @@ export default {
         }
     },  
     mounted(){
-        console.log(JSON.parse(this.withdrawal.withdraw_information))
     },
     mixins: [Helpers]
 }
