@@ -29,12 +29,12 @@ class DatabaseSeeder extends Seeder
             PlanLevelSeeder::class,
             RewardSeeder::class,
             UserTableSeeder::class,
-            GatewayTableSeeder::class,
         ]);
         
         if(env('APP_ENV') == 'local'){
             \App\Models\User::factory(200)->create();
             $this->call([
+                GatewayTableSeeder::class,
                 UserLoginSeeder::class,
             ]);
         }
