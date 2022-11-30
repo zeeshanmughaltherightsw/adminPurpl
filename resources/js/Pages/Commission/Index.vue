@@ -278,7 +278,6 @@ export default {
             }
         },
         removeLevel(index){
-            console.log(index-1)
             this.levelForm.level.pop()
             this.total--;
         }

@@ -47,7 +47,7 @@ class UserTableSeeder extends Seeder
             'user_type' => 'user',
             'email_verified_at' => Carbon::now(),
             'plan_id' => '1',
-            'investment' => 0,
+            'investment' => env('APP_ENV') == 'local' ? 5000 : 0,
             'ref_by' => 1
         ]);
 
