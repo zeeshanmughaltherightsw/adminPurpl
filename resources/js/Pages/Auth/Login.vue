@@ -25,16 +25,19 @@ const submit = () => {
 
 <template>
     <Head title="Log in" />
-    <div class="nk-content">
-    <div class="nk-block nk-block-middle nk-auth-body wide-xs">
-        <div class="card">
+    <div class="nk-content" style="height: 100vh">
+<div class="text-center">
+    <img src="https://stonearn.com/logo.png" alt="">
+</div>
+<div class="nk-block nk-block-middle nk-auth-body wide-xs">
+        <div class="card shadow-lg">
           <div class="card-inner card-inner-lg">
+            <h3 class="mb-4" style="color:#6f5ea9;">Admin Panel</h3>
             <form @submit.prevent="submit">
               <div class="form-group">
                 <div class="form-label-group">
                   <label class="form-label" for="default-01"
-                    >Username</label
-                  >
+                    >Username</label>
                 </div>
                 <div class="form-control-wrap">
                   <TextInput
@@ -51,6 +54,7 @@ const submit = () => {
               </div>
               <div class="form-group">
                 <div class="form-control-wrap">
+                    <label for="">Password</label>
                   <a
                     href="#"
                     class="form-icon form-icon-right passcode-switch lg"
@@ -73,7 +77,7 @@ const submit = () => {
               </div>
               <div class="form-group">
                 <PrimaryButton
-                  class="btn btn-lg btn-primary btn-block"
+                  class="btn btn-lg btn-primary site-color"
                   :class="{ 'opacity-25': form.processing }"
                   :disabled="form.processing"
                 >

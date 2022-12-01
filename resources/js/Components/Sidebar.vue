@@ -2,7 +2,7 @@
   <div class="nk-sidebar nk-sidebar-fixed is-dark " data-content="sidebarMenu">
     <div class="nk-sidebar-element nk-sidebar-head">
       <div class="nk-menu-trigger">
-        
+
           <a href="#" class="nk-nav-toggle nk-quick-nav-icon d-xl-none" data-target="sidebarMenu"><em class="icon ni ni-arrow-left" @click="hideSidebar"></em></a>
           <a href="#" class="nk-nav-compact nk-quick-nav-icon d-none d-xl-inline-flex" data-target="sidebarMenu"><em class="icon ni ni-menu"></em></a>
       </div>
@@ -20,7 +20,7 @@
             <li class="nk-menu-heading">
               Main
             </li><!-- .nk-menu-item -->
-            
+
             <li class="nk-menu-item" :class="{ 'active current-page' : route().current('dashboard') }">
               <Link :href="route('dashboard')" class="nk-menu-link" preserve-scroll>
                   <span class="nk-menu-icon"><em class="icon ni ni-dashboard-fill"></em></span>
@@ -47,7 +47,7 @@
               </li>
             <li class="nk-menu-item" v-if="checkUserPermissions('view_permissions')" :class="{ 'active current-page': route().current('administrators.*') }">
                 <Link :href="route('administrators.index')" class="nk-menu-link" preserve-scroll>
-                    <span class="nk-menu-icon"><em class="icon ni ni-user-list-fill"></em></span>      
+                    <span class="nk-menu-icon"><em class="icon ni ni-user-list-fill"></em></span>
                     <span class="nk-menu-text">Roles Manager</span>
                 </Link>
             </li>
@@ -67,7 +67,7 @@
             <li class="nk-menu-item" v-if="checkUserPermissions('view_withdrawal')"
             :class="{ 'active current-page': route().current('gateway.*', 'withdrawal') }">
                 <Link :href="route('gateway.index', 'withdrawal')" class="nk-menu-link" preserve-scroll>
-                  <span class="nk-menu-icon"><em class="icon ni ni-users-fill"></em></span>
+                  <span class="nk-menu-icon"><em class="icon ni ni-cash-stack"></em></span>
                   <span class="nk-menu-text">Withdrawal methods  </span>
                 </Link>
             </li>
@@ -75,7 +75,7 @@
             <li class="nk-menu-item" v-if="checkUserPermissions('view_withdrawal')"
             :class="{ 'active current-page': route().current('withdrawals.index') }">
                 <Link :href="route('withdrawals.index')" class="nk-menu-link" preserve-scroll>
-                  <span class="nk-menu-icon"><em class="icon ni ni-users-fill"></em></span>
+                  <span class="nk-menu-icon"><em class="icon ni ni-wallet-fill"></em></span>
                   <span class="nk-menu-text">Withdrawals</span>
                 </Link>
             </li>
