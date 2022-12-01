@@ -10,315 +10,441 @@ import Helpers from '@/Mixins/Helpers';
     <Head title="Dashboard" />
     <BreezeAuthenticatedLayout>
         <breadcrumb title="Dashboard" />
-        <div class="container-fluid">
-            <div class="nk-content-inner">
-                <div class="nk-content-body">
-                    <div class="nk-block">
-                        <div class="row g-gs">
-                            <div class="col-md-4">
-                                <div class="card card-bordered card-full">
-                                    <div class="card-inner">
-                                        <div class="card-title-group align-start mb-0">
-                                            <div class="card-title">
-                                                <h6 class="subtitle">Total Users Investment</h6>
-                                            </div>
-                                            <div class="card-tools"><em class="card-hint icon ni ni-help-fill"
-                                                    data-bs-toggle="tooltip" data-bs-placement="left"
-                                                    aria-label="Total Deposited"
-                                                    data-bs-original-title="Total Deposited"></em></div>
-                                        </div>
-                                        <div class="card-amount"><span class="amount"> {{ users.total_users_balance }}
-                                                <span class="currency currency-usd">USD</span></span>
+        <!-- content @s -->
+        <div class="nk-content ">
+            <div class="container-fluid">
+                <div class="nk-content-inner">
+                    <div class="nk-content-body">
+                        <div class="nk-block-head nk-block-head-sm">
+                            <div class="nk-block-between">
+                                <div class="nk-block-head-content">
+                                    <h3 class="nk-block-title page-title">Overview</h3>
+                                    <div class="nk-block-des text-soft">
+                                        <p>Welcome to Crypto Buy/Sell Platform.</p>
+                                    </div>
+                                </div><!-- .nk-block-head-content -->
+                                <div class="nk-block-head-content">
+                                    <div class="toggle-wrap nk-block-tools-toggle">
+                                        <a href="#" class="btn btn-icon btn-trigger toggle-expand mr-n1" data-target="pageMenu"><em class="icon ni ni-more-v"></em></a>
+                                        <div class="toggle-expand-content" data-content="pageMenu">
+                                            <ul class="nk-block-tools g-3">
+                                                <li><a href="#" class="btn btn-white btn-dim btn-outline-primary"><em class="icon ni ni-download-cloud"></em><span>Export</span></a></li>
+                                                <li><a href="#" class="btn btn-white btn-dim btn-outline-primary"><em class="icon ni ni-reports"></em><span>Reports</span></a></li>
+                                                <li class="nk-block-tools-opt">
+                                                    <div class="drodown">
+                                                        <a href="#" class="dropdown-toggle btn btn-icon btn-primary" data-toggle="dropdown"><em class="icon ni ni-plus"></em></a>
+                                                        <div class="dropdown-menu dropdown-menu-right">
+                                                            <ul class="link-list-opt no-bdr">
+                                                                <li><a href="#"><em class="icon ni ni-user-add-fill"></em><span>Add User</span></a></li>
+                                                                <li><a href="#"><em class="icon ni ni-coin-alt-fill"></em><span>Add Order</span></a></li>
+                                                                <li><a href="#"><em class="icon ni ni-note-add-fill-c"></em><span>Add Page</span></a></li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            </ul>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="card card-bordered card-full">
-                                    <div class="card-inner">
-                                        <div class="card-title-group align-start mb-0">
-                                            <div class="card-title">
-                                                <h6 class="subtitle">Total Users</h6>
-                                            </div>
-                                            <div class="card-tools"><em class="card-hint icon ni ni-help-fill"
-                                                    data-bs-toggle="tooltip" data-bs-placement="left"
-                                                    aria-label="Total Deposited"
-                                                    data-bs-original-title="Total Deposited"></em></div>
-                                        </div>
-                                        <div class="card-amount"><span class="amount"> {{ users.total_users }}
-                                                </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="card card-bordered card-full">
-                                    <div class="card-inner">
-                                        <div class="card-title-group align-start mb-0">
-                                            <div class="card-title">
-                                                <h6 class="subtitle">Total Active Users</h6>
-                                            </div>
-                                            <div class="card-tools"><em class="card-hint icon ni ni-help-fill"
-                                                    data-bs-toggle="tooltip" data-bs-placement="left"
-                                                    aria-label="Total Deposited"
-                                                    data-bs-original-title="Total Deposited"></em></div>
-                                        </div>
-                                        <div class="card-amount"><span class="amount"> {{ users.total_users_active }}
-                                                </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6 col-xxl-4">
-                                <div class="card card-bordered card-full">
-                                    <div class="card-inner">
-                                        <div class="card-title-group mb-1">
-                                            <div class="card-title">
-                                                <h6 class="title">Investment Overview</h6>
-                                                <p>The investment overview of your platform. <a href="#">All
-                                                        Investment</a></p>
-                                            </div>
-                                        </div>
-                                        <ul class="nav nav-tabs nav-tabs-card nav-tabs-xs" role="tablist">
-                                            <li class="nav-item" role="presentation"><a class="nav-link active"
-                                                    data-bs-toggle="tab" href="#overview" aria-selected="true"
-                                                    role="tab">Overview</a></li>
-                                            <li class="nav-item" role="presentation"><a class="nav-link"
-                                                    data-bs-toggle="tab" href="#thisyear" aria-selected="false"
-                                                    tabindex="-1" role="tab">This Year</a></li>
-                                            <li class="nav-item" role="presentation"><a class="nav-link"
-                                                    data-bs-toggle="tab" href="#alltime" aria-selected="false"
-                                                    tabindex="-1" role="tab">All Time</a></li>
-                                        </ul>
-                                        <div class="tab-content mt-0">
-                                            <div class="tab-pane active" id="overview" role="tabpanel">
-                                                <div class="invest-ov gy-2">
-                                                    <div class="subtitle">Currently Actived Investment</div>
-                                                    <div class="invest-ov-details">
-                                                        <div class="invest-ov-info">
-                                                            <div class="amount">49,395.395 <span
-                                                                    class="currency currency-usd">USD</span></div>
-                                                            <div class="title">Amount</div>
-                                                        </div>
-                                                        <div class="invest-ov-stats ms-1">
-                                                            <div><span class="amount">56</span><span
-                                                                    class="change up text-danger"><em
-                                                                        class="icon ni ni-arrow-long-up"></em>1.93%</span>
-                                                            </div>
-                                                            <div class="title">Plans</div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="invest-ov-details">
-                                                        <div class="invest-ov-info">
-                                                            <div class="amount">49,395.395 <span
-                                                                    class="currency currency-usd">USD</span></div>
-                                                            <div class="title">Paid Profit</div>
+                                </div><!-- .nk-block-head-content -->
+                            </div><!-- .nk-block-between -->
+                        </div><!-- .nk-block-head -->
+                        <div class="nk-block">
+                            <div class="row g-gs">
+                                <div class="col-lg-8">
+                                    <div class="card card-bordered h-100">
+                                        <div class="card-inner">
+                                            <div class="card-title-group align-start mb-3">
+                                                <div class="card-title">
+                                                    <h6 class="title">Orders Overview</h6>
+                                                    <p>In last 15 days buy and sells overview. <a href="#" class="link link-sm">Detailed Stats</a></p>
+                                                </div>
+                                                <div class="card-tools mt-n1 mr-n1">
+                                                    <div class="drodown">
+                                                        <a href="#" class="dropdown-toggle btn btn-icon btn-trigger" data-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
+                                                        <div class="dropdown-menu dropdown-menu-sm dropdown-menu-right">
+                                                            <ul class="link-list-opt no-bdr">
+                                                                <li><a href="#" class="active"><span>15 Days</span></a></li>
+                                                                <li><a href="#"><span>30 Days</span></a></li>
+                                                                <li><a href="#"><span>3 Months</span></a></li>
+                                                            </ul>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="invest-ov gy-2">
-                                                    <div class="subtitle">Investment in this Month</div>
-                                                    <div class="invest-ov-details">
-                                                        <div class="invest-ov-info">
-                                                            <div class="amount">49,395.395 <span
-                                                                    class="currency currency-usd">USD</span></div>
-                                                            <div class="title">Amount</div>
+                                            </div><!-- .card-title-group -->
+                                            <div class="nk-order-ovwg">
+                                                <div class="row g-4 align-end">
+                                                    <div class="col-xxl-8">
+                                                        <div class="nk-order-ovwg-ck">
+                                                            <canvas class="order-overview-chart" id="orderOverview"></canvas>
                                                         </div>
-                                                        <div class="invest-ov-stats ms-1">
-                                                            <div><span class="amount">23</span><span
-                                                                    class="change down text-danger"><em
-                                                                        class="icon ni ni-arrow-long-down"></em>1.93%</span>
+                                                    </div><!-- .col -->
+                                                    <div class="col-xxl-4">
+                                                        <div class="row g-4">
+                                                            <div class="col-sm-6 col-xxl-12">
+                                                                <div class="nk-order-ovwg-data buy">
+                                                                    <div class="amount">12,954.63 <small class="currenct currency-usd">USD</small></div>
+                                                                    <div class="info">Last month <strong>39,485 <span class="currenct currency-usd">USD</span></strong></div>
+                                                                    <div class="title"><em class="icon ni ni-arrow-down-left"></em> Buy Orders</div>
+                                                                </div>
                                                             </div>
-                                                            <div class="title">Plans</div>
+                                                            <div class="col-sm-6 col-xxl-12">
+                                                                <div class="nk-order-ovwg-data sell">
+                                                                    <div class="amount">12,954.63 <small class="currenct currency-usd">USD</small></div>
+                                                                    <div class="info">Last month <strong>39,485 <span class="currenct currency-usd">USD</span></strong></div>
+                                                                    <div class="title"><em class="icon ni ni-arrow-up-left"></em> Sell Orders</div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div><!-- .col -->
+                                                </div>
+                                            </div><!-- .nk-order-ovwg -->
+                                        </div><!-- .card-inner -->
+                                    </div><!-- .card -->
+                                </div><!-- .col -->
+                                <div class="col-lg-4">
+                                    <div class="card card-bordered h-100">
+                                        <div class="card-inner-group">
+                                            <div class="card-inner card-inner-md">
+                                                <div class="card-title-group">
+                                                    <div class="card-title">
+                                                        <h6 class="title">Action Center</h6>
+                                                    </div>
+                                                    <div class="card-tools mr-n1">
+                                                        <div class="drodown">
+                                                            <a href="#" class="dropdown-toggle btn btn-icon btn-trigger" data-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
+                                                            <div class="dropdown-menu dropdown-menu-right">
+                                                                <ul class="link-list-opt no-bdr">
+                                                                    <li><a href="#"><em class="icon ni ni-setting"></em><span>Action Settings</span></a></li>
+                                                                    <li><a href="#"><em class="icon ni ni-notify"></em><span>Push Notification</span></a></li>
+                                                                </ul>
+                                                            </div>
                                                         </div>
                                                     </div>
+                                                </div>
+                                            </div><!-- .card-inner -->
+                                            <div class="card-inner">
+                                                <div class="nk-wg-action">
+                                                    <div class="nk-wg-action-content">
+                                                        <em class="icon ni ni-cc-alt-fill"></em>
+                                                        <div class="title">Pending Buy/Sell Orders</div>
+                                                        <p>We have still <strong>40 buy orders</strong> and <strong>12 sell orders</strong>, thats need to review & take necessary action.</p>
+                                                    </div>
+                                                    <a href="#" class="btn btn-icon btn-trigger mr-n2"><em class="icon ni ni-forward-ios"></em></a>
+                                                </div>
+                                            </div><!-- .card-inner -->
+                                            <div class="card-inner">
+                                                <div class="nk-wg-action">
+                                                    <div class="nk-wg-action-content">
+                                                        <em class="icon ni ni-help-fill"></em>
+                                                        <div class="title">Support Messages</div>
+                                                        <p>Here is <strong>18 new</strong> support message. </p>
+                                                    </div>
+                                                    <a href="#" class="btn btn-icon btn-trigger mr-n2"><em class="icon ni ni-forward-ios"></em></a>
+                                                </div>
+                                            </div><!-- .card-inner -->
+                                            <div class="card-inner">
+                                                <div class="nk-wg-action">
+                                                    <div class="nk-wg-action-content">
+                                                        <em class="icon ni ni-wallet-fill"></em>
+                                                        <div class="title">Upcoming Deposit</div>
+                                                        <p>Here is <strong>7 upcoming</strong> deposit need to review.</p>
+                                                    </div>
+                                                    <a href="#" class="btn btn-icon btn-trigger mr-n2"><em class="icon ni ni-forward-ios"></em></a>
+                                                </div>
+                                            </div><!-- .card-inner -->
+                                        </div><!-- .card-inner-group -->
+                                    </div><!-- .card -->
+                                </div><!-- .col -->
+                                <div class="col-lg-8">
+                                    <div class="card card-bordered card-full">
+                                        <div class="card-inner">
+                                            <div class="card-title-group">
+                                                <div class="card-title">
+                                                    <h6 class="title"><span class="mr-2">Orders Activities</span> <a href="#" class="link d-none d-sm-inline">See History</a></h6>
+                                                </div>
+                                                <div class="card-tools">
+                                                    <ul class="card-tools-nav">
+                                                        <li><a href="#"><span>Buy</span></a></li>
+                                                        <li><a href="#"><span>Sell</span></a></li>
+                                                        <li class="active"><a href="#"><span>All</span></a></li>
+                                                    </ul>
                                                 </div>
                                             </div>
-                                            <div class="tab-pane" id="thisyear" role="tabpanel">
-                                                <div class="invest-ov gy-2">
-                                                    <div class="subtitle">Currently Actived Investment</div>
-                                                    <div class="invest-ov-details">
-                                                        <div class="invest-ov-info">
-                                                            <div class="amount">89,395.395 <span
-                                                                    class="currency currency-usd">USD</span></div>
-                                                            <div class="title">Amount</div>
-                                                        </div>
-                                                        <div class="invest-ov-stats ms-1">
-                                                            <div><span class="amount">96</span><span
-                                                                    class="change up text-danger"><em
-                                                                        class="icon ni ni-arrow-long-up"></em>1.93%</span>
-                                                            </div>
-                                                            <div class="title">Plans</div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="invest-ov-details">
-                                                        <div class="invest-ov-info">
-                                                            <div class="amount">99,395.395 <span
-                                                                    class="currency currency-usd">USD</span></div>
-                                                            <div class="title">Paid Profit</div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="invest-ov gy-2">
-                                                    <div class="subtitle">Investment in this Month</div>
-                                                    <div class="invest-ov-details">
-                                                        <div class="invest-ov-info">
-                                                            <div class="amount">149,395.395 <span
-                                                                    class="currency currency-usd">USD</span></div>
-                                                            <div class="title">Amount</div>
-                                                        </div>
-                                                        <div class="invest-ov-stats ms-1">
-                                                            <div><span class="amount">83</span><span
-                                                                    class="change down text-danger"><em
-                                                                        class="icon ni ni-arrow-long-down"></em>1.93%</span>
-                                                            </div>
-                                                            <div class="title">Plans</div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="tab-pane" id="alltime" role="tabpanel">
-                                                <div class="invest-ov gy-2">
-                                                    <div class="subtitle">Currently Actived Investment</div>
-                                                    <div class="invest-ov-details">
-                                                        <div class="invest-ov-info">
-                                                            <div class="amount">249,395.395 <span
-                                                                    class="currency currency-usd">USD</span></div>
-                                                            <div class="title">Amount</div>
-                                                        </div>
-                                                        <div class="invest-ov-stats ms-1">
-                                                            <div><span class="amount">556</span><span
-                                                                    class="change up text-danger"><em
-                                                                        class="icon ni ni-arrow-long-up"></em>1.93%</span>
-                                                            </div>
-                                                            <div class="title">Plans</div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="invest-ov-details">
-                                                        <div class="invest-ov-info">
-                                                            <div class="amount">149,395.395 <span
-                                                                    class="currency currency-usd">USD</span></div>
-                                                            <div class="title">Paid Profit</div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="invest-ov gy-2">
-                                                    <div class="subtitle">Investment in this Month</div>
-                                                    <div class="invest-ov-details">
-                                                        <div class="invest-ov-info">
-                                                            <div class="amount">249,395.395 <span
-                                                                    class="currency currency-usd">USD</span></div>
-                                                            <div class="title">Amount</div>
-                                                        </div>
-                                                        <div class="invest-ov-stats ms-1">
-                                                            <div><span class="amount">223</span><span
-                                                                    class="change down text-danger"><em
-                                                                        class="icon ni ni-arrow-long-down"></em>1.93%</span>
-                                                            </div>
-                                                            <div class="title">Plans</div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6 col-xxl-4">
-                                <div class="card card-bordered card-full">
-                                    <div class="card-inner d-flex flex-column h-100">
-                                        <div class="card-title-group mb-3">
-                                            <div class="card-title">
-                                                <h6 class="title">Top Invested Plan</h6>
-                                                <p>In last 30 days top invested schemes.</p>
-                                            </div>
-                                            <div class="card-tools mt-n4 me-n1">
-                                                <div class="drodown"><a href="#"
-                                                        class="dropdown-toggle btn btn-icon btn-trigger"
-                                                        data-bs-toggle="dropdown"><em
-                                                            class="icon ni ni-more-h"></em></a>
-                                                    <div class="dropdown-menu dropdown-menu-sm dropdown-menu-end">
-                                                        <ul class="link-list-opt no-bdr">
-                                                            <li><a href="#"><span>15 Days</span></a></li>
-                                                            <li><a href="#" class="active"><span>30 Days</span></a></li>
-                                                            <li><a href="#"><span>3 Months</span></a></li>
+                                        </div><!-- .card-inner -->
+                                        <div class="card-inner p-0 border-top">
+                                            <div class="nk-tb-list nk-tb-orders">
+                                                <div class="nk-tb-item nk-tb-head">
+                                                    <div class="nk-tb-col nk-tb-orders-type"><span>Type</span></div>
+                                                    <div class="nk-tb-col"><span>Desc</span></div>
+                                                    <div class="nk-tb-col tb-col-sm"><span>Date</span></div>
+                                                    <div class="nk-tb-col tb-col-xl"><span>Time</span></div>
+                                                    <div class="nk-tb-col tb-col-xxl"><span>Ref</span></div>
+                                                    <div class="nk-tb-col tb-col-sm text-right"><span>USD Amount</span></div>
+                                                    <div class="nk-tb-col text-right"><span>Amount</span></div>
+                                                </div><!-- .nk-tb-item -->
+                                                <div class="nk-tb-item">
+                                                    <div class="nk-tb-col nk-tb-orders-type">
+                                                        <ul class="icon-overlap">
+                                                            <li><em class="bg-btc-dim icon-circle icon ni ni-sign-btc"></em></li>
+                                                            <li><em class="bg-success-dim icon-circle icon ni ni-arrow-down-left"></em></li>
                                                         </ul>
                                                     </div>
-                                                </div>
+                                                    <div class="nk-tb-col">
+                                                        <span class="tb-lead">Buy Bitcoin</span>
+                                                    </div>
+                                                    <div class="nk-tb-col tb-col-sm">
+                                                        <span class="tb-sub">02/10/2020</span>
+                                                    </div>
+                                                    <div class="nk-tb-col tb-col-xl">
+                                                        <span class="tb-sub">11:37 PM</span>
+                                                    </div>
+                                                    <div class="nk-tb-col tb-col-xxl">
+                                                        <span class="tb-sub text-primary">RE2309232</span>
+                                                    </div>
+                                                    <div class="nk-tb-col tb-col-sm text-right">
+                                                        <span class="tb-sub tb-amount">4,565.75 <span>USD</span></span>
+                                                    </div>
+                                                    <div class="nk-tb-col text-right">
+                                                        <span class="tb-sub tb-amount ">+ 0.2040 <span>BTC</span></span>
+                                                    </div>
+                                                </div><!-- .nk-tb-item -->
+                                                <div class="nk-tb-item">
+                                                    <div class="nk-tb-col nk-tb-orders-type">
+                                                        <ul class="icon-overlap">
+                                                            <li><em class="bg-eth-dim icon-circle icon ni ni-sign-eth"></em></li>
+                                                            <li><em class="bg-success-dim icon-circle icon ni ni-arrow-down-left"></em></li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="nk-tb-col">
+                                                        <span class="tb-lead">Buy Ethereum</span>
+                                                    </div>
+                                                    <div class="nk-tb-col tb-col-sm">
+                                                        <span class="tb-sub">02/10/2020</span>
+                                                    </div>
+                                                    <div class="nk-tb-col tb-col-xl">
+                                                        <span class="tb-sub">10:37 PM</span>
+                                                    </div>
+                                                    <div class="nk-tb-col tb-col-xxl">
+                                                        <span class="tb-sub text-primary">RE2309232</span>
+                                                    </div>
+                                                    <div class="nk-tb-col tb-col-sm text-right">
+                                                        <span class="tb-sub tb-amount">2,039.39 <span>USD</span></span>
+                                                    </div>
+                                                    <div class="nk-tb-col text-right">
+                                                        <span class="tb-sub tb-amount ">+ 0.12600 <span>BTC</span></span>
+                                                    </div>
+                                                </div><!-- .nk-tb-item -->
+                                                <div class="nk-tb-item">
+                                                    <div class="nk-tb-col nk-tb-orders-type">
+                                                        <ul class="icon-overlap">
+                                                            <li><em class="bg-btc-dim icon-circle icon ni ni-sign-btc"></em></li>
+                                                            <li><em class="bg-purple-dim icon-circle icon ni ni-arrow-up-right"></em></li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="nk-tb-col">
+                                                        <span class="tb-lead">Sell Bitcoin</span>
+                                                    </div>
+                                                    <div class="nk-tb-col tb-col-sm">
+                                                        <span class="tb-sub">02/10/2020</span>
+                                                    </div>
+                                                    <div class="nk-tb-col tb-col-xl">
+                                                        <span class="tb-sub">10:45 PM</span>
+                                                    </div>
+                                                    <div class="nk-tb-col tb-col-xxl">
+                                                        <span class="tb-sub text-primary">RE2309232</span>
+                                                    </div>
+                                                    <div class="nk-tb-col tb-col-sm text-right">
+                                                        <span class="tb-sub tb-amount">9,285.71 <span>USD</span></span>
+                                                    </div>
+                                                    <div class="nk-tb-col text-right">
+                                                        <span class="tb-sub tb-amount ">+ 0.94750 <span>BTC</span></span>
+                                                    </div>
+                                                </div><!-- .nk-tb-item -->
+                                                <div class="nk-tb-item">
+                                                    <div class="nk-tb-col nk-tb-orders-type">
+                                                        <ul class="icon-overlap">
+                                                            <li><em class="bg-eth-dim icon-circle icon ni ni-sign-eth"></em></li>
+                                                            <li><em class="bg-purple-dim icon-circle icon ni ni-arrow-up-right"></em></li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="nk-tb-col">
+                                                        <span class="tb-lead">Sell Etherum</span>
+                                                    </div>
+                                                    <div class="nk-tb-col tb-col-sm">
+                                                        <span class="tb-sub">02/11/2020</span>
+                                                    </div>
+                                                    <div class="nk-tb-col tb-col-xl">
+                                                        <span class="tb-sub">10:25 PM</span>
+                                                    </div>
+                                                    <div class="nk-tb-col tb-col-xxl">
+                                                        <span class="tb-sub text-primary">RE2309232</span>
+                                                    </div>
+                                                    <div class="nk-tb-col tb-col-sm text-right">
+                                                        <span class="tb-sub tb-amount">12,596.75 <span>USD</span></span>
+                                                    </div>
+                                                    <div class="nk-tb-col text-right">
+                                                        <span class="tb-sub tb-amount ">+ 1.02050 <span>BTC</span></span>
+                                                    </div>
+                                                </div><!-- .nk-tb-item -->
+                                                <div class="nk-tb-item">
+                                                    <div class="nk-tb-col nk-tb-orders-type">
+                                                        <ul class="icon-overlap">
+                                                            <li><em class="bg-btc-dim icon-circle icon ni ni-sign-btc"></em></li>
+                                                            <li><em class="bg-success-dim icon-circle icon ni ni-arrow-down-left"></em></li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="nk-tb-col">
+                                                        <span class="tb-lead">Buy Bitcoin</span>
+                                                    </div>
+                                                    <div class="nk-tb-col tb-col-sm">
+                                                        <span class="tb-sub">02/10/2020</span>
+                                                    </div>
+                                                    <div class="nk-tb-col tb-col-xl">
+                                                        <span class="tb-sub">10:12 PM</span>
+                                                    </div>
+                                                    <div class="nk-tb-col tb-col-xxl">
+                                                        <span class="tb-sub text-primary">RE2309232</span>
+                                                    </div>
+                                                    <div class="nk-tb-col tb-col-sm text-right">
+                                                        <span class="tb-sub tb-amount">400.00 <span>USD</span></span>
+                                                    </div>
+                                                    <div class="nk-tb-col text-right">
+                                                        <span class="tb-sub tb-amount ">+ 0.00056 <span>BTC</span></span>
+                                                    </div>
+                                                </div><!-- .nk-tb-item -->
+                                                <div class="nk-tb-item">
+                                                    <div class="nk-tb-col nk-tb-orders-type">
+                                                        <ul class="icon-overlap">
+                                                            <li><em class="bg-eth-dim icon-circle icon ni ni-sign-eth"></em></li>
+                                                            <li><em class="bg-purple-dim icon-circle icon ni ni-arrow-up-right"></em></li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="nk-tb-col">
+                                                        <span class="tb-lead">Sell Etherum</span>
+                                                    </div>
+                                                    <div class="nk-tb-col tb-col-sm">
+                                                        <span class="tb-sub">02/09/2020</span>
+                                                    </div>
+                                                    <div class="nk-tb-col tb-col-xl">
+                                                        <span class="tb-sub">05:15 PM</span>
+                                                    </div>
+                                                    <div class="nk-tb-col tb-col-xxl">
+                                                        <span class="tb-sub text-primary">RE2309232</span>
+                                                    </div>
+                                                    <div class="nk-tb-col tb-col-sm text-right">
+                                                        <span class="tb-sub tb-amount">6,246.50 <span>USD</span></span>
+                                                    </div>
+                                                    <div class="nk-tb-col text-right">
+                                                        <span class="tb-sub tb-amount ">+ 0.02575 <span>BTC</span></span>
+                                                    </div>
+                                                </div><!-- .nk-tb-item -->
                                             </div>
-                                        </div>
-                                        <div class="progress-list gy-3">
-                                            <div class="progress-wrap">
-                                                <div class="progress-text">
-                                                    <div class="progress-label">Strater Plan</div>
-                                                    <div class="progress-amount">58%</div>
-                                                </div>
-                                                <div class="progress progress-md">
-                                                    <div class="progress-bar" data-progress="58" style="width: 58%;">
+                                        </div><!-- .card-inner -->
+                                        <div class="card-inner-sm border-top text-center d-sm-none">
+                                            <a href="#" class="btn btn-link btn-block">See History</a>
+                                        </div><!-- .card-inner -->
+                                    </div><!-- .card -->
+                                </div><!-- .col -->
+                                <div class="col-lg-4">
+                                    <div class="row g-gs">
+                                        <div class="col-md-6 col-lg-12">
+                                            <div class="card card-bordered card-full">
+                                                <div class="card-inner">
+                                                    <div class="card-title-group align-start mb-2">
+                                                        <div class="card-title">
+                                                            <h6 class="title">Top Coin in Orders</h6>
+                                                            <p>In last 15 days buy and sells overview.</p>
+                                                        </div>
+                                                        <div class="card-tools mt-n1 mr-n1">
+                                                            <div class="drodown">
+                                                                <a href="#" class="dropdown-toggle btn btn-icon btn-trigger" data-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
+                                                                <div class="dropdown-menu dropdown-menu-sm dropdown-menu-right">
+                                                                    <ul class="link-list-opt no-bdr">
+                                                                        <li><a href="#" class="active"><span>15 Days</span></a></li>
+                                                                        <li><a href="#"><span>30 Days</span></a></li>
+                                                                        <li><a href="#"><span>3 Months</span></a></li>
+                                                                    </ul>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div><!-- .card-title-group -->
+                                                    <div class="nk-coin-ovwg">
+                                                        <div class="nk-coin-ovwg-ck">
+                                                            <canvas class="coin-overview-chart" id="coinOverview"></canvas>
+                                                        </div>
+                                                        <ul class="nk-coin-ovwg-legends">
+                                                            <li><span class="dot dot-lg sq" data-bg="#f98c45"></span><span>Bitcoin</span></li>
+                                                            <li><span class="dot dot-lg sq" data-bg="#9cabff"></span><span>Ethereum</span></li>
+                                                            <li><span class="dot dot-lg sq" data-bg="#8feac5"></span><span>NioCoin</span></li>
+                                                            <li><span class="dot dot-lg sq" data-bg="#6b79c8"></span><span>Litecoin</span></li>
+                                                            <li><span class="dot dot-lg sq" data-bg="#79f1dc"></span><span>Bitcoin Cash</span></li>
+                                                        </ul>
+                                                    </div><!-- .nk-coin-ovwg -->
+                                                </div><!-- .card-inner -->
+                                            </div><!-- .card -->
+                                        </div><!-- .col -->
+                                        <div class="col-md-6 col-lg-12">
+                                            <div class="card card-bordered card-full">
+                                                <div class="card-inner">
+                                                    <div class="card-title-group align-start mb-3">
+                                                        <div class="card-title">
+                                                            <h6 class="title">User Activities</h6>
+                                                            <p>In last 30 days <em class="icon ni ni-info" data-toggle="tooltip" data-placement="right" title="Referral Informations"></em></p>
+                                                        </div>
+                                                        <div class="card-tools mt-n1 mr-n1">
+                                                            <div class="drodown">
+                                                                <a href="#" class="dropdown-toggle btn btn-icon btn-trigger" data-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
+                                                                <div class="dropdown-menu dropdown-menu-sm dropdown-menu-right">
+                                                                    <ul class="link-list-opt no-bdr">
+                                                                        <li><a href="#"><span>15 Days</span></a></li>
+                                                                        <li><a href="#" class="active"><span>30 Days</span></a></li>
+                                                                        <li><a href="#"><span>3 Months</span></a></li>
+                                                                    </ul>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="user-activity-group g-4">
+                                                        <div class="user-activity">
+                                                            <em class="icon ni ni-users"></em>
+                                                            <div class="info">
+                                                                <span class="amount">345</span>
+                                                                <span class="title">Direct Join</span>
+                                                            </div>
+                                                            <div class="gfx" data-color="#9cabff">
+                                                                <svg enable-background="new 0 0 48 17.5" version="1.1" viewBox="0 0 48 17.5" xml:space="preserve" xmlns="http://www.w3.org/2000/svg">
+                                                                    <path fill="currentColor" d="m1.2 17.4h-0.3c-0.5-0.1-0.8-0.7-0.7-1.2 2-7.2 5-12.2 8.8-14.7 1.5-1 3-1.5 4.5-1.4 4.9 0.3 7.2 4.9 9 8.5 0.3 0.4 0.5 0.8 0.7 1.2 1 1.8 2.7 3.9 4.5 4.3 0.9 0.2 1.7-0.1 2.6-0.8 1.8-1.4 3-3.7 4.1-5.9 0.5-1 1-1.9 1.5-2.9 1-1.5 2.8-3.5 4.9-3.8 1.1-0.1 2.2 0.3 3.1 1 1.3 1.1 1.9 2.6 2.4 4.1 0.4 1 0.7 1.9 1.2 2.6 0.3 0.4 0.2 1.1-0.2 1.4s-1.1 0.2-1.4-0.2c-0.7-0.9-1.1-2-1.5-3-0.5-1.3-1-2.5-1.9-3.3-0.5-0.4-1-0.6-1.5-0.5-1.3 0.2-2.7 1.6-3.5 2.8-0.5 0.8-1 1.8-1.4 2.7-1.2 2.4-2.4 4.9-4.6 6.5-1.3 1.1-2.8 1.5-4.2 1.2-3.1-0.6-5.1-3.9-5.9-5.3-0.2-0.4-0.4-0.8-0.6-1.3-1.7-3.4-3.5-7.2-7.3-7.4-1.1-0.1-2.1 0.3-3.3 1-3.5 2.4-6.2 7-8 13.7-0.2 0.4-0.6 0.7-1 0.7z" />
+                                                                </svg>
+                                                            </div>
+                                                        </div>
+                                                        <div class="user-activity">
+                                                            <em class="icon ni ni-users"></em>
+                                                            <div class="info">
+                                                                <span class="amount">49</span>
+                                                                <span class="title">Referral Join</span>
+                                                            </div>
+                                                            <div class="gfx" data-color="#ccd4ff">
+                                                                <svg enable-background="new 0 0 48 17.5" version="1.1" viewBox="0 0 48 17.5" xml:space="preserve" xmlns="http://www.w3.org/2000/svg">
+                                                                    <path fill="currentColor" d="m1.2 17.4h-0.3c-0.5-0.1-0.8-0.7-0.7-1.2 2-7.2 5-12.2 8.8-14.7 1.5-1 3-1.5 4.5-1.4 4.9 0.3 7.2 4.9 9 8.5 0.3 0.4 0.5 0.8 0.7 1.2 1 1.8 2.7 3.9 4.5 4.3 0.9 0.2 1.7-0.1 2.6-0.8 1.8-1.4 3-3.7 4.1-5.9 0.5-1 1-1.9 1.5-2.9 1-1.5 2.8-3.5 4.9-3.8 1.1-0.1 2.2 0.3 3.1 1 1.3 1.1 1.9 2.6 2.4 4.1 0.4 1 0.7 1.9 1.2 2.6 0.3 0.4 0.2 1.1-0.2 1.4s-1.1 0.2-1.4-0.2c-0.7-0.9-1.1-2-1.5-3-0.5-1.3-1-2.5-1.9-3.3-0.5-0.4-1-0.6-1.5-0.5-1.3 0.2-2.7 1.6-3.5 2.8-0.5 0.8-1 1.8-1.4 2.7-1.2 2.4-2.4 4.9-4.6 6.5-1.3 1.1-2.8 1.5-4.2 1.2-3.1-0.6-5.1-3.9-5.9-5.3-0.2-0.4-0.4-0.8-0.6-1.3-1.7-3.4-3.5-7.2-7.3-7.4-1.1-0.1-2.1 0.3-3.3 1-3.5 2.4-6.2 7-8 13.7-0.2 0.4-0.6 0.7-1 0.7z" />
+                                                                </svg>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <div class="progress-wrap">
-                                                <div class="progress-text">
-                                                    <div class="progress-label">Silver Plan</div>
-                                                    <div class="progress-amount">18.49%</div>
+                                                <div class="user-activity-ck">
+                                                    <canvas class="usera-activity-chart" id="userActivity"></canvas>
                                                 </div>
-                                                <div class="progress progress-md">
-                                                    <div class="progress-bar bg-orange" data-progress="18.49"
-                                                        style="width: 18.49%;"></div>
-                                                </div>
-                                            </div>
-                                            <div class="progress-wrap">
-                                                <div class="progress-text">
-                                                    <div class="progress-label">Dimond Plan</div>
-                                                    <div class="progress-amount">16%</div>
-                                                </div>
-                                                <div class="progress progress-md">
-                                                    <div class="progress-bar bg-teal" data-progress="16"
-                                                        style="width: 16%;"></div>
-                                                </div>
-                                            </div>
-                                            <div class="progress-wrap">
-                                                <div class="progress-text">
-                                                    <div class="progress-label">Platinam Plan</div>
-                                                    <div class="progress-amount">29%</div>
-                                                </div>
-                                                <div class="progress progress-md">
-                                                    <div class="progress-bar bg-pink" data-progress="29"
-                                                        style="width: 29%;"></div>
-                                                </div>
-                                            </div>
-                                            <div class="progress-wrap">
-                                                <div class="progress-text">
-                                                    <div class="progress-label">Vibranium Plan</div>
-                                                    <div class="progress-amount">33%</div>
-                                                </div>
-                                                <div class="progress progress-md">
-                                                    <div class="progress-bar bg-azure" data-progress="33"
-                                                        style="width: 33%;"></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="invest-top-ck mt-auto">
-                                            <div class="chartjs-size-monitor">
-                                                <div class="chartjs-size-monitor-expand">
-                                                    <div class=""></div>
-                                                </div>
-                                                <div class="chartjs-size-monitor-shrink">
-                                                    <div class=""></div>
-                                                </div>
-                                            </div><canvas class="iv-plan-purchase chartjs-render-monitor"
-                                                id="planPurchase" width="591" height="75"
-                                                style="display: block; height: 50px; width: 394px;"></canvas>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                                            </div><!-- .card -->
+                                        </div><!-- .col -->
+                                    </div><!-- .row -->
+                                </div><!-- .col -->
+                            </div><!-- .row -->
+                        </div><!-- .nk-block -->
                     </div>
                 </div>
             </div>
         </div>
+        <!-- content @e -->
     </BreezeAuthenticatedLayout>
 </template>
 <script>
