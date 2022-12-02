@@ -3,3 +3,9 @@
         display: block!important;
     }
 }
+.site-color{
+    background-color: #6f5ea9;
+}
+.site-color:hover{
+    background-color: #5944a0;
+}

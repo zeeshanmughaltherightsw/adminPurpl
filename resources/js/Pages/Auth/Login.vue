@@ -53,31 +53,21 @@ const submit = () => {
                 </div>
               </div>
               <div class="form-group">
-                <div class="form-control-wrap">
-                    <label for="">Password</label>
-                  <a
-                    href="#"
-                    class="form-icon form-icon-right passcode-switch lg"
-                    data-target="password"
-                  >
-                    <em class="passcode-icon icon-show icon ni ni-eye"></em>
-                    <em class="passcode-icon icon-hide icon ni ni-eye-off"></em>
-                  </a>
-                  <TextInput
-                    id="password"
-                    type="password"
-                    class="mt-1 block w-full form-control form-control-lg"
-                    v-model="form.password"
-                    required
-                    autocomplete="current-password"
-                    placeholder="Enter your password"
-                  />
-                  <InputError class="mt-2" :message="form.errors.password" />
+                <div class="form-label-group">
+                    <label class="form-label" for="password">Passcode</label>
+                    <a class="link link-primary link-sm" href="html/pages/auths/auth-reset-v2.html">Forgot Code?</a>
                 </div>
-              </div>
+                <div class="form-control-wrap">
+                    <a href="#" class="form-icon form-icon-right passcode-switch lg" data-target="password">
+                        <em class="passcode-icon icon-show icon ni ni-eye"></em>
+                        <em class="passcode-icon icon-hide icon ni ni-eye-off"></em>
+                    </a>
+                    <input type="password" class="form-control form-control-lg" id="password" placeholder="Enter your passcode">
+                </div>
+            </div>
               <div class="form-group">
                 <PrimaryButton
-                  class="btn btn-lg btn-primary site-color"
+                  class="btn btn-lg site-color float-center"
                   :class="{ 'opacity-25': form.processing }"
                   :disabled="form.processing"
                 >
