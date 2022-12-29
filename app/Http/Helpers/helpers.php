@@ -139,7 +139,7 @@ function imagePath()
         'path' => 'images/lang',
         'size' => '64x64'
     ];
-    $data['logoIcon'] = [
+    $data['logo'] = [
         'path' => 'images/logoIcon',
     ];
     $data['favicon'] = [
@@ -159,29 +159,32 @@ function imagePath()
     return $data;
 }
 
-function uploadImage($file, $location, $size = null, $old = null, $thumb = null)
+function uploadImage($file, $location, $size = null, $old = null, $thumb = null, $logo=null)
 {
-    $location = 'storage/' . $location;
-    $path = makeDirectory($location);
-    if (!$path) throw new Exception('File could not been created.');
+    if(!$logo){
+        $location = 'storage/' . $location;
+        $path = makeDirectory($location);
+        if (!$path) throw new Exception('File could not been created.');
+    }
+
+    $filename = ($logo ? $logo : uniqid() . time()) . '.' . $file->getClientOriginalExtension();
+    
     if (!empty($old)) {
         removeFile($location . '/' . $old);
         removeFile($location . '/thumb_' . $old);
     }
-
-
-    // $filename = uniqid() . time() . '.' . $file->getClientOriginalExtension();
-    $filename = uniqid() . time() . '.png';
-
-
-    $image = Image::make($file);
-
+    
+    $image = Image::make($file->getRealPath());
 
     if (!empty($size)) {
         $size = explode('x', strtolower($size));
         $image->resize($size[0], $size[1]);
     }
-    $image->save($location . '/' . $filename);
+    if($logo){
+        $image->save($filename);
+    }else{
+        $image->save($location . '/' . $filename);
+    }
 
     if (!empty($thumb)) {
         $thumb = explode('x', $thumb);

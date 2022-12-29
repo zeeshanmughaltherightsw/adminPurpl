@@ -59,11 +59,11 @@
                             </div>
                             <div class="card-text">
                                 <div class="row">
-                                    <div class="col-3 border py-3"> <span class="h4 fw-500">1.67%</span> 
+                                    <div class="col-3 border py-3"> <span class="h4 fw-500">{{ user.transactions_sum_amount }}</span> 
                                         <span class="sub-text">Total Deposit</span> 
                                     </div>
                                     <div class="col-3 border py-3"> 
-                                        <span class="h4 fw-500">30</span> 
+                                        <span class="h4 fw-500">{{ user.withdrawals_sum_amount }}</span> 
                                         <span class="sub-text">Total Withdraw</span> 
                                     </div>
                                     <div class="col-3 border py-3"> 

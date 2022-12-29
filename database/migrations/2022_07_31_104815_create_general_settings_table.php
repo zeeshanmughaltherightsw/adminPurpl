@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('key');
             $table->string('name');
             $table->string('value');
+            $table->json('options')->nullable()->default('[]');
             $table->enum('status', ['active', 'inactive'])->default('active');
             $table->boolean('is_required')->nullable();
             $table->timestamps();

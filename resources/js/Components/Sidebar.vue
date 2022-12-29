@@ -89,21 +89,13 @@
                   <span class="nk-menu-text">Settings</span>
               </a>
               <ul class="nk-menu-sub">
-                  <li class="nk-menu-item" :class="{ 'active current-page': route().current('settings.group', 'payment') }">
-                      <Link :href="route('settings.group', 'payment')" class="nk-menu-link" preserve-scroll>
+                  <li v-for="(setting, index) in settings" 
+                    :key="index" class="nk-menu-item" 
+                    :class="{ 'active current-page': route().current('settings.group', setting.group) }">
+                      <Link :href="route('settings.group', setting.group)" class="nk-menu-link" preserve-scroll>
                         <span class="nk-menu-icon"><em class="icon ni ni-dot"></em></span>
-                        <span class="nk-menu-text">Payment Settings</span>
+                        <span class="nk-menu-text text-capitalize">{{ getGroupName(setting.group) }}</span>
                       </Link>
-                  </li>
-                  <li class="nk-menu-item" :class="{ 'active current-page': route().current('settings.group', 'withdraw') }">
-                      <Link :href="route('settings.group', 'withdraw')" class="nk-menu-link" preserve-scroll>
-                        <span class="nk-menu-icon"><em class="icon ni ni-dot"></em></span>
-                        <span class="nk-menu-text">Withdraw</span></Link>
-                  </li>
-                  <li class="nk-menu-item" :class="{ 'active current-page': route().current('settings.group', 'transfer') }">
-                      <Link :href="route('settings.group', 'transfer')" class="nk-menu-link" preserve-scroll>
-                        <span class="nk-menu-icon"><em class="icon ni ni-dot"></em></span>
-                        <span class="nk-menu-text">Transfer</span></Link>
                   </li>
               </ul><!-- .nk-menu-sub -->
             </li><!-- .nk-menu-item -->
@@ -135,17 +127,17 @@ export default {
         let sidebar = document.querySelector('.nk-sidebar')
         sidebar.classList.remove('nk-sidebar-active')
     },
-    // getSettings(){
-    //   axios.get(route('settings'))
-    //     .then((response) => {
-    //       this.settings = response.data.data
-    //   })
-    // }
+    getSettings(){
+      axios.get(route('settings'))
+        .then((response) => {
+          this.settings = response.data.data
+      })
+    }
   },
   mounted(){
     NioApp.TGL.init();
     NioApp.sbCompact();
-    // this.getSettings()
+    this.getSettings()
     //  this.emitter.on('open-sidebar', ()=>{
     //     this.open = this.open ? false : true
     //  });
