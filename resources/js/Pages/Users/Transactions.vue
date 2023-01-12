@@ -1,7 +1,7 @@
 <template>
-  <Head title="Transactions" />
+  <Head :title="pageTitle ? pageTitle : 'Transactions'" />
 <Authenticated>
-    <breadcrumb title="Transactions"/>
+    <breadcrumb :title="pageTitle ? pageTitle : 'Transactions'"/>
    
     <div class="card card-bordered card-stretch">
         <div class="card-inner-group">
@@ -57,7 +57,7 @@ import Authenticated from '../../Layouts/Authenticated.vue';
 import Helpers from '@/Mixins/Helpers';
 import { Head } from "@inertiajs/inertia-vue3";
 export default {
-    props: ['transactions'],
+    props: ['transactions', 'pageTitle'],
     components: {
         Pagination,
         Breadcrumb,

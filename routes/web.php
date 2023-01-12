@@ -1,12 +1,10 @@
 <?php
-
-use App\Http\Controllers\Admin\GatewayController;
-use App\Http\Controllers\Admin\Withdrawals;
-use App\Http\Controllers\Admin\WithdrawalsController;
+use App\Models\User;
+use App\Models\Reward;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
-use App\Models\Reward;
-use App\Models\User;
+use App\Http\Controllers\Admin\UserRewardsController;
+use App\Http\Controllers\Admin\WithdrawalsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,6 +38,7 @@ Route::namespace('App\Http\Controllers\Admin')->group(function(){
         Route::resource('/commission', CommissionController::class)->middleware('can:view_commission');
         Route::resource('{type}/gateway', GatewayController::class)->middleware('can:view_gateway');
         Route::resource('withdrawals', WithdrawalsController::class)->middleware('can:view_withdrawal');
+        Route::resource('rewards', UserRewardsController::class)->middleware('can:view_user_rewards');
 
     
     // Roles

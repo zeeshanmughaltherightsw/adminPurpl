@@ -80,6 +80,14 @@
                 </Link>
             </li>
 
+            <li class="nk-menu-item" v-if="checkUserPermissions('view_user_rewards')"
+            :class="{ 'active current-page': route().current('rewards.index') }">
+                <Link :href="route('rewards.index')" class="nk-menu-link" preserve-scroll>
+                  <span class="nk-menu-icon"><em class="icon ni ni-wallet-fill"></em></span>
+                  <span class="nk-menu-text">User Rewards</span>
+                </Link>
+            </li>
+
             <li class="nk-menu-heading">
               Settings
             </li><!-- .nk-menu-item -->
