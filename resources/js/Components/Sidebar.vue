@@ -75,7 +75,7 @@
             <li class="nk-menu-item" v-if="checkUserPermissions('view_withdrawal')"
             :class="{ 'active current-page': route().current('withdrawals.index') }">
                 <Link :href="route('withdrawals.index')" class="nk-menu-link" preserve-scroll>
-                  <span class="nk-menu-icon"><em class="icon ni ni-wallet-fill"></em></span>
+                  <span class="nk-menu-icon"><em class="icon ni ni-dashboard-fill"></em></span>
                   <span class="nk-menu-text">Withdrawals</span>
                 </Link>
             </li>
