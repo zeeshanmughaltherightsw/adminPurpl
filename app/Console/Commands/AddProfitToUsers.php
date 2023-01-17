@@ -57,6 +57,7 @@ class AddProfitToUsers extends Command
                     ]);
                 }        
             DB::commit();
+            Log::info("Profit added successfully for the data: " . now());
             return Command::SUCCESS;      
         }catch(Exception $e){
             DB::rollBack();
