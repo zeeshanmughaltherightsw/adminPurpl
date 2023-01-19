@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers\Admin;
 
+use Exception;
 use App\Models\User;
 use Inertia\Inertia;
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use App\Models\Transaction;
+use Illuminate\Http\Request;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
 
 class UsersController extends Controller
 {
@@ -130,5 +133,44 @@ class UsersController extends Controller
     public function changeStatus($id, $status)
     {
         User::find($id)->update('status', $status);
+    }
+
+    public function subscribePlan(Request $request, User $user)
+    {
+        try{
+            DB::beginTransaction();
+            $amount = $request->amount;
+            $user->investment += $amount;
+            $user->save();
+            $transaction = $user->transactions()->create([
+                'amount' => $amount,
+                'trx' => $request->trx,
+                'gas_price' => $request->gas_price,
+                'trx_type' => '+',
+                'details' => "Deposit",
+                'remark' => "Deposit",
+                'status' => $request->status ? 1 : 0,
+                'from' => $request->from,
+                'to' => $request->to,
+            ]);
+            // http://localhost:8000/save-transactions?gas_price=21596&trx=0x893e5721e7d65431caf38da7871cded5ffe2e42cdb8fd658e21765b22d5a225f&amount=1000000&status=true&from=0xadc95259bf19af8cea70426af1ae5db4e71167f1&to=0xdac17f958d2ee523a2206206994597c13d831ec7
+            $user = upgradeMembership($amount, $user);
+            if($user && $user->plan_id){
+                $transaction->commissionRecord()->create([
+                    'amount' => $amount,
+                    'user_id' => $user->id,
+                ]);
+    
+                addCommissionToReferals($user, $transaction);
+            }
+
+            DB::commit();
+            return redirect()->back();
+        }catch(Exception $e){
+            DB::rollBack();
+            return response()->json([
+                'message' => $e->getMessage()
+            ], JsonResponse::HTTP_INTERNAL_SERVER_ERROR);
+        }
     }
 }

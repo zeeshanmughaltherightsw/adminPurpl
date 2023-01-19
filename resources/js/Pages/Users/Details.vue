@@ -29,7 +29,7 @@
                                 Status<span class="badge badge-pill bg--success">{{ user.status }}</span></li>
 
                             <li class="list-group-item d-flex justify-content-between align-items-center">
-                                Investment<span class="font-weight-bold">{{ user.investment }} USD</span>
+                                Investment<span class="font-weight-bold">{{ formatCurrency(user.investment) }} USD</span>
                             </li>
                             <li class="list-group-item d-flex justify-content-between align-items-center"
                                 v-if="user.referredBy">
@@ -44,6 +44,11 @@
                             <li class="list-group-item d-flex justify-content-between align-items-center">
                                 Total Commissions<span class="font-weight-bold">
                                     <a href="https://aamearning.com/wuas-admin/user/commissions/13451"> 0 USD</a>
+                                </span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                Subscribe Plan<span class="font-weight-bold">
+                                    <a href="javascript:void"  @click="openModal">Subscribe</a>
                                 </span>
                             </li>
                         </ul>
@@ -205,6 +210,7 @@
                 </div>
             </div>
         </div>
+        <subscribe-plan />
     </Authenticated>
 </template>
 <script>
@@ -218,6 +224,7 @@ import Label from "@/Components/Label.vue";
 import Input from "@/Components/Input.vue";
 import PrimaryButton from "@/Components/Button.vue";
 import VueToggle from 'vue-toggle-component';
+import SubscribePlan from './SubscribePlan.vue'
 export default {
     props: ['user'],
     data(){
@@ -225,7 +232,7 @@ export default {
             form: null,
         }
     },
-    components: { Authenticated, Button, Head, Breadcrumb, PrimaryButton, Input, Label, Error, VueToggle, Link},
+    components: { Authenticated, Button, Head, Breadcrumb, PrimaryButton, Input, Label, Error, VueToggle, Link, SubscribePlan},
     methods: {
         submit(){
             this.form.put(route('users.update', this.user.id),{
@@ -237,7 +244,12 @@ export default {
         },
         toggle(key){
             this.form[key] = !this.form[key]
-        }
+        },
+        openModal(user){
+            this.emitter.emit('subscribe-plan-modal', {
+                user: this.user,
+            });
+        },
     },
     beforeMount(){
         this.form = useForm({

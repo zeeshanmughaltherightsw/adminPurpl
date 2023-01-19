@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Plan;
 use App\Models\User;
 use App\Models\PlanLevel;
 use App\Models\Transaction;
@@ -191,6 +192,24 @@ function uploadImage($file, $location, $size = null, $old = null, $thumb = null,
         Image::make($file)->resize($thumb[0], $thumb[1])->save($location . '/thumb_' . $filename);
     }
     return $filename;
+}
+
+function upgradeMembership($investment, $user)
+{
+    $plan = Plan::active()
+            ->where('max_price', '<=', $user->investment)
+            ->where('plan_type', 'investor')
+            ->orderByDesc('max_price')
+            ->first();
+    if($plan){
+        if($plan->id == $user->plan_id){
+            return $user;
+        }
+        $user->plan_id = $plan->id;
+        $user->save();
+        return $user;
+    }
+    return null;
 }
 
 ?>

@@ -56,9 +56,9 @@ class AddRewardToUsers extends Command
                     'remark' => 'reward'
                 ]);
             }
-
+            
             DB::commit();
-            Log::info("Reward added successfully for the data: " . now());
+            Log::info("Reward added successfully for the date of: " . now());
             return Command::SUCCESS;
         }catch(Exception $e){
             DB::rollBack();

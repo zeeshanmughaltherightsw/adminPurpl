@@ -32,4 +32,9 @@ class Plan extends Model
     public function level(){
         return $this->hasMany(PlanLevel::class);
     }
+
+    public function scopeActive($query)
+    {
+        $query->whereStatus(true);
+    }
 }
