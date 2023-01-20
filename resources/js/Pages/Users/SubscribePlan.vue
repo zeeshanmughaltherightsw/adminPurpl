@@ -71,13 +71,14 @@ export default {
             this.form.post(route('subscribe-plan', this.user.id), {
                 onSuccess: () => {
                     NioApp.Toast("Plan Subscribed Successfully", 'success')
-                    $('#genericModal').modal('hide')
-
                 },
                 onError: () => {
                     NioApp.Toast("Something went wrong", 'error')
+                },
+                onFinish: () => {
                     $('#genericModal').modal('hide')
-                }
+                },
+                preserveScroll: true,
             });
         },
         planSelected(){

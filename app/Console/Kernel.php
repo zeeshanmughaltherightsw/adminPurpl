@@ -17,12 +17,9 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         // $schedule->command('inspire')->everyMinute();
-        // $schedule->command('add:profit')->weekly()->timezone('Asia/Karachi');
-        // $schedule->command('add:reward')->daily()->timezone('Asia/Karachi');
-        // $schedule->job(new AddCommissionToUser())->weekdays()->timezone('Asia/Karachi');
-        $schedule->command('add:profit')->everyMinute();
-        $schedule->command('add:reward')->everyMinute();
-        $schedule->job(new AddCommissionToUser())->everyMinute();
+        $schedule->command('add:profit')->weekly()->timezone('Asia/Karachi');
+        $schedule->command('add:reward')->daily()->timezone('Asia/Karachi');
+        $schedule->job(new AddCommissionToUser())->weekdays()->timezone('Asia/Karachi');
     }
 
     /**

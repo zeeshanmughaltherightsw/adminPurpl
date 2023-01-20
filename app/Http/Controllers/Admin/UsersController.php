@@ -137,6 +137,9 @@ class UsersController extends Controller
 
     public function subscribePlan(Request $request, User $user)
     {
+        $request->validate([
+            'plan_id' => 'required'
+        ]);
         try{
             DB::beginTransaction();
             $amount = $request->amount;
