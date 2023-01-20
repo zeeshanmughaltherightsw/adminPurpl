@@ -4,7 +4,7 @@
     <Authenticated>
         <breadcrumb title="Manage Users" />
         <div class="row mb-none-30">
-            <div class="col-xl-3 col-lg-5 col-md-5 mb-30">
+            <div class="col-xl-4 col-lg-5 col-md-5 mb-30">
                 <div class="card b-radius--10 overflow-hidden box--shadow1">
                     <div class="p-3 bg--white">
                         <div class="">
@@ -37,13 +37,13 @@
                             </li>
                             <li class="list-group-item d-flex justify-content-between align-items-center">
                                 Total Referral<span class="font-weight-bold">
-                                    <a href="https://aamearning.com/wuas-admin/user/total-referral/13451">
+                                    <a href="#">
                                         {{ user.referrals_count }} User</a>
                                 </span>
                             </li>
                             <li class="list-group-item d-flex justify-content-between align-items-center">
                                 Total Commissions<span class="font-weight-bold">
-                                    <a href="https://aamearning.com/wuas-admin/user/commissions/13451"> 0 USD</a>
+                                    <a href="#"> 0 USD</a>
                                 </span>
                             </li>
                             <li class="list-group-item d-flex justify-content-between align-items-center">
@@ -55,30 +55,32 @@
                     </div>
                 </div>
             </div>
-            <div class="col-xl-9 col-lg-5 col-md-5">
+            <div class="col-xl-8 col-lg-5 col-md-5">
                 <div class="card">
                     <div class="card pricing">
                         <div class="pricing-head">
                             <div class="pricing-title">
-                                <h4 class="card-title title">{{user.plan?.name}}</h4>
+                                <h4 class="card-title title text-primary"><span class="text-dark">Plan: </span>{{user.plan?.name}}</h4>
                             </div>
                             <div class="card-text">
                                 <div class="row">
-                                    <div class="col-3 border py-3"> <span class="h4 fw-500">{{ user.transactions_sum_amount }}</span> 
+                                    <div class="col-3 border py-3"> 
+                                        <span class="h4 fw-500" style="font-size: 15px;">
+                                        {{ user.transactions_sum_amount ? formatCurrency(user.transactions_sum_amount) : 0 }}</span> 
                                         <span class="sub-text">Total Deposit</span> 
                                     </div>
                                     <div class="col-3 border py-3"> 
-                                        <span class="h4 fw-500">{{ user.withdrawals_sum_amount }}</span> 
+                                        <span class="h4 fw-500" style="font-size: 15px;">{{ user.withdrawals_sum_amount ? formatCurrency(user.withdrawals_sum_amount) : 0 }}</span> 
                                         <span class="sub-text">Total Withdraw</span> 
                                     </div>
                                     <div class="col-3 border py-3"> 
                                         <Link :href="route('users.transactions', user.id)">
-                                            <span class="h4 fw-500">{{user.transactions_count}}</span> 
+                                            <span class="h4 fw-500" style="font-size: 15px;">{{user.transactions_count}}</span> 
                                             <span class="sub-text">Total Transactions</span>
                                         </Link> 
                                     </div>
                                     <div class="col-3 border py-3"> 
-                                        <span class="h4 fw-500">{{ formatCurrency(user.profit) }} USD</span> 
+                                        <span class="h4 fw-500" style="font-size: 15px;">{{ formatCurrency(user.profit) }} USD</span> 
                                         <span class="sub-text">Total Profit</span> 
                                     </div>
                                 </div>

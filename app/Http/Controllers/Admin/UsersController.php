@@ -81,8 +81,11 @@ class UsersController extends Controller
         $user = User::withSum([
             'transactions' => function ($query) {
                 $query->where('remark', 'deposit');
-        }], 'amount')->withSum('withdrawals', 'amount')->with(['media','plan', 'transactions', 'referrals', 'referredBy' => function($q){ $q->select(['id', 'name']); }])
+        }], 'amount')
+        ->withSum('withdrawals', 'amount')
+        ->with(['media','plan', 'transactions', 'referrals', 'referredBy' => function($q){ $q->select(['id', 'name']); }])
         ->withCount(['referrals', 'transactions'])->findOrFail($id);
+
         return Inertia::render('Users/Details', [
             'user' => $user,
         ]);
