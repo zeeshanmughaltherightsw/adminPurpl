@@ -55,7 +55,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-xl-8 col-lg-5 col-md-5">
+            <div class="col-xl-8 col-lg-5 col-md-5 p-2">
                 <div class="card">
                     <div class="card pricing">
                         <div class="pricing-head">

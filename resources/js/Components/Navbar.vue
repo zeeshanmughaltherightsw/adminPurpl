@@ -40,7 +40,7 @@
                                 <div class="dropdown-inner user-card-wrap bg-lighter d-none d-md-block">
                                     <div class="user-card">
                                         <div class="user-avatar">
-                                            <span>AB</span>
+                                            <span>{{ getAbbrevation($page.props.auth.user.name) }}</span>
                                         </div>
                                         <div class="user-info">
                                             <span class="lead-text">{{ $page.props.auth.user.name }}</span>

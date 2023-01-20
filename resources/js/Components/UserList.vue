@@ -8,6 +8,7 @@
             <!-- <div class="nk-tb-col tb-col-xxl"><span class="sub-text">Ip</span></div> -->
            <!-- <div class="nk-tb-col tb-col-xxl"><span class="sub-text">Last Login</span></div> -->
             <div class="nk-tb-col"><span class="sub-text">Status</span></div>
+            <div class="nk-tb-col"><span class="sub-text"></span></div>
             <!-- <div class="nk-tb-col nk-tb-col-tools text-right">
                 <div class="dropdown">
                     <a href="#" class="btn btn-xs btn-outline-light btn-icon dropdown-toggle" data-toggle="dropdown" data-offset="0,5"><em class="icon ni ni-plus"></em></a>
@@ -46,7 +47,7 @@
             <div class="nk-tb-col">
                 <div class="user-card">
                     <div class="user-avatar xs bg-primary">
-                        <span>AB</span>
+                        <span>{{ getAbbrevation(user.name) }}</span>
                     </div>
                     <div class="user-name">
                         <Link :href="route('users.edit', user.id)">

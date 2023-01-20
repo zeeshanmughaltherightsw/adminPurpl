@@ -18,7 +18,9 @@ export default {
         // formatDateTimeUnix(dateString) {
         //     return moment.unix(dateString).format("Do MMM YYYY h:mm:ss A");
         // },
-
+        getAbbrevation(str){
+            return str.match(/\b(\w)/g).join('')
+        },
         // generic function to get images
         getImage(path, isSaved = true, type = 'avatar', isExternal = 0) {
             const baseUrl = window.location.protocol + "//" + window.location.host
