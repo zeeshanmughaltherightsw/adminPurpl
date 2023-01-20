@@ -49,7 +49,9 @@
                         <span>AB</span>
                     </div>
                     <div class="user-name">
-                        <span class="tb-lead">{{user.name}}</span>
+                        <Link :href="route('users.edit', user.id)">
+                            <span class="tb-lead">{{user.name}}</span>
+                        </Link>
                     </div>
                 </div>
             </div>

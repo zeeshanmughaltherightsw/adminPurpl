@@ -150,7 +150,7 @@ class UsersController extends Controller
             $user->save();
             $transaction = $user->transactions()->create([
                 'amount' => $amount,
-                'trx' => $request->trx,
+                'trx' => getTrx(),
                 'gas_price' => $request->gas_price,
                 'trx_type' => '+',
                 'details' => "Deposit",
